@@ -966,10 +966,84 @@ def page_home_v2():
     H.append('</main>' + footer())
     write("index.html", "".join(H))
 
+
+def home3():
+    import json as _j
+    from datetime import date as _d
+    allm = D["movies"]
+    cnt = len(allm)
+    ppl = len(PPL)
+    gcnt = len(GEN)
+    avg = round(sum(m.get("rating") or 0 for m in allm) / max(1, cnt), 1)
+    slides = [MOV[i] for i in [1423191, 969681, 1156593, 1232493] if i in MOV]
+    top10 = sorted([m for m in allm if (m.get("votes") or 0) > 200], key=lambda m: -(m.get("rating") or 0))[:10]
+    upc = sorted([m for m in allm if (m.get("release_date") or "") >= "2026-11-04"], key=lambda m: m.get("release_date") or "")[:6]
+    trend = [MOV[i] for i in [1423191,1156593,1311031,1083381,1368166,1315985,1232493,1368316,1300118,1339713,1316311,1368337] if i in MOV]
+    idx = [{"t": m["title"], "y": m["year"], "u": BASE + movie_path(m), "p": poster(m.get("poster"), "w92")} for m in allm]
+    H = [head("MovieState — Watch Movies Online in HD & Find Where to Watch",
+              "Independent movie guide: what to watch now, full cast and crew, ratings, box office and where each film streams, rents or sells in HD.",
+              "index.html", og_image=backdrop(slides[0].get("backdrop"), "w1280"),
+              jsonld=[
+                {"@context":"https://schema.org","@type":"WebSite","name":BRAND,"url":BASE+"/","publisher":ORG,
+                 "potentialAction":{"@type":"SearchAction","target":BASE+"/movies/?q={search_term_string}","query-input":"required name=search_term_string"}},
+                {"@context":"https://schema.org",**ORG},
+                {"@context":"https://schema.org","@type":"ItemList","name":"Top rated movies","itemListElement":[{"@type":"ListItem","position":i+1,"url":BASE+movie_path(m),"name":m["title"]} for i,m in enumerate(top10)]},
+                {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in HOME_FAQ]}])]
+    H.append(header(""))
+    H.append('<main id="main">')
+    sl = ""
+    for i, m in enumerate(slides):
+        sl += f'''<article class="slide{' is-on' if i==0 else ''}" data-i="{i}" aria-hidden="{'false' if i==0 else 'true'}">
+<img class="slide__bg" src="{backdrop(m.get("backdrop"),"w1280")}" alt="" width="1280" height="720" {'fetchpriority="high"' if i==0 else 'loading="lazy"'} decoding="async">
+<span class="slide__veil" aria-hidden="true"></span>
+<div class="slide__in wrap"><div class="slide__copy">
+<p class="kicker">{e("Featured" if i==0 else "Editor pick")}</p>
+<h2 class="slide__title">{e(m["title"])}</h2>
+<p class="slide__meta">{m["year"]} · {e(rtime(m.get("runtime")))} · {e(m.get("certification") or "—")} · {e(m.get("genres",[""])[0])}</p>
+<p class="slide__line">{e((m.get("overview") or "")[:150])}…</p>
+<div class="slide__cta"><a class="btn btn--primary" href="{BASE}{movie_path(m)}">View guide &amp; watch options</a><a class="btn btn--ghost" href="{BASE}/movies/">All movies</a></div>
+</div>
+<a class="slide__poster" href="{BASE}{movie_path(m)}" aria-label="{e(m["title"])}"><img src="{poster(m.get("poster"),"w500")}" alt="{e(m["title"])} poster" width="500" height="750" {'fetchpriority="high"' if i==0 else 'loading="lazy"'} decoding="async"><span class="score-ring" style="--pct:{int((m.get('rating') or 0)*10)}"><b>{m.get('rating')}</b><i>/10</i></span></a>
+</div></article>'''
+    dots = "".join(f'<button class="dot{" is-on" if i==0 else ""}" type="button" data-goto="{i}" aria-label="Slide {i+1}"></button>' for i in range(len(slides)))
+    H.append(f'''<section class="hero hero--carousel" id="hero">
+<div class="hero__slides">{sl}</div>
+<div class="hero__nav wrap"><div class="dots">{dots}</div><div class="hero__arrows"><button class="arrow" type="button" data-prev aria-label="Previous">&#8249;</button><button class="arrow" type="button" data-next aria-label="Next">&#8250;</button></div></div>
+<div class="quickbar wrap"><div><span>Films</span><strong data-count="{cnt}">{cnt}</strong></div><div><span>Genres</span><strong data-count="{gcnt}">{gcnt}</strong></div><div><span>Profiles</span><strong data-count="{ppl}">{ppl}</strong></div><div><span>Avg rating</span><strong>{avg}</strong></div></div>
+</section>''')
+    H.append(f'''<section class="searchbar wrap"><form class="search" role="search" action="{BASE}/movies/" method="get" autocomplete="off"><label class="sr-only" for="q">Search movies</label><input id="q" name="q" type="search" placeholder="Search {cnt} films — title, year or genre" aria-describedby="qhelp"><button class="btn btn--primary" type="submit">Search</button><div class="search__res" id="qres" role="listbox" aria-label="Suggestions"></div><p id="qhelp" class="sr-only">Type at least two characters to see suggestions.</p></form></section>''')
+    t10 = "".join(f'''<a class="t10__item" href="{BASE}{movie_path(m)}"><span class="t10__num">{i+1}</span><img src="{poster(m.get("poster"),"w342")}" alt="{e(m["title"])} poster" width="342" height="513" loading="{'' if i<3 else 'lazy'}" decoding="async"><span class="t10__cap"><strong>{e(m["title"])}</strong><span>{m["year"]} · {m.get('rating')}/10</span></span></a>''' for i,m in enumerate(top10[:5]))
+    t10b = "".join(f'''<a class="t10__item" href="{BASE}{movie_path(m)}"><span class="t10__num">{i+6}</span><img src="{poster(m.get("poster"),"w342")}" alt="{e(m["title"])} poster" width="342" height="513" loading="lazy" decoding="async"><span class="t10__cap"><strong>{e(m["title"])}</strong><span>{m["year"]} · {m.get('rating')}/10</span></span></a>''' for i,m in enumerate(top10[5:10]))
+    H.append(f'''<section class="section"><div class="section__head"><div><p class="kicker">Top 10 this week</p><h2 class="section__title">The highest rated films in our library</h2></div><a class="section__link" href="{BASE}/movies/">See all {cnt}</a></div><div class="t10">{t10}</div><div class="t10 t10--b">{t10b}</div></section>''')
+    tl = "".join(f'''<a class="tl__row" href="{BASE}{movie_path(m)}"><time>{e((m.get("release_date") or "")[5:])}</time><span class="tl__dot" aria-hidden="true"></span><span class="tl__txt"><strong>{e(m["title"])}</strong><span>{e(", ".join(m.get("genres",[])[:2]))} · {e(m.get("status") or "")}</span></span><span class="tl__go" aria-hidden="true">→</span></a>''' for m in upc)
+    H.append(f'''<section class="section"><div class="section__head"><div><p class="kicker">Coming up</p><h2 class="section__title">Release calendar</h2></div><a class="section__link" href="{BASE}/movies/">All releases</a></div><div class="panel tl">{tl or '<p class="muted">No upcoming releases tracked right now.</p>'}</div></section>''')
+    H.append(f'''<section class="section">{section_head("Now trending","What everyone is watching this week",("All movies",BASE+"/movies/"))}<div class="rail"><div class="rail__track">{"".join(card(m, movie_path(m)) for m in trend)}</div></div></section>''')
+    editors = [MOV[i] for i in [969681, 1368337, 1423191] if i in MOV]
+    ed = "".join(f'''<a class="ed-pick" href="{BASE}{movie_path(m)}"><img src="{backdrop(m.get("backdrop"),"w780")}" alt="" width="780" height="439" loading="lazy" decoding="async"><span class="ed-pick__veil" aria-hidden="true"></span><span class="ed-pick__body"><span class="ed-pick__meta">{m.get('rating')}/10 · {m['year']} · {e(m.get("genres",[""])[0])}</span><strong>{e(m["title"])}</strong><span class="ed-pick__line">{e((m.get("overview") or "")[:110])}…</span></span></a>''' for m in editors)
+    H.append(f'''<section class="section"><div class="section__head"><div><p class="kicker">Editor picks</p><h2 class="section__title">Three films worth clearing an evening for</h2></div></div><div class="ed-grid">{ed}</div></section>''')
+    cats = "".join(f'''<a class="cat" href="{BASE}/category/{g['slug']}/"><img src="{poster(g['movies'][0]['poster'],'w342')}" alt="" width="342" height="513" loading="lazy" decoding="async"><span class="cat__veil" aria-hidden="true"></span><span class="cat__label"><span class="cat__count">{len(g['movies'])} films</span>{e(g['name'])}</span></a>''' for g in GEN[:12])
+    H.append(f'''<section class="section">{section_head("Browse","Categories built around how you actually choose films",("All categories",BASE+"/categories/"))}<div class="cat-grid">{cats}</div></section>''')
+    prov = sorted({n for m in allm for cc in (m.get("providers") or {}).values() for k in ("flatrate","rent","buy") for n in (cc.get(k) or [])})
+    pc = "".join(f'<li class="chip chip--prov">{e(s)}</li>' for s in prov[:12])
+    H.append(f'''<section class="section"><div class="section__head"><div><p class="kicker">Where to watch</p><h2 class="section__title">Find the right stream in under a minute</h2></div></div>
+<div class="cols"><div class="panel"><ol class="steps"><li><strong>Open the film guide.</strong> Streaming, rental and purchase options are listed for the US, UK, Canada, Australia, India and Bangladesh.</li><li><strong>Check your region.</strong> Rights change per country, so a title can be included with one service and pay-per-view on another.</li><li><strong>Confirm quality on the provider.</strong> We link out; price, HD/4K and subtitles are set there.</li></ol><a class="btn btn--primary" href="{MAIN}/" target="_blank" rel="noopener">Open MovieState library</a></div>
+<div class="panel"><h3 class="panel__title">Services we track</h3><ul class="chips">{pc}</ul><p class="note">Provider names come from live availability data. If a service is missing, the film is not listed there for the regions we check.</p></div></div></section>''')
+    H.append(f'''<section class="section">{section_head("Cast & crew","The people behind the films",("All people",BASE+"/people/"))}<div class="rail"><div class="rail__track rail__track--people">{"".join(person_card(p, person_path(p)) for p in PPL[:14])}</div></div></section>''')
+    faq_html = "".join(f'<details class="faq__item"><summary><h3>{e(q)}</h3></summary><p>{e(a)}</p></details>' for q,a in HOME_FAQ)
+    H.append(f'''<section class="section"><div class="section__head"><div><p class="kicker">How we work</p><h2 class="section__title">Editorial standards, not scraped trivia</h2></div></div>
+<div class="ed-grid"><div class="ed-card"><h3>Data with a source</h3><p>Titles, cast, crew, release dates and box office come from TMDB and are re-checked every time a page is rebuilt. When a figure is not reported, we say so.</p></div>
+<div class="ed-card"><h3>Availability we verify</h3><p>Watch options are grouped by country because rights are regional. Each guide names the services reported for that market and links to the provider to confirm price.</p></div>
+<div class="ed-card"><h3>Written for decisions</h3><p>Every guide answers three questions in order: what the film is, whether it fits your taste, and how to watch it. No autoplay, no pop-ups, no fake buttons.</p></div></div></section>
+<section id="faq" class="section section--narrow"><div class="section__head"><div><p class="kicker">FAQ</p><h2 class="section__title">Questions people ask before pressing play</h2></div></div><div class="panel panel--faq">{faq_html}</div></section>''')
+    H.append('</main>' + footer())
+    idx_json = _j.dumps(idx, ensure_ascii=False).replace("</", "<" + "/")
+    H.append('<script type="application/json" id="siteIndex">' + idx_json + '</script>')
+    write("index.html", "".join(H))
+
 def main():
     if os.path.isdir("site"): shutil.rmtree("site")
     os.makedirs("site", exist_ok=True)
-    page_home_v2(); page_movies_hub(); page_categories_hub(); page_people_hub()
+    home3(); page_movies_hub(); page_categories_hub(); page_people_hub()
     for m in D["movies"]: page_movie_v2(m)
     for g in GEN: page_category(g)
     for p in PPL: page_person(p)
