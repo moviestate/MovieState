@@ -1,0 +1,471 @@
+{
+ "genres": {
+  "28": "Action",
+  "12": "Adventure",
+  "16": "Animation",
+  "35": "Comedy",
+  "80": "Crime",
+  "99": "Documentary",
+  "18": "Drama",
+  "10751": "Family",
+  "14": "Fantasy",
+  "36": "History",
+  "27": "Horror",
+  "10402": "Music",
+  "9648": "Mystery",
+  "10749": "Romance",
+  "878": "Science Fiction",
+  "10770": "TV Movie",
+  "53": "Thriller",
+  "10752": "War",
+  "37": "Western"
+ },
+ "movies": [
+  {
+   "tmdb_id": 1423191,
+   "title": "Resident Evil",
+   "year": 2026,
+   "release_date": "2026-09-16",
+   "rating": 7.4,
+   "votes": 1294,
+   "poster": "/gAgWJhUSQWCgtKR8170nMkYlBda.jpg",
+   "backdrop": "/3icyRAqgakNcQn6aDVz9libFmBA.jpg",
+   "overview": "Medical courier Bryan unwittingly finds himself fighting for survival as one fateful, horrifying night collapses around him in chaos.",
+   "genres": [
+    "Horror",
+    "Science Fiction",
+    "Adventure"
+   ],
+   "lang": "en",
+   "popularity": 190.4858
+  },
+  {
+   "tmdb_id": 1375441,
+   "title": "Primetime",
+   "year": 2026,
+   "release_date": "2026-09-23",
+   "rating": 6.8,
+   "votes": 275,
+   "poster": "/lmrulvLbmaejTix1YaMxo1oGhH1.jpg",
+   "backdrop": "/4E5RVsSUG1A4Adwbqupu5w6kofZ.jpg",
+   "overview": "In 2006, To Catch a Predator host Chris Hansen sets out to make television history. When a high stakes operation goes fatally wrong, his veneered dream of fame curdles into a nightmare of performative justice.",
+   "genres": [
+    "Thriller",
+    "Drama"
+   ],
+   "lang": "en",
+   "popularity": 56.1029
+  },
+  {
+   "tmdb_id": 1244523,
+   "title": "Beware Boiúna",
+   "year": 2026,
+   "release_date": "2026-10-01",
+   "rating": 6.3,
+   "votes": 17,
+   "poster": "/uW5YMPxJUzT9bkafrCKHXjPTCoQ.jpg",
+   "backdrop": "/9nU0FKNefmhbgi2xXlvZchZsqwm.jpg",
+   "overview": "A medical mission deep in the Amazon becomes a desperate fight for survival when a colossal ancient predator awakens, turning the jungle into a deadly battleground where nature decides who lives and dies.",
+   "genres": [
+    "Horror",
+    "Thriller"
+   ],
+   "lang": "en",
+   "popularity": 47.1881
+  },
+  {
+   "tmdb_id": 791523,
+   "title": "Wildwood",
+   "year": 2026,
+   "release_date": "2026-10-19",
+   "rating": 8.5,
+   "votes": 166,
+   "poster": "/8g7q6o54WfKWRmUQ0Ye8OskevUY.jpg",
+   "backdrop": "/sl5NJ1vtyhP9Vr88bB4blULsJYp.jpg",
+   "overview": "After her baby brother is abducted by a murder of crows, headstrong teenager Prue McKeel launches a desperate rescue mission into the Impassable Wilderness, an enchanted forest hidden just beyond Portland, Oregon. Joined by her hapless but loyal classmate Curtis Mehlberg, Prue navigates a world of talking animals, bandits, and powerful figures driven by grief and ambition. As the pair is drawn into a conflict threatening the balance of the forest itself, Prue must discover the strength and belief she never knew she possessed.",
+   "genres": [
+    "Animation",
+    "Adventure",
+    "Fantasy"
+   ],
+   "lang": "en",
+   "popularity": 1725.7447
+  },
+  {
+   "tmdb_id": 1381071,
+   "title": "Godzilla Minus Zero",
+   "year": 2026,
+   "release_date": "2026-11-03",
+   "rating": 9.5,
+   "votes": 7,
+   "poster": "/hSmIJluOJmTWvJs4d7kHRxjc8s8.jpg",
+   "backdrop": "/oqrYIDH4tvfEzPe1yqT4jzmAWHQ.jpg",
+   "overview": "War reduced Japan to zero, and Godzilla plunged it into minus. Two years have passed since then, and the country has faced agonizing struggles to achieve recovery and finally reclaim its daily life. Just as humanity managed to cling to a hard-won peace, a new threat strikes, crushing hope in an instant. There is no third time. Everything ends here.",
+   "genres": [
+    "Science Fiction",
+    "Horror",
+    "Action"
+   ],
+   "lang": "ja",
+   "popularity": 38.7101
+  },
+  {
+   "tmdb_id": 1813355,
+   "title": "A Story of Derry",
+   "year": 2026,
+   "release_date": "2026-10-31",
+   "rating": 6.9,
+   "votes": 56,
+   "poster": "/4PtzGcegF5Po1NmDAW9IklyvAUh.jpg",
+   "backdrop": "/z26LxXDMmAIzKr06FPDudCJyvsM.jpg",
+   "overview": "Hundreds of years before Pennywise, three youngsters venture into the Western Wood...where they encounter a terrifying ancient spirit.",
+   "genres": [
+    "Drama",
+    "Horror",
+    "Mystery"
+   ],
+   "lang": "en",
+   "popularity": 164.1442
+  },
+  {
+   "tmdb_id": 1257147,
+   "title": "My Best Friend",
+   "year": 2026,
+   "release_date": "2026-09-03",
+   "rating": 8.4,
+   "votes": 26,
+   "poster": "/wGfTFVeguXDXYrwPQ8QMFsaSK2M.jpg",
+   "backdrop": "/q5IF3IHgKC4cQqQCp0VjllNkJp6.jpg",
+   "overview": "Facing menopause and empty-nest anxiety, friends Julia and Clara decide to travel together to visit their daughters who are on an exchange program abroad.",
+   "genres": [
+    "Comedy"
+   ],
+   "lang": "pt",
+   "popularity": 11.3802
+  },
+  {
+   "tmdb_id": 13667,
+   "title": "Better Off Dead...",
+   "year": 1985,
+   "release_date": "1985-08-23",
+   "rating": 6.6,
+   "votes": 575,
+   "poster": "/pHmbSkpxdB7jXozrovEfacArtW0.jpg",
+   "backdrop": "/iztQyzQRWeBmpxGvvxpPC3gB8Gi.jpg",
+   "overview": "High school student Lane Meyer sinks into suicidal depression when his girlfriend dumps him for jock Roy Stalin, the high school ski racing champion. Meanwhile, he has to deal with his eccentric family, a tenacious paperboy and an obnoxious neighbor whose mother is hosting a beautiful French exchange student named Monique.",
+   "genres": [
+    "Comedy",
+    "Romance"
+   ],
+   "lang": "en",
+   "popularity": 3.0781
+  },
+  {
+   "tmdb_id": 155,
+   "title": "The Dark Knight",
+   "year": 2008,
+   "release_date": "2008-07-16",
+   "rating": 8.5,
+   "votes": 37199,
+   "poster": "/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+   "backdrop": "/cfT29Im5VDvjE0RpyKOSdCKZal7.jpg",
+   "overview": "Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as the Joker.",
+   "genres": [
+    "Action",
+    "Thriller",
+    "Crime"
+   ],
+   "lang": "en",
+   "popularity": 3418.3661
+  },
+  {
+   "tmdb_id": 1058424,
+   "title": "Hope",
+   "year": 2026,
+   "release_date": "2026-07-15",
+   "rating": 6.8,
+   "votes": 458,
+   "poster": "/6VY1ZKgpsc8CfGsQcCGiYEgHdH0.jpg",
+   "backdrop": "/j96rurZqmBjyY37Fncl3IB0qJNe.jpg",
+   "overview": "In the remote South Korean village of Hope Harbor, police chief Bum-seok and officer Sung-ae are called to investigate a mysterious creature wreaking havoc on the community. But all is not as it seems, and perceptions can be misleading. What begins as ignorance plants the seed of disaster, escalating through human conflict into a tragedy of cosmic proportions.",
+   "genres": [
+    "Science Fiction",
+    "Mystery",
+    "Action"
+   ],
+   "lang": "ko",
+   "popularity": 454.8376
+  },
+  {
+   "tmdb_id": 969681,
+   "title": "Spider-Man: Brand New Day",
+   "year": 2026,
+   "release_date": "2026-07-29",
+   "rating": 8.5,
+   "votes": 6517,
+   "poster": "/bjiS5ipwxb9JFy3XRRN4OAilSeX.jpg",
+   "backdrop": "/4tjxYg2AbOzzG9G1YuiT2NzYhlH.jpg",
+   "overview": "Fighting crime full-time as Spider-Man in a world that doesn't remember him—and the pressure of seeing his old friends move on without him—sparks a change in Peter Parker he may not have the power to control. But that transformation might also be the only thing that can stop a shocking new threat to the city and those he loves - a powerful villain no one can even see.",
+   "genres": [
+    "Science Fiction",
+    "Action",
+    "Adventure"
+   ],
+   "lang": "en",
+   "popularity": 358.627
+  },
+  {
+   "tmdb_id": 1596275,
+   "title": "Drive - The Pretenders",
+   "year": 2026,
+   "release_date": "2026-10-27",
+   "rating": 7.7,
+   "votes": 100,
+   "poster": "/s9syckECnUYhKePQ1A0DC0mFVZ9.jpg",
+   "backdrop": "/hbz4aeVsjnKb2HRoFbbr46Egh8y.jpg",
+   "overview": "A young mechanic fakes an engagement with racing's most scandalous star — officially for his reputation, secretly for her own shot behind the wheel. But soon the lie threatens to destroy everything — including what's already become so much more than just a deal.",
+   "genres": [
+    "Romance",
+    "Thriller"
+   ],
+   "lang": "de",
+   "popularity": 295.8946
+  },
+  {
+   "tmdb_id": 1507696,
+   "title": "Apocalypse Z: New World",
+   "year": 2026,
+   "release_date": "2026-10-09",
+   "rating": 6.1,
+   "votes": 86,
+   "poster": "/wXln4DUrwcyjcFPwgQxFPYTlG1Z.jpg",
+   "backdrop": "/o3XwuDUj0n8qnK91p6q8LKfr6rj.jpg",
+   "overview": "The Canary Islands have become Europe’s last refuge following the outbreak of the TSJ virus. When a special mission sets out for the mainland in search of vital supplies, Roberto joins the team with questionable intentions. The dangerous operation turns into a desperate race for survival, and Roberto and his companions find themselves caught between hordes of infected and divided loyalties.",
+   "genres": [
+    "Action",
+    "Thriller",
+    "Horror"
+   ],
+   "lang": "es",
+   "popularity": 324.0359
+  },
+  {
+   "tmdb_id": 1101412,
+   "title": "Fall 2: Deadpoint",
+   "year": 2026,
+   "release_date": "2026-09-01",
+   "rating": 7.3,
+   "votes": 736,
+   "poster": "/fgSm5ylwiXbIHn8UbUXDjk9RRu4.jpg",
+   "backdrop": "/nGau0KBOaRILSK5MqFcuTfv7GMl.jpg",
+   "overview": "On a perilous climb across Thailand's Mount Kwan, two climbers become trapped thousands of feet above the ground, where vertigo-inducing heights, sheer exposure, and impossible odds turn every moment into a fight for survival.",
+   "genres": [
+    "Thriller"
+   ],
+   "lang": "en",
+   "popularity": 249.5294
+  },
+  {
+   "tmdb_id": 1657630,
+   "title": "The Awakening",
+   "year": 2026,
+   "release_date": "2026-10-29",
+   "rating": 6.4,
+   "votes": 95,
+   "poster": "/7pUGiRg9Gq1JqmmNSJLLSonOKum.jpg",
+   "backdrop": "/4pYKqctQvvdyhuGjiK4szH9jEv9.jpg",
+   "overview": "An elite military unit on a mission in the South American jungle encounters a deadly supernatural force revealing an ancient presence that continues to claim anyone who dares enter its domain.",
+   "genres": [
+    "Horror",
+    "Action",
+    "War",
+    "Fantasy",
+    "Thriller"
+   ],
+   "lang": "es",
+   "popularity": 243.753
+  },
+  {
+   "tmdb_id": 1283515,
+   "title": "Verity",
+   "year": 2026,
+   "release_date": "2026-09-30",
+   "rating": 6.9,
+   "votes": 575,
+   "poster": "/rmaNMA1seHqpjtnYKzyynFAr1g8.jpg",
+   "backdrop": "/cKetrF2dAnQ0AMV5i4BMOs41I5P.jpg",
+   "overview": "Lowen Ashleigh, hired to ghostwrite for best-selling author Verity Crawford, uncovers Verity's autobiographical notes, and becomes involved in what may prove to be a lethal conspiracy.",
+   "genres": [
+    "Mystery",
+    "Thriller"
+   ],
+   "lang": "en",
+   "popularity": 235.311
+  },
+  {
+   "tmdb_id": 1368337,
+   "title": "The Odyssey",
+   "year": 2026,
+   "release_date": "2026-07-15",
+   "rating": 8.0,
+   "votes": 4328,
+   "poster": "/9EJDqzAQ0HoNvMDkOQuirXt1RCg.jpg",
+   "backdrop": "/iDiTY1wA35YWzTmXLTtqaxtN6tc.jpg",
+   "overview": "Odysseus, the legendary King of Ithaca, embarks on a long and perilous journey home following the Trojan War. Throughout his voyage, he is forced to confront the whims of gods, mythological monsters, and trials that stretch both his cunning and his humanity to the breaking point.",
+   "genres": [
+    "Adventure",
+    "Action",
+    "Fantasy"
+   ],
+   "lang": "en",
+   "popularity": 208.3078
+  },
+  {
+   "tmdb_id": 1514026,
+   "title": "Buddy",
+   "year": 2026,
+   "release_date": "2026-08-27",
+   "rating": 7.0,
+   "votes": 234,
+   "poster": "/1BdZbNvl1SfrrX8J9X5tQzN6Ivu.jpg",
+   "backdrop": "/ytoLEl5yDaxB8AtZ52uKWjaQ9ql.jpg",
+   "overview": "Inside the colorful world of \"It's Buddy!\", a group of children spend their days singing, dancing, and helping Buddy - bright orange unicorn - spread happiness. But when one child refuses to play along, Buddy is not pleased and cracks begin to appear in this seemingly perfect world.",
+   "genres": [
+    "Horror",
+    "Comedy",
+    "Fantasy"
+   ],
+   "lang": "en",
+   "popularity": 191.5709
+  },
+  {
+   "tmdb_id": 354912,
+   "title": "Coco",
+   "year": 2017,
+   "release_date": "2017-10-27",
+   "rating": 8.2,
+   "votes": 21767,
+   "poster": "/6Ryitt95xrO8KXuqRGm1fUuNwqF.jpg",
+   "backdrop": "/g7CHF8gTLGooTbP4GznIGwaqAGL.jpg",
+   "overview": "Despite his family’s baffling generations-old ban on music, Miguel dreams of becoming an accomplished musician like his idol, Ernesto de la Cruz. Desperate to prove his talent, Miguel finds himself in the stunning and colorful Land of the Dead following a mysterious chain of events. Along the way, he meets charming trickster Hector, and together, they set off on an extraordinary journey to unlock the real story behind Miguel's family history.",
+   "genres": [
+    "Family",
+    "Animation",
+    "Music",
+    "Adventure"
+   ],
+   "lang": "en",
+   "popularity": 260.2082
+  },
+  {
+   "tmdb_id": 1384216,
+   "title": "The Dog Stars",
+   "year": 2026,
+   "release_date": "2026-08-26",
+   "rating": 7.2,
+   "votes": 860,
+   "poster": "/5O616X9vmRzQdB68PHzBewPittd.jpg",
+   "backdrop": "/3k7GzxOdLZkN3eZsuhLi2eRzkXO.jpg",
+   "overview": "After the world's population has been ravaged by a pandemic, a man lives a lonesome existence in a Colorado airplane hangar with his dog and a dour gunman he has befriended. When a mysterious transmission comes through on the radio while he’s flying his old Cessna, it sparks a hunt for the provenance of the sound.",
+   "genres": [
+    "Action",
+    "Thriller",
+    "Science Fiction"
+   ],
+   "lang": "en",
+   "popularity": 166.362
+  },
+  {
+   "tmdb_id": 1232569,
+   "title": "Pinocchio: Unstrung",
+   "year": 2026,
+   "release_date": "2026-07-22",
+   "rating": 6.4,
+   "votes": 156,
+   "poster": "/hJNdizFlxOW89edX3Rzr6OliSFI.jpg",
+   "backdrop": "/7RsPdXLDNugDIlwXPVeeprNfMx.jpg",
+   "overview": "Influenced by a sinister Cricket and created by Geppetto, Pinocchio launches a violent crusade to carve himself into a real boy like his brother James, one piece at a time.",
+   "genres": [
+    "Horror",
+    "Fantasy",
+    "Mystery"
+   ],
+   "lang": "en",
+   "popularity": 167.1512
+  },
+  {
+   "tmdb_id": 1291595,
+   "title": "Insidious: Out of the Further",
+   "year": 2026,
+   "release_date": "2026-08-19",
+   "rating": 7.7,
+   "votes": 1012,
+   "poster": "/4tTrW9dXCByS5wt2pXVWb58zNjz.jpg",
+   "backdrop": "/p40lmrdI4blcAPZQMTPaiy5v5Ym.jpg",
+   "overview": "Gemma, a young mother raising her daughter in the house she grew up in, discovers she can travel into The Further, where she possesses an ability to bring what lives there back to the real world.",
+   "genres": [
+    "Horror",
+    "Thriller"
+   ],
+   "lang": "en",
+   "popularity": 151.4509
+  },
+  {
+   "tmdb_id": 1294189,
+   "title": "The Mongoose",
+   "year": 2026,
+   "release_date": "2026-10-29",
+   "rating": 7.5,
+   "votes": 12,
+   "poster": "/eSS5mvSG84UUuvtbHel5Yu3Wik4.jpg",
+   "backdrop": "/iRIhPqqoUHiFBxn8oYf3gCQnaKk.jpg",
+   "overview": "A falsely accused war hero with nothing to lose leads police on an epic televised cross-country car chase, helped by members of his former Special Forces Army battalion and closely monitored by a fascinated public rooting for his safe getaway.",
+   "genres": [
+    "Action",
+    "Thriller"
+   ],
+   "lang": "en",
+   "popularity": 160.6032
+  },
+  {
+   "tmdb_id": 1400940,
+   "title": "Clayface",
+   "year": 2026,
+   "release_date": "2026-10-19",
+   "rating": 7.4,
+   "votes": 356,
+   "poster": "/9l1NuFjel2j89hiuiJbsxfblqjy.jpg",
+   "backdrop": "/xSDoxv4pHvs4xZjvTb0Iqg1A6ro.jpg",
+   "overview": "Matt Hagen's meteoric rise from Gotham street kid to Hollywood leading man is tragically cut short when a local crime boss's actions leave him horribly disfigured. Abandoned by his team and with nothing left, Matt seeks out a cutting edge treatment that miraculously returns him to his former self… but also unexpectedly affects his grip on reality, spiraling him down a destructive path of all-consuming revenge.",
+   "genres": [
+    "Horror",
+    "Thriller",
+    "Science Fiction"
+   ],
+   "lang": "en",
+   "popularity": 149.0958
+  },
+  {
+   "tmdb_id": 1571955,
+   "title": "Collision Course",
+   "year": 2026,
+   "release_date": "2026-10-30",
+   "rating": 6.4,
+   "votes": 45,
+   "poster": "/s2eAK0uiODjlNUSIiOBwdp3at2u.jpg",
+   "backdrop": "/uI3kWI7kGW5E0F8WduewgQYPt34.jpg",
+   "overview": "Spain, 2013. After robbing a bank, a getaway crash reveals the hidden side of each thief, exposing betrayals and lies that began long before the heist.",
+   "genres": [
+    "Thriller",
+    "Drama",
+    "Crime"
+   ],
+   "lang": "es",
+   "popularity": 161.4203
+  }
+ ],
+ "misses": [
+  "The Remarried Empress",
+  "Bass X Machina"
+ ]
+}
