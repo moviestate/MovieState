@@ -1,334 +1,368 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>MovieState — premium cinema-driven discovery for new releases, news, and guides</title>
-  <meta name="description" content="Discover the latest movie news, streaming guides, reviews, and editorial picks. Curated cinematic content, fast-loading pages, and clear paths to watch options and guides." />
-  <link rel="canonical" href="https://moviestate.github.io/MovieState/" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0b0e14" />
-  <meta property="og:title" content="MovieState — premium cinema discovery" />
-  <meta property="og:description" content="Curated movie news, streaming guides, and editorial discoveries for cinephiles. Fast, accessible content with clear watch options." />
-  <meta property="og:url" content="https://moviestate.github.io/MovieState/" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="MovieState — premium cinema discovery" />
-  <meta name="twitter:description" content="Discover latest movie news, streaming guides, reviews, and editorial picks in a fast, cinematic homepage." />
-  <script type="application/ld+json">{
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "MovieState",
-    "url": "https://moviestate.github.io/MovieState/",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://moviestate.github.io/MovieState/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }</script>
-  <script type="application/ld+json">{
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "MovieState",
-    "url": "https://moviestate.github.io/MovieState/",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://moviestate.github.io/MovieState/images/logo-placeholder.png",
-      "width": 600,
-      "height": 200
-    },
-    "sameAs": []
-  }</script>
-  <style>
-    :root{--bg:#0b0e14;--fg:#e7e7e7;--muted:#a9b0b8;--card:#141a22;--card-2:#1e252e;--accent:#8ec5ff;--focus:0 0 0 3px rgba(142,196,255,.6);--radius:14px}
-    html,body{margin:0;padding:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--fg)}
-    header{position:sticky;top:0;z-index:10;background:rgba(10,12,16,.92);border-bottom:1px solid #0f141b}
-    .container{width:min(1100px,92%);margin:0 auto;padding:20px 0}
-    nav ul{list-style:none;margin:0;padding:0;display:flex;gap:20px;flex-wrap:wrap}
-    nav a{color:#dbe6f2;padding:8px 6px;border-radius:6px;display:inline-block}
-    nav a:hover{background:#1e2730}
-    .brand{display:flex;align-items:center;gap:12px;padding:14px 0}
-    .hero{display:grid;grid-template-columns:1.1fr 0.9fr;gap:22px;align-items:stretch;padding:28px 0 6px}
-    .hero-card{background:linear-gradient(135deg,rgba(20,26,38,.9),rgba(20,26,38,.7));border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;justify-content:center;min-height:220px}
-    .hero h1{font-size:1.75rem;margin:0 0 12px;letter-spacing:.2px}
-    .hero p{color:var(--muted);margin:0 0 20px}
-    .cta{display:inline-block;padding:12px 18px;border-radius:999px;background:#0f6bd0;color:white;font-weight:600;text-decoration:none}
-    .cta.secondary{background:transparent;color:#dbe6f2;padding:10px 14px;border:1px solid #2a2f38}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{background:var(--card);border-radius:12px;padding:14px;display:flex;flex-direction:column;min-height:120px}
-    .card:hover{transform:translateY(-2px);transition:.2s}
-    .card h3{font-size:1rem;margin:0 0 6px}
-    .card p{color:var(--muted);margin:0}
-    .section{margin:40px 0}
-    .section h2{font-size:1.25rem;margin:0 0 6px;color:#e8eefc}
-    .section-sub{color:var(--muted);font-size:.9rem;margin-bottom:8px}
-    .section-inner{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    footer{border-top:1px solid #232c35;padding:28px 0;color:var(--muted);font-size:.9rem}
-    .footer-links{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px}
-    .placeholder{width:100%;height:160px;background:#1f232a;display:flex;align-items:center;justify-content:center;color:#77818a;border-radius:12px}
-    @media (max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}.section-inner{grid-template-columns:1fr}}
-    @media (max-width:640px){.grid{grid-template-columns:1fr}.hero-card{min-height:180px}.placeholder{height:120px}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MovieState — Watch Movies Online in HD & Where to Watch</title>
+<meta name="description" content="Discover trending and popular movies, release info, cast details and where to watch each film online in HD. Independent movie guides from MovieState.">
+<link rel="canonical" href="https://moviestate.github.io/MovieState/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0A0A0D">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MovieState">
+<meta property="og:title" content="MovieState — Watch Movies Online in HD & Where to Watch">
+<meta property="og:description" content="Trending movies, release details and clear where-to-watch guides for film fans worldwide.">
+<meta property="og:url" content="https://moviestate.github.io/MovieState/">
+<meta property="og:image" content="https://moviestate.github.io/MovieState/assets/og-home.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MovieState — Watch Movies Online in HD">
+<meta name="twitter:description" content="Trending movies, release details and clear where-to-watch guides.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "MovieState", "url": "https://moviestate.github.io/MovieState/", "description": "MovieState is an independent movie discovery and watch-guide publication covering trending films, cast details and where to watch.", "inLanguage": "en"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "MovieState", "url": "https://moviestate.github.io/MovieState/", "description": "MovieState is an independent movie discovery and watch-guide publication."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "Popular movies on MovieState", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "The Dark Knight"}, {"@type": "ListItem", "position": 2, "name": "Coco"}, {"@type": "ListItem", "position": 3, "name": "Spider-Man: Brand New Day"}, {"@type": "ListItem", "position": 4, "name": "The Odyssey"}, {"@type": "ListItem", "position": 5, "name": "Apocalypse Z: New World"}, {"@type": "ListItem", "position": 6, "name": "Fall 2: Deadpoint"}, {"@type": "ListItem", "position": 7, "name": "Clayface"}, {"@type": "ListItem", "position": 8, "name": "Pinocchio: Unstrung"}, {"@type": "ListItem", "position": 9, "name": "Insidious: Out of the Further"}, {"@type": "ListItem", "position": 10, "name": "Verity"}, {"@type": "ListItem", "position": 11, "name": "The Dog Stars"}, {"@type": "ListItem", "position": 12, "name": "Collision Course"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is MovieState?", "acceptedAnswer": {"@type": "Answer", "text": "MovieState is an independent movie discovery publication. It covers trending and popular films, plot and cast details, runtime and release information, and clear where-to-watch guides. The full library and HD playback live on the main MovieState site."}}, {"@type": "Question", "name": "How do I find where to watch a specific movie?", "acceptedAnswer": {"@type": "Answer", "text": "Open the film on MovieState and check the watch section. Availability depends on your country and on the streaming services licensed in that region, so always confirm the current option before subscribing to anything."}}, {"@type": "Question", "name": "Is MovieState free to browse?", "acceptedAnswer": {"@type": "Answer", "text": "Browsing the guides, casts and release information on MovieState is free. Watching a film happens on the main MovieState site, where availability and any regional requirements are shown on the film page."}}, {"@type": "Question", "name": "How often is the site updated?", "acceptedAnswer": {"@type": "Answer", "text": "Charts, trending lists and guides are reviewed regularly. New movie pages and watch guides are published in batches, and each page shows the date it was last updated."}}]}</script>
 </head>
-<body>
-  <header>
-    <div class="container brand" aria-label="Main navigation brand">
-      <div aria-label="MovieState logo placeholder" class="placeholder" style="width:48px;height:28px;">MS</div>
-      <div><strong>MovieState</strong><br/><span style="font-size:.85em;color:var(--muted)">Premium movie discovery</span></div>
-      <nav aria-label="Primary navigation" style="margin-left:auto;">
-        <ul role="menubar">
-          <li role="none"><a href="#Hollywood" aria-label="Go to Hollywood">Hollywood</a></li>
-          <li role="none"><a href="#Korean" aria-label="Go to Korean Movies">Korean</a></li>
-          <li role="none"><a href="#Bollywood" aria-label="Go to Bollywood">Bollywood</a></li>
-          <li role="none"><a href="#Netflix" aria-label="Go to Netflix">Netflix</a></li>
-          <li role="none"><a href="#Horror" aria-label="Go to Horror">Horror</a></li>
-          <li role="none"><a href="#Upcoming" aria-label="Go to Upcoming">Upcoming</a></li>
-          <li role="none"><a href="#Guides" aria-label="Go to Movie Guides">Guides</a></li>
-        </ul>
-      </nav>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="header">
+  <div class="wrap header__in">
+    <a class="brand" href="#top" aria-label="MovieState home">
+      <span class="brand__mark" aria-hidden="true">MS</span>
+      <span class="brand__name">Movie<span>State</span></span>
+    </a>
+    <nav class="nav" aria-label="Primary"><a href="#trending">Trending</a><a href="#popular">Popular</a><a href="#genres">Genres</a><a href="#how">How it works</a><a href="#faq">FAQ</a></nav>
+    <a class="btn btn--ghost btn--sm header__cta" href="https://moviestate.is-best.net" target="_blank" rel="noopener">Open MovieState</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow">Independent movie discovery · Updated November 3, 2026</p>
+      <h1>Watch Movies Online in HD —<br><span class="grad">Trending Picks &amp; Where to Watch</span></h1>
+      <p class="lead">MovieState tracks what people are actually watching, then tells you what each film is, who is in it, and where you can stream it. No noise, no dead ends.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#trending">Explore trending movies</a>
+        <a class="btn btn--ghost" href="https://moviestate.is-best.net" target="_blank" rel="noopener">Watch on MovieState</a>
+      </div>
+
+      <aside class="spotlight" aria-labelledby="spotlight-title">
+        <div class="spotlight__poster" aria-hidden="true"><span>S</span></div>
+        <div class="spotlight__body">
+          <p class="spotlight__label">🔥 Featured this week</p>
+          <h2 id="spotlight-title">Spider-Man: Brand New Day <span>(2026)</span></h2>
+          <p class="spotlight__text">Peter Parker fights crime in a world that no longer remembers him, while a change he cannot control builds inside him. Destin Daniel Cretton directs Tom Holland, Sadie Sink and Zendaya in a 2h 25m Marvel Studios release.</p>
+          <ul class="facts">
+            <li><strong>Rating</strong><span>8.5 / 10</span></li><li><strong>Runtime</strong><span>2h 25m</span></li><li><strong>Rated</strong><span>PG-13</span></li><li><strong>Release</strong><span>July 29, 2026</span></li><li><strong>Worldwide</strong><span>$2.51B</span></li>
+          </ul>
+          <p class="spotlight__cta">
+            <a class="btn btn--primary btn--sm" href="https://moviestate.is-best.net/movie/969681/spider-man-brand-new-day" target="_blank" rel="noopener">Watch Spider-Man: Brand New Day in HD</a>
+            <span class="muted">Full where-to-watch guide publishing soon.</span>
+          </p>
+        </div>
+      </aside>
     </div>
-  </header>
+  </section>
 
-  <main class="container" id="top">
-    <!-- HERO -->
-    <section class="hero" aria-label="Hero discovery">
-      <div class="hero-card" style="background:linear-gradient(135deg, rgba(15,21,28,.95), rgba(15,21,28,.75));">
-        <span style="color:#9bd6ff;font-weight:600;letter-spacing:.5px;text-transform:uppercase;font-size:.8rem;">Editorial discovery</span>
-        <h1>Discover current cinematic stories, releases, and guides—and choose how you watch</h1>
-        <p>The MovieState homepage curates fast-loading, accessible content across news, reviews, streaming guides, and editorials with clear paths to watch options.</p>
-        <a class="cta" href="#Featured" aria-label="View featured topic">Explore featured stories</a>
-        <a class="cta secondary" href="https://moviestate.github.io/MovieState/" aria-label="Visit the MovieState homepage">Visit MovieState home</a>
+  <section class="section" id="trending">
+    <div class="wrap">
+      <div class="section__head">
+        <h2>Trending now</h2>
+        <p class="section__sub">What film fans searched for most this week.</p>
       </div>
-      <div class="placeholder" aria-label="Hero visual placeholder">Hero visual placeholder</div>
-    </section>
-
-    <!-- FEATURED / TRENDING SIGNAL (strongest live signal from feed) -->
-    <section class="section" id="Featured" aria-labelledby="featured-title">
-      <h2 id="featured-title" style="margin:0 0 6px;">Featured topic</h2>
-      <p class="section-sub">Strongest current signal from live Google News RSS feed: live update on evolving releases and streaming, editorially highlighted if facts are limited.</p>
-      <div class="grid" aria-label="Featured topic grid">
-        <!-- Editorial discovery section when exact claims are not verified -->
-        <article class="card" aria-label="Editorial discovery">
-          <h3>Live-Action Naruto Movie — 2027 Release Update</h3>
-          <p>The public feed includes multiple coverage items about a live-action Naruto movie with a 2027 release timeline from Collider and other outlets. As a fact-checked watch option, verify streaming availability closer to release. Editorial discovery: this is a current signal rather than a guaranteed streaming window.</p>
-          <a href="https://collider.com/naruto-live-action-2027-release-update" target="_blank" rel="noopener" aria-label="Naruto live-action 2027 release update">Full coverage (external)</a>
-        </article>
-
-        <article class="card" aria-label="More from feed">
-          <h3>Primetime / streaming updates and editorial context</h3>
-          <p>Google News RSS shows a steady stream of articles about recent streaming updates and upcoming releases. This section highlights a curated editorial approach when exact claims require verification.</p>
-          <a href="https://news.google.com" target="_blank" rel="noopener" aria-label="Google News RSS feed">Source feed</a>
-        </article>
-
-        <div class="card" aria-label="Internal feed link placeholder">
-          <h3>Latest internal links</h3>
-          <p>Latest MovieState /Movies/ stories will be surfaced here as real internal paths become available.</p>
-          <a href="/Movies/" aria-label="Latest MovieState stories folder">Browse /Movies/</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CATEGORY SECTIONS -->
-    <section class="section" id="Hollywood" aria-labelledby="hollywood-title">
-      <h2 id="hollywood-title">Hollywood</h2>
-      <div class="section-inner">
-        <div class="card">
-          <h3>Live-Action Naruto Movie Update</h3>
-          <p>Editorial note: coverage points to a 2027 release; streaming date not verified. Check studio notes for watch options.</p>
-          <a href="https://collider.com/naruto-live-action-2027-release-update" aria-label="Naruto live-action release update (external)" target="_blank">Read more</a>
-        </div>
-        <div class="card">
-          <h3>Resident Evil streaming coverage</h3>
-          <p>Recent articles discuss digital releases and Netflix streaming timing. These are current signals and should be cross-checked with official streaming partners.</p>
-          <a href="https://www.forbes.com" aria-label="Forbes coverage (external)" target="_blank">More</a>
-        </div>
-        <div class="card">
-          <h3>Disney+ and streaming outlook</h3>
-          <p>Media coverage around new releases on Disney+ in November. Verify availability on your region.</p>
-          <a href="https://www.disneyplus.com" aria-label="Disney Plus" target="_blank">Disney+ updates</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="Korean" aria-labelledby="korean-title">
-      <h2 id="korean-title">Korean Movies</h2>
-      <div class="section-inner">
-        <div class="card">
-          <h3>A Guide to Director Lee Chang-dong’s Films</h3>
-          <p>Streaming availability details are linked to Netflix listings in the feed; verify current regional availability.</p>
-          <a href="https://www.netflix.com" aria-label="Netflix listings" target="_blank">Netflix listings</a>
-        </div>
-        <div class="card">
-          <h3>Live-Action Naruto / anime-adjacent coverage</h3>
-          <p>Cross-media coverage appears in our feed; internal paths will surface as updates are finalized.</p>
-          <a href="#" aria-label="Internal path placeholder">Internal path</a>
-        </div>
-        <div class="card">
-          <h3>Upcoming Korean releases</h3>
-          <p>Editorial discovery where exact release dates require confirmation from production studios.</p>
-          <a href="#" aria-label="Upcoming releases (placeholder)">Upcoming releases</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="Bollywood" aria-labelledby="bollywood-title">
-      <h2 id="bollywood-title">Bollywood</h2>
-      <div class="section-inner">
-        <div class="card">
-          <h3>Upcoming Indian blockbusters</h3>
-          <p>Curated notes and editorial context; check official streaming partners for availability.</p>
-          <a href="#" aria-label="Bollywood upcoming releases (placeholder)">More</a>
-        </div>
-        <div class="card">
-          <h3>Hollywoood crossovers</h3>
-          <p>Cross-border releases and streaming windows are tracked with editorial notes when verified.</p>
-          <a href="#" aria-label="Cross-border releases (placeholder)">Cross-border</a>
-        </div>
-        <div class="card">
-          <h3>Watch guides</h3>
-          <p>Legal options and editorial guidance for Bollywood titles are provided in watch guides.</p>
-          <a href="#" aria-label="Bollywood watch guides (placeholder)">Watch guides</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="Netflix" aria-labelledby="netflix-title">
-      <h2 id="netflix-title">Netflix</h2>
-      <div class="section-inner">
-        <div class="card">
-          <h3>Netflix streaming news</h3>
-          <p>Feed items include Netflix coverage with caveats where needed. Always verify with Netflix directly for availability.</p>
-          <a href="https://www.netflix.com" aria-label="Netflix" target="_blank">Official Netflix</a>
-        </div>
-        <div class="card">
-          <h3>New titles to streaming</h3>
-          <p>Watch lists and editorial notes will surface as titles become officially available in your region.</p>
-          <a href="#" aria-label="Netflix new titles (placeholder)">New titles</a>
-        </div>
-        <div class="card">
-          <h3>Megahits on Netflix</h3>
-          <p>Cross-referenced signals from the feed; verify with Netflix for exact availability.</p>
-          <a href="#" aria-label="Netflix megahits (placeholder)">Megahits</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="Horror" aria-labelledby="horror-title">
-      <h2 id="horror-title">Horror</h2>
-      <div class="section-inner">
-        <div class="card">
-          <h3>Upcoming horror releases</h3>
-          <p>Editorial notes on upcoming horror titles; verify regional release windows.</p>
-          <a href="#" aria-label="Horror upcoming releases (placeholder)">Upcoming horrors</a>
-        </div>
-        <div class="card">
-          <h3>Streaming horror updates</h3>
-          <p>Recent coverage across platforms; check official listings for streaming availability.</p>
-          <a href="#" aria-label="Horror streaming updates (placeholder)">Streaming updates</a>
-        </div>
-        <div class="card">
-          <h3>Franchise horror</h3>
-          <p>Notes on franchise expansions and related streaming windows as verified.</p>
-          <a href="#" aria-label="Franchise horror updates (placeholder)">Franchise</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="Upcoming" aria-labelledby="upcoming-title">
-      <h2 id="upcoming-title">Upcoming Movies</h2>
-      <div class="section-inner">
-        <div class="card">
-          <h3>Validated signals</h3>
-          <p>Signals surface from live feeds; verify official release dates with studios.</p>
-          <a href="#" aria-label="Upcoming releases (placeholder)">Release schedule</a>
-        </div>
-        <div class="card">
-          <h3>Editorial discovery</h3>
-          <p>Editorially highlighted upcoming titles when exact facts require verification.</p>
-          <a href="#" aria-label="Upcoming by editorial (placeholder)">Editorial picks</a>
-        </div>
-        <div class="card">
-          <h3>Watch guides</h3>
-          <p>Legal guidance for where to watch upcoming titles is included in watch guides.</p>
-          <a href="#" aria-label="Upcoming watch guides (placeholder)">Watch guides</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="Guides" aria-labelledby="guides-title">
-      <h2 id="guides-title">Movie Guides</h2>
-      <div class="section-inner">
-        <div class="card">
-          <h3>Legal where-to-watch guides</h3>
-          <p>Editorial notes emphasize legal streaming and rental options; avoid piracy and unverified sources.</p>
-          <a href="#" aria-label="Legal watch guides (placeholder)">Watch guides</a>
-        </div>
-        <div class="card">
-          <h3>Comparisons</h3>
-          <p>Head-to-head comparisons between major streaming services and titles with verifiable data.</p>
-          <a href="#" aria-label="Comparisons (placeholder)">Comparisons</a>
-        </div>
-        <div class="card">
-          <h3>Editorial trust & fact-check</h3>
-          <p>A short note on editorial standards and verification for published signals.</p>
-          <a href="#" aria-label="Editorial trust notes (placeholder)">Trust & facts</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- LATEST STORIES (realistic internal or external path notes) -->
-    <section class="section" aria-label="Latest MovieState stories">
-      <h2>Latest MovieState stories</h2>
-      <p class="section-sub">Real, generated or live-path content surfaced; internal links shown when available.</p>
-      <div class="grid" aria-label="Latest MovieState stories">
-        <article class="card" aria-label="Latest story 1">
-          <h3>Resident Evil digital release coverage</h3>
-          <p>Recent write-ups discuss digital release timing; verify with official platforms.</p>
-          <a href="https://www.forbes.com" aria-label="Read more on Forbes (external)" target="_blank">Read more</a>
-        </article>
-        <article class="card" aria-label="Latest story 2">
-          <h3>Hunger Games 3D release and Home Viewing</h3>
-          <p>News about 3D release and home viewing options; check official theater and streaming partners.</p>
-          <a href="https://www.aol.com" aria-label="Read more on AOL (external)" target="_blank">Read more</a>
-        </article>
-        <article class="card" aria-label="Latest story 3">
-          <h3>Netflix’s action hits return to top streaming</h3>
-          <p>Notes on Netflix titles reclaiming attention in 2026-2027 cycles; verify current availability.</p>
-          <a href="https://movieweb.com" aria-label="Read more on MovieWeb (external)" target="_blank">Read more</a>
-        </article>
-      </div>
-    </section>
-
-    <!-- LEGAL / TRUST NOTE -->
-    <section class="section" aria-label="Editorial trust and legal watch guidance">
-      <div class="card" style="min-height:auto;background:#141a22;">
-        <h3>Editorial trust & watch guidance</h3>
-        <p style="margin:0 0 6px; color:var(--muted);">MovieState presents research-backed signals from public feeds. Facts labeled as validation-needed when not verifiable from the feed. We emphasize legal watch options and clear guidance to watch responsibly.</p>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer aria-label="Site footer">
-      <div class="container" style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start;">
-        <nav aria-label="Footer internal navigation" style="flex:1 1 280px;">
-          <h4 style="margin:0 0 6px;color:#e8f1ff;">Navigate</h4>
-          <div class="footer-links" role="navigation">
-            <a href="#Hollywood">Hollywood</a>
-            <a href="#Korean">Korean</a>
-            <a href="#Bollywood">Bollywood</a>
-            <a href="#Netflix">Netflix</a>
-            <a href="#Horror">Horror</a>
-            <a href="#Upcoming">Upcoming</a>
-            <a href="#Guides">Guides</a>
+      <div class="grid grid--trend">
+        <article class="card" style="--tone:#2a1418">
+          <span class="card__rank">1</span>
+          <div class="card__poster" aria-hidden="true"><span>R</span></div>
+          <div class="card__body">
+            <h3 class="card__title">Resident Evil</h3>
+            <p class="card__meta">2026 · Horror</p>
+            
           </div>
-        </nav>
-        <div style="flex:1 1 340px;">
-          <h4 style="margin:0 0 6px;color:#e8f1ff;">About MovieState</h4>
-          <p style="margin:0 0 8px;color:var(--muted);">A global English-language hub for premium movie discovery, news, reviews, and editorial pieces. Built as a static homepage for fast, accessible browsing.</p>
-          <p style="margin:0;color:var(--muted);">© 2026 MovieState. All rights reserved.</p>
-        </div>
+        </article>
+        <article class="card" style="--tone:#1c1a2e">
+          <span class="card__rank">2</span>
+          <div class="card__poster" aria-hidden="true"><span>P</span></div>
+          <div class="card__body">
+            <h3 class="card__title">Primetime</h3>
+            <p class="card__meta">2026</p>
+            
+          </div>
+        </article>
+        <article class="card" style="--tone:#2a1f18">
+          <span class="card__rank">3</span>
+          <div class="card__poster" aria-hidden="true"><span>T</span></div>
+          <div class="card__body">
+            <h3 class="card__title">The Remarried Empress</h3>
+            <p class="card__meta">2026</p>
+            
+          </div>
+        </article>
+        <article class="card" style="--tone:#14261f">
+          <span class="card__rank">4</span>
+          <div class="card__poster" aria-hidden="true"><span>B</span></div>
+          <div class="card__body">
+            <h3 class="card__title">Beware Boiúna</h3>
+            <p class="card__meta">2026</p>
+            
+          </div>
+        </article>
+        <article class="card" style="--tone:#1a2030">
+          <span class="card__rank">5</span>
+          <div class="card__poster" aria-hidden="true"><span>B</span></div>
+          <div class="card__body">
+            <h3 class="card__title">Bass X Machina</h3>
+            <p class="card__meta">2026</p>
+            
+          </div>
+        </article>
+        <article class="card" style="--tone:#1f2a1c">
+          <span class="card__rank">6</span>
+          <div class="card__poster" aria-hidden="true"><span>W</span></div>
+          <div class="card__body">
+            <h3 class="card__title">Wildwood</h3>
+            <p class="card__meta">2026</p>
+            
+          </div>
+        </article>
+        <article class="card" style="--tone:#241a1a">
+          <span class="card__rank">7</span>
+          <div class="card__poster" aria-hidden="true"><span>G</span></div>
+          <div class="card__body">
+            <h3 class="card__title">Godzilla Minus Zero</h3>
+            <p class="card__meta">2026 · Sci-Fi</p>
+            
+          </div>
+        </article>
+        <article class="card" style="--tone:#2b1d24">
+          <span class="card__rank">8</span>
+          <div class="card__poster" aria-hidden="true"><span>A</span></div>
+          <div class="card__body">
+            <h3 class="card__title">A Story of Derry</h3>
+            <p class="card__meta">2026</p>
+            
+          </div>
+        </article>
+        <article class="card" style="--tone:#1f2430">
+          <span class="card__rank">9</span>
+          <div class="card__poster" aria-hidden="true"><span>M</span></div>
+          <div class="card__body">
+            <h3 class="card__title">My Best Friend</h3>
+            <p class="card__meta">2026</p>
+            
+          </div>
+        </article>
+        <article class="card" style="--tone:#241f2b">
+          <span class="card__rank">10</span>
+          <div class="card__poster" aria-hidden="true"><span>D</span></div>
+          <div class="card__body">
+            <h3 class="card__title">Dead-End Job</h3>
+            <p class="card__meta">2026</p>
+            
+          </div>
+        </article></div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="popular">
+    <div class="wrap">
+      <div class="section__head">
+        <h2>Popular movies</h2>
+        <p class="section__sub">The titles holding the top of the chart right now.</p>
       </div>
-    </footer>
-  </main>
-  <!-- Image placeholders use accessible alt text and do not request nonexistent assets -->
+      <div class="grid">
+        <article class="card" style="--tone:#161a22">
+          
+          <div class="card__poster" aria-hidden="true"><span>T</span></div>
+          <div class="card__body">
+            <h3 class="card__title">The Dark Knight</h3>
+            <p class="card__meta">2008 · Action</p>
+            
+          </div>
+        </article>
+        <article class="card" style="--tone:#2a1a2b">
+          
+          <div class="card__poster" aria-hidden="true"><span>C</span></div>
+          <div class="card__body">
+            <h3 class="card__title">Coco</h3>
+            <p class="card__meta">2017 · Animation</p>
+            
+          </div>
+        </article>
+        <article class="card" style="--tone:#25161c">
+          
+          <div class="card__poster" aria-hidden="true"><span>S</span></div>
+          <div class="card__body">
+            <h3 class="card__title">Spider-Man: Brand New Day</h3>
+            <p class="card__meta">2026 · Action</p>
+            <span class="chip chip--rating"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>8.5</span>
+          </div>
+        </article>
+        <article class="card" style="--tone:#2b2318">
+          
+          <div class="card__poster" aria-hidden="true"><span>T</span></div>
+          <div class="card__body">
+            <h3 class="card__title">The Odyssey</h3>
+            <p class="card__meta">2026 · Adventure</p>
+            
+          </div>
+        </article>
+        <article class="card" style="--tone:#2a1717">
+          
+          <div class="card__poster" aria-hidden="true"><span>A</span></div>
+          <div class="card__body">
+            <h3 class="card__title">Apocalypse Z: New World</h3>
+            <p class="card__meta">2026 · Horror</p>
+            
+          </div>
+        </article>
+        <article class="card" style="--tone:#1a2229">
+          
+          <div class="card__poster" aria-hidden="true"><span>F</span></div>
+          <div class="card__body">
+            <h3 class="card__title">Fall 2: Deadpoint</h3>
+            <p class="card__meta">2026 · Thriller</p>
+            
+          </div>
+        </article>
+        <article class="card" style="--tone:#22201a">
+          
+          <div class="card__poster" aria-hidden="true"><span>C</span></div>
+          <div class="card__body">
+            <h3 class="card__title">Clayface</h3>
+            <p class="card__meta">2026 · Thriller</p>
+            
+          </div>
+        </article>
+        <article class="card" style="--tone:#2b1b14">
+          
+          <div class="card__poster" aria-hidden="true"><span>P</span></div>
+          <div class="card__body">
+            <h3 class="card__title">Pinocchio: Unstrung</h3>
+            <p class="card__meta">2026 · Horror</p>
+            
+          </div>
+        </article>
+        <article class="card" style="--tone:#1b1b26">
+          
+          <div class="card__poster" aria-hidden="true"><span>I</span></div>
+          <div class="card__body">
+            <h3 class="card__title">Insidious: Out of the Further</h3>
+            <p class="card__meta">2026 · Horror</p>
+            
+          </div>
+        </article>
+        <article class="card" style="--tone:#261a1f">
+          
+          <div class="card__poster" aria-hidden="true"><span>V</span></div>
+          <div class="card__body">
+            <h3 class="card__title">Verity</h3>
+            <p class="card__meta">2026</p>
+            
+          </div>
+        </article>
+        <article class="card" style="--tone:#18222a">
+          
+          <div class="card__poster" aria-hidden="true"><span>T</span></div>
+          <div class="card__body">
+            <h3 class="card__title">The Dog Stars</h3>
+            <p class="card__meta">2026</p>
+            
+          </div>
+        </article>
+        <article class="card" style="--tone:#221c2b">
+          
+          <div class="card__poster" aria-hidden="true"><span>C</span></div>
+          <div class="card__body">
+            <h3 class="card__title">Collision Course</h3>
+            <p class="card__meta">2026</p>
+            
+          </div>
+        </article></div>
+    </div>
+  </section>
+
+  <section class="section" id="searched">
+    <div class="wrap two-col">
+      <div>
+        <div class="section__head section__head--left">
+          <h2>Most searched on MovieState</h2>
+          <p class="section__sub">Live demand, not guesswork. This list mirrors what visitors look for most.</p>
+        </div>
+        <ol class="ranklist"><li><span class="rank">01</span><span>Resident Evil (2026)</span></li><li><span class="rank">02</span><span>Primetime (2026)</span></li><li><span class="rank">03</span><span>The Remarried Empress (2026)</span></li><li><span class="rank">04</span><span>Beware Boiúna (2026)</span></li><li><span class="rank">05</span><span>Bass X Machina (2026)</span></li><li><span class="rank">06</span><span>Wildwood (2026)</span></li><li><span class="rank">07</span><span>Godzilla Minus Zero (2026)</span></li><li><span class="rank">08</span><span>Apocalypse Z: New World (2026)</span></li></ol>
+      </div>
+      <div class="panel">
+        <h2 class="panel__title">Why people use MovieState</h2>
+        <ul class="checklist">
+          <li><strong>Facts first.</strong> Plot, cast, runtime and studio details for every title.</li>
+          <li><strong>Clear watch routes.</strong> One place to see where a film is available in HD.</li>
+          <li><strong>No dead links.</strong> If a page does not help, it does not get published.</li>
+          <li><strong>Guides, not filler.</strong> Practical answers to “is it worth watching?”</li>
+        </ul>
+        <a class="btn btn--ghost btn--sm" href="https://moviestate.is-best.net" target="_blank" rel="noopener">Browse the full library →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="genres">
+    <div class="wrap">
+      <div class="section__head">
+        <h2>Browse by genre</h2>
+        <p class="section__sub">From horror nights to family Sundays — pick a lane.</p>
+      </div>
+      <ul class="pills"><li><span class="pill">Action</span></li><li><span class="pill">Adventure</span></li><li><span class="pill">Animation</span></li><li><span class="pill">Comedy</span></li><li><span class="pill">Crime</span></li><li><span class="pill">Documentary</span></li><li><span class="pill">Drama</span></li><li><span class="pill">Family</span></li><li><span class="pill">Fantasy</span></li><li><span class="pill">History</span></li><li><span class="pill">Horror</span></li><li><span class="pill">Music</span></li><li><span class="pill">Mystery</span></li><li><span class="pill">Romance</span></li><li><span class="pill">Sci-Fi</span></li><li><span class="pill">Thriller</span></li><li><span class="pill">War</span></li><li><span class="pill">Western</span></li></ul>
+    </div>
+  </section>
+
+  <section class="section" id="how">
+    <div class="wrap">
+      <div class="section__head">
+        <h2>How MovieState works</h2>
+        <p class="section__sub">Three steps from “what should I watch?” to pressing play.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="step__num">01</span><h3>Find the film</h3><p>Search by title, genre or what everyone is talking about this week.</p></div>
+        <div class="step"><span class="step__num">02</span><h3>Read the real details</h3><p>Plot, cast, runtime, ratings and honest notes — no recycled filler.</p></div>
+        <div class="step"><span class="step__num">03</span><h3>Watch in HD</h3><p>Jump straight to the film on MovieState and pick your server.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="faq">
+    <div class="wrap wrap--narrow">
+      <div class="section__head">
+        <h2>MovieState — frequently asked questions</h2>
+      </div>
+      <div class="faq"><details class="faq__item"><summary>What is MovieState?</summary><p>MovieState is an independent movie discovery publication. It covers trending and popular films, plot and cast details, runtime and release information, and clear where-to-watch guides. The full library and HD playback live on the main MovieState site.</p></details><details class="faq__item"><summary>How do I find where to watch a specific movie?</summary><p>Open the film on MovieState and check the watch section. Availability depends on your country and on the streaming services licensed in that region, so always confirm the current option before subscribing to anything.</p></details><details class="faq__item"><summary>Is MovieState free to browse?</summary><p>Browsing the guides, casts and release information on MovieState is free. Watching a film happens on the main MovieState site, where availability and any regional requirements are shown on the film page.</p></details><details class="faq__item"><summary>How often is the site updated?</summary><p>Charts, trending lists and guides are reviewed regularly. New movie pages and watch guides are published in batches, and each page shows the date it was last updated.</p></details></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__in">
+    <div class="footer__brand">
+      <span class="brand__name">Movie<span>State</span></span>
+      <p class="muted">Independent movie discovery, release coverage and watch guides for film fans worldwide.</p>
+    </div>
+    <nav class="footer__nav" aria-label="Footer">
+      <a href="#trending">Trending</a>
+      <a href="#popular">Popular</a>
+      <a href="#genres">Genres</a>
+      <a href="https://moviestate.is-best.net" target="_blank" rel="noopener">Main site</a>
+    </nav>
+  </div>
+  <div class="wrap footer__legal">
+    <p>© 2026 MovieState. Movie information and images are provided by TMDB; MovieState is not endorsed or certified by TMDB.</p>
+    <p class="muted">Page last updated November 3, 2026.</p>
+  </div>
+</footer>
+
+<script src="assets/app.js" defer></script>
 </body>
 </html>
