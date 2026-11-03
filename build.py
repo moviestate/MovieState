@@ -1037,8 +1037,8 @@ def home3():
 <section id="faq" class="section section--narrow"><div class="section__head"><div><p class="kicker">FAQ</p><h2 class="section__title">Questions people ask before pressing play</h2></div></div><div class="panel panel--faq">{faq_html}</div></section>''')
     H.append('</main>' + footer())
     idx_json = _j.dumps(idx, ensure_ascii=False).replace("</", "<" + "/")
-    H.append('<script type="application/json" id="siteIndex">' + idx_json + '</script>')
-    write("index.html", "".join(H))
+    out = "".join(H).replace("</body>", '<script type="application/json" id="siteIndex">' + idx_json + '</script></body>')
+    write("index.html", out)
 
 def main():
     if os.path.isdir("site"): shutil.rmtree("site")
