@@ -52,8 +52,14 @@
   var hero = document.getElementById('hero'); if (!hero) return;
   var slides = hero.querySelectorAll('.slide'), thumbs = hero.querySelectorAll('.thumb');
   var bar = hero.querySelector('.hero__progress span'), i = 0, timer = null, D = 7000;
+  function load(s) {
+    Array.prototype.forEach.call(s.querySelectorAll('img[data-src]'), function (im) {
+      if (!im.getAttribute('src')) { im.setAttribute('src', im.dataset.src); }
+    });
+  }
   function paint() {
     Array.prototype.forEach.call(slides, function (s, k) {
+      if (k === i) load(s);
       s.classList.toggle('is-on', k === i);
       try { s.inert = k !== i; } catch (e) {}
       var bg = s.querySelector('.slide__bg');
@@ -74,6 +80,7 @@
   hero.addEventListener('focusin', stop); hero.addEventListener('focusout', play);
   document.addEventListener('visibilitychange', function () { document.hidden ? stop() : play(); });
   paint();
+  setTimeout(function () { if (slides[1]) load(slides[1]); }, 2500);
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && slides.length > 1) play();
 })();
 

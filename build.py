@@ -996,7 +996,7 @@ def home3():
         tag = "h1" if i == 0 else "h2"
         chips = "".join(f'<li>{e(x)}</li>' for x in [str(m["year"]), rtime(m.get("runtime")), m.get("certification") or "NR", (m.get("genres") or ["Film"])[0]])
         sl += f'''<article class="slide{' is-on' if i==0 else ''}" data-i="{i}" {'inert' if i else ''}>
-<img class="slide__bg" src="{backdrop(m.get("backdrop"),"w780")}" srcset="{backdrop(m.get("backdrop"),"w780")} 780w, {backdrop(m.get("backdrop"),"w1280")} 1280w" sizes="100vw" alt="" width="1280" height="720" {'fetchpriority="high"' if i==0 else 'loading="lazy"'} decoding="async">
+<img class="slide__bg" {'src="' + backdrop(m.get("backdrop"),"w780") + '" srcset="' + backdrop(m.get("backdrop"),"w780") + ' 780w, ' + backdrop(m.get("backdrop"),"w1280") + ' 1280w" fetchpriority="high"' if i==0 else 'data-src="' + backdrop(m.get("backdrop"),"w1280") + '"'} sizes="100vw" alt="" width="1280" height="720" decoding="async">
 <span class="slide__veil" aria-hidden="true"></span>
 <div class="slide__in wrap"><div class="slide__copy">
 <p class="kicker"><span class="live" aria-hidden="true"></span>Popular right now</p>
@@ -1005,7 +1005,7 @@ def home3():
 <p class="slide__line">{e((m.get("overview") or "")[:140])}…</p>
 <div class="slide__cta"><a class="btn btn--primary" href="{BASE}{movie_path(m)}">Where to watch</a><a class="btn btn--ghost" href="{BASE}{movie_path(m)}#cast">Cast &amp; details</a></div>
 </div>
-<a class="slide__poster" href="{BASE}{movie_path(m)}" aria-label="View {e(m["title"])} guide"><img src="{poster(m.get("poster"),"w500")}" alt="{e(m["title"])} poster" width="500" height="750" {'fetchpriority="high"' if i==0 else 'loading="lazy"'} decoding="async"><span class="score-ring" style="--pct:{int((m.get('rating') or 0)*10)}"><b>{m.get('rating')}</b><i>/10</i></span></a>
+<a class="slide__poster" href="{BASE}{movie_path(m)}" aria-label="View {e(m["title"])} guide"><img {'src="' + poster(m.get("poster"),"w500") + '" fetchpriority="high"' if i==0 else 'data-src="' + poster(m.get("poster"),"w500") + '"'} alt="{e(m["title"])} poster" width="500" height="750" decoding="async"><span class="score-ring" style="--pct:{int((m.get('rating') or 0)*10)}"><b>{m.get('rating')}</b><i>/10</i></span></a>
 </div></article>'''
     thumbs = "".join(f'''<button class="thumb{' is-on' if i==0 else ''}" type="button" data-goto="{i}" aria-label="Show {e(m["title"])}"><span class="thumb__art"><img src="{poster(m.get("poster"),"w185")}" alt="" width="185" height="278" loading="lazy" decoding="async"></span><span class="thumb__t">{e(m["title"])}</span></button>''' for i, m in enumerate(slides))
     H.append(f'''<section class="hero" id="hero" aria-roledescription="carousel" aria-label="Popular movies">
