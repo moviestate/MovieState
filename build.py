@@ -33,14 +33,14 @@ def esc_js(s): return json.dumps(s, ensure_ascii=False)
 
 PAGES = []
 
-def head(title, desc, path, og_image=None, jsonld=None, extra_css=""):
+def head(title, desc, path, og_image=None, jsonld=None, extra_css="", preload_img=None):
     clean = "" if path in ("", "index.html") else re.sub(r"index\.html$", "", path)
     url = f"{BASE}/{clean}" if clean else f"{BASE}/"
     og = og_image or f"{BASE}/assets/og-default.jpg"
     parts = [f"""<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(title)}</title><meta name="description" content="{e(desc)}">
-<link rel="canonical" href="{url}">
+<link rel="canonical" href="{url}">{f'<link rel="preload" as="image" href="{preload_img}" fetchpriority="high">' if preload_img else ""}
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <meta name="theme-color" content="#05060A">
 <meta property="og:type" content="website"><meta property="og:site_name" content="{BRAND}">
@@ -982,7 +982,7 @@ def home3():
     idx = [{"t": m["title"], "y": m["year"], "u": BASE + movie_path(m), "p": poster(m.get("poster"), "w92")} for m in allm]
     H = [head("MovieState — Watch Movies Online in HD & Find Where to Watch",
               "Independent movie guide: what to watch now, full cast and crew, ratings, box office and where each film streams, rents or sells in HD.",
-              "index.html", og_image=backdrop(slides[0].get("backdrop"), "w1280"),
+              "index.html", og_image=backdrop(slides[0].get("backdrop"), "w1280"), preload_img=backdrop(slides[0].get("backdrop"), "w780"),
               jsonld=[
                 {"@context":"https://schema.org","@type":"WebSite","name":BRAND,"url":BASE+"/","publisher":ORG,
                  "potentialAction":{"@type":"SearchAction","target":BASE+"/movies/?q={search_term_string}","query-input":"required name=search_term_string"}},
@@ -993,8 +993,8 @@ def home3():
     H.append('<main id="main">')
     sl = ""
     for i, m in enumerate(slides):
-        sl += f'''<article class="slide{' is-on' if i==0 else ''}" data-i="{i}" aria-hidden="{'false' if i==0 else 'true'}">
-<img class="slide__bg" src="{backdrop(m.get("backdrop"),"w1280")}" alt="" width="1280" height="720" {'fetchpriority="high"' if i==0 else 'loading="lazy"'} decoding="async">
+        sl += f'''<article class="slide{' is-on' if i==0 else ''}" data-i="{i}" {'inert' if i else ''}>
+<img class="slide__bg" src="{backdrop(m.get("backdrop"),"w780")}" srcset="{backdrop(m.get("backdrop"),"w780")} 780w, {backdrop(m.get("backdrop"),"w1280")} 1280w" sizes="100vw" alt="" width="1280" height="720" {'fetchpriority="high"' if i==0 else 'loading="lazy"'} decoding="async">
 <span class="slide__veil" aria-hidden="true"></span>
 <div class="slide__in wrap"><div class="slide__copy">
 <p class="kicker">{e("Featured" if i==0 else "Editor pick")}</p>
@@ -1003,7 +1003,7 @@ def home3():
 <p class="slide__line">{e((m.get("overview") or "")[:150])}…</p>
 <div class="slide__cta"><a class="btn btn--primary" href="{BASE}{movie_path(m)}">View guide &amp; watch options</a><a class="btn btn--ghost" href="{BASE}/movies/">All movies</a></div>
 </div>
-<a class="slide__poster" href="{BASE}{movie_path(m)}" aria-label="{e(m["title"])}"><img src="{poster(m.get("poster"),"w500")}" alt="{e(m["title"])} poster" width="500" height="750" {'fetchpriority="high"' if i==0 else 'loading="lazy"'} decoding="async"><span class="score-ring" style="--pct:{int((m.get('rating') or 0)*10)}"><b>{m.get('rating')}</b><i>/10</i></span></a>
+<a class="slide__poster" href="{BASE}{movie_path(m)}" aria-label="View {e(m["title"])} guide"><img src="{poster(m.get("poster"),"w500")}" alt="{e(m["title"])} poster" width="500" height="750" {'fetchpriority="high"' if i==0 else 'loading="lazy"'} decoding="async"><span class="score-ring" style="--pct:{int((m.get('rating') or 0)*10)}"><b>{m.get('rating')}</b><i>/10</i></span></a>
 </div></article>'''
     dots = "".join(f'<button class="dot{" is-on" if i==0 else ""}" type="button" data-goto="{i}" aria-label="Slide {i+1}"></button>' for i in range(len(slides)))
     H.append(f'''<section class="hero hero--carousel" id="hero">
@@ -1012,7 +1012,7 @@ def home3():
 <div class="quickbar wrap"><div><span>Films</span><strong data-count="{cnt}">{cnt}</strong></div><div><span>Genres</span><strong data-count="{gcnt}">{gcnt}</strong></div><div><span>Profiles</span><strong data-count="{ppl}">{ppl}</strong></div><div><span>Avg rating</span><strong>{avg}</strong></div></div>
 </section>''')
     H.append(f'''<section class="searchbar wrap"><form class="search" role="search" action="{BASE}/movies/" method="get" autocomplete="off"><label class="sr-only" for="q">Search movies</label><input id="q" name="q" type="search" placeholder="Search {cnt} films — title, year or genre" aria-describedby="qhelp"><button class="btn btn--primary" type="submit">Search</button><div class="search__res" id="qres" role="listbox" aria-label="Suggestions"></div><p id="qhelp" class="sr-only">Type at least two characters to see suggestions.</p></form></section>''')
-    t10 = "".join(f'''<a class="t10__item" href="{BASE}{movie_path(m)}"><span class="t10__num">{i+1}</span><img src="{poster(m.get("poster"),"w342")}" alt="{e(m["title"])} poster" width="342" height="513" loading="{'' if i<3 else 'lazy'}" decoding="async"><span class="t10__cap"><strong>{e(m["title"])}</strong><span>{m["year"]} · {m.get('rating')}/10</span></span></a>''' for i,m in enumerate(top10[:5]))
+    t10 = "".join(f'''<a class="t10__item" href="{BASE}{movie_path(m)}"><span class="t10__num">{i+1}</span><img src="{poster(m.get("poster"),"w342")}" alt="{e(m["title"])} poster" width="342" height="513" loading="{'eager' if i<3 else 'lazy'}" decoding="async"><span class="t10__cap"><strong>{e(m["title"])}</strong><span>{m["year"]} · {m.get('rating')}/10</span></span></a>''' for i,m in enumerate(top10[:5]))
     t10b = "".join(f'''<a class="t10__item" href="{BASE}{movie_path(m)}"><span class="t10__num">{i+6}</span><img src="{poster(m.get("poster"),"w342")}" alt="{e(m["title"])} poster" width="342" height="513" loading="lazy" decoding="async"><span class="t10__cap"><strong>{e(m["title"])}</strong><span>{m["year"]} · {m.get('rating')}/10</span></span></a>''' for i,m in enumerate(top10[5:10]))
     H.append(f'''<section class="section"><div class="section__head"><div><p class="kicker">Top 10 this week</p><h2 class="section__title">The highest rated films in our library</h2></div><a class="section__link" href="{BASE}/movies/">See all {cnt}</a></div><div class="t10">{t10}</div><div class="t10 t10--b">{t10b}</div></section>''')
     tl = "".join(f'''<a class="tl__row" href="{BASE}{movie_path(m)}"><time>{e((m.get("release_date") or "")[5:])}</time><span class="tl__dot" aria-hidden="true"></span><span class="tl__txt"><strong>{e(m["title"])}</strong><span>{e(", ".join(m.get("genres",[])[:2]))} · {e(m.get("status") or "")}</span></span><span class="tl__go" aria-hidden="true">→</span></a>''' for m in upc)

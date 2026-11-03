@@ -54,7 +54,7 @@
   var i = 0, timer = null;
   function go(n) {
     i = (n + slides.length) % slides.length;
-    Array.prototype.forEach.call(slides, function (s, k) { s.classList.toggle('is-on', k === i); s.setAttribute('aria-hidden', k === i ? 'false' : 'true'); });
+    Array.prototype.forEach.call(slides, function (s, k) { s.classList.toggle('is-on', k === i); try { s.inert = k !== i; } catch (e) {} s.setAttribute('aria-hidden', k === i ? 'false' : 'true'); });
     Array.prototype.forEach.call(dots, function (d, k) { d.classList.toggle('is-on', k === i); });
   }
   function play() { stop(); timer = setInterval(function () { go(i + 1); }, 7000); }
