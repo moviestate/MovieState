@@ -525,11 +525,134 @@ def page_404():
 </div></main>{footer()}"""
     write_raw("404.html", body)
 
+
+def page_movie_flagship(m):
+    t, y = m["title"], m["year"]
+    path = movie_path(m).lstrip("/")
+    d = m.get("director")
+    dname = d["name"] if d else "the film's director"
+    title = f"{t} ({y}): Cast & Where to Watch"
+    desc = f"{t} ({y}): the full story, cast, director, runtime, ratings and box office, plus where to watch it online in HD."
+    qs = [
+        (f"Who directed {t}?", f"{t} was directed by {dname}."),
+        (f"Who stars in {t}?", "The cast includes " + ", ".join(c["name"] for c in m.get("cast", [])[:5]) + "."),
+        (f"How long is {t}?", f"{t} runs {rtime(m.get('runtime'))} ({m.get('runtime')} minutes)."),
+        (f"When was {t} released?", f"{t} was released on {m.get('release_date')}."),
+        (f"Is {t} suitable for children?", f"{t} carries a {m.get('certification', 'PG-13')} rating in the United States. Age ratings differ between countries, so check your local rating before watching with children."),
+        (f"Where can I watch {t}?", f"Streaming rights for {t} change by country and platform. The MovieState page for {t} shows the current watch options and availability for your region."),
+    ]
+    faq_html = "".join(f'<details class="faq__item"><summary><h3>{e(q)}</h3></summary><p>{e(a)}</p></details>' for q, a in qs)
+
+    def ccard(c):
+        p = PPL_BY_ID.get(c["id"])
+        inner = f'<img src="{poster(c.get("profile"), "w185")}" alt="{e(c["name"])}" width="185" height="278" loading="lazy" decoding="async"><span class="cast-card__name">{e(c["name"])}</span><span class="cast-card__role">{e(c.get("character") or "Cast")}</span>'
+        return f'<a class="cast-card" href="{BASE}{person_path(p)}">{inner}</a>' if p else f'<div class="cast-card">{inner}</div>'
+    cast_html = "".join(ccard(c) for c in m.get("cast", [])[:8])
+
+    dp = PPL_BY_ID.get(d["id"]) if d else None
+    dlink = f"{BASE}{person_path(dp)}" if dp else None
+    dphoto = poster(d.get("profile"), "w185") if d else ""
+    dbio = (dp or {}).get("biography", "")
+    dbio = (dbio[:260].rsplit(". ", 1)[0] + ".") if len(dbio) > 260 else dbio
+    dinner = f'<img class="director-spot__photo" src="{dphoto}" alt="{e(dname)}" width="120" height="120" loading="lazy"><div><p class="kicker">Director</p><h3 class="director-spot__name">{e(dname)}</h3><p class="muted">{e(dbio) if dbio else "Biography details are being prepared."}</p></div>'
+    dblock = f'<a class="director-spot panel" href="{dlink}">{dinner}</a>' if dlink else f'<div class="director-spot panel">{dinner}</div>'
+
+    facts = [(k, v) for k, v in [
+        ("Release date", m.get("release_date")), ("Runtime", rtime(m.get("runtime"))),
+        ("Certification", m.get("certification")), ("Language", (m.get("language") or "").upper()),
+        ("Status", m.get("status")), ("Genres", ", ".join(m.get("genres", []))),
+        ("Director", dname), ("Writers", ", ".join(m.get("writers", []))),
+        ("Studios", ", ".join(m.get("studios", []))),
+        ("Budget", money(m.get("budget"))), ("Box office", money(m.get("revenue")))] if v]
+    facts_html = "".join(f'<div class="fact"><dt>{e(k)}</dt><dd>{e(str(v))}</dd></div>' for k, v in facts)
+
+    rel = [x for x in D["movies"] if x["tmdb_id"] != m["tmdb_id"] and set(x.get("genres", [])) & set(m.get("genres", []))][:8]
+    rel_cards = "".join(card(x, f"{BASE}{movie_path(x)}") for x in rel)
+
+    rated = m.get("rating") or 0
+    votes = m.get("votes") or 0
+    pct = int(round(rated * 10))
+    ld = [
+      {"@context": "https://schema.org", "@type": "Movie", "name": t, "url": f"{BASE}/{path}",
+       "image": poster(m.get("poster"), "w500"), "description": m.get("overview", ""),
+       "datePublished": m.get("release_date"), "genre": m.get("genres", []),
+       "contentRating": m.get("certification"), "duration": f"PT{m['runtime']}M" if m.get("runtime") else None,
+       "director": {"@type": "Person", "name": dname, "url": dlink} if d else None,
+       "actor": [{"@type": "Person", "name": c["name"]} for c in (m.get("cast") or [])[:8]],
+       "productionCompany": [{"@type": "Organization", "name": s} for s in m.get("studios", [])],
+       "aggregateRating": {"@type": "AggregateRating", "ratingValue": round(rated, 1), "bestRating": 10, "ratingCount": max(votes, 1)} if rated else None},
+      crumb_ld([("Home", "/"), ("Movies", "/movies/"), (t, movie_path(m))]),
+      {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+          {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qs]},
+    ]
+    ld = [{k: v for k, v in b.items() if v is not None} for b in ld]
+    h = head(title, desc[:155], path, og_image=backdrop(m.get("backdrop"), "w1280"), jsonld=ld)
+    chips = "".join(f'<li class="chip">{e(x)}</li>' for x in [str(y), rtime(m.get("runtime")), m.get("certification") or "", (m.get("language") or "").upper(), m.get("status") or ""] if x)
+    body = f"""{h}{header("/movies/")}<main id="main">
+<div class="wrap">{crumbs([("Home", "/"), ("Movies", "/movies/"), (t, None)])}</div>
+<section class="film">
+<img class="film__bg" src="{backdrop(m.get('backdrop'), 'w1280')}" alt="" width="1280" height="720" fetchpriority="high" decoding="async">
+<span class="film__veil" aria-hidden="true"></span>
+<div class="film__inner wrap">
+<div class="poster-xl"><img src="{poster(m.get('poster'), 'w500')}" alt="{e(t)} ({e(str(y))}) movie poster" width="500" height="750" fetchpriority="high" decoding="async"><span class="score-ring" style="--pct:{pct}"><b>{score(m)}</b><i>/10</i></span></div>
+<div class="film__head">
+<p class="kicker">{e(' · '.join(m.get('genres', [])))}</p>
+<h1 class="film__title">{e(t)}</h1>
+{f'<p class="film__tag">“{e(m["tagline"])}”</p>' if m.get("tagline") else ''}
+<ul class="chips">{chips}</ul>
+<div class="hero__cta"><a class="btn btn--primary" href="{main_url(m)}" target="_blank" rel="noopener">Watch on MovieState</a>
+<a class="btn btn--ghost" href="#watch">Where to watch</a></div>
+</div></div>
+<div class="quickbar wrap"><div><span>Release</span><strong>{e(str(m.get('release_date','')).replace('-', '.'))}</strong></div><div><span>Runtime</span><strong>{e(rtime(m.get('runtime')))}</strong></div><div><span>Director</span><strong>{e(dname)}</strong></div><div><span>Rating</span><strong>{score(m)} / 10</strong></div></div>
+</section>
+
+<nav class="subnav" aria-label="On this page"><div class="wrap"><a href="#overview">Overview</a><a href="#cast">Cast</a><a href="#details">Details</a><a href="#reception">Reception</a><a href="#watch">Where to watch</a><a href="#faq">FAQ</a></div></nav>
+
+<section class="section section--narrow" id="overview">
+<div class="section__head"><div><p class="kicker">The story</p><h2 class="section__title">What is {e(t)} about?</h2></div></div>
+<div class="prose prose--lead"><p>{e(m.get('overview',''))}</p>
+<p>{e(t)} is the latest Spider-Man film to star Tom Holland, directed by {e(dname)} and produced by {e(', '.join(m.get('studios', [])[:2]))}. It runs {e(rtime(m.get('runtime')))} and carries a {e(m.get('certification','PG-13'))} rating in the United States. The screenplay is by {e(', '.join(m.get('writers', [])))}.</p></div>
+<div class="callout"><p class="kicker">Why it matters</p><p>Audiences have rated {e(t)} <strong>{score(m)} out of 10</strong> on TMDB from {votes:,} ratings, and the film has taken roughly <strong>{e(money(m.get('revenue')))}</strong> worldwide against a <strong>{e(money(m.get('budget')))}</strong> production budget.</p></div>
+</section>
+
+<section class="section" id="cast">
+<div class="section__head"><div><p class="kicker">Top billed</p><h2 class="section__title">Cast of {e(t)}</h2></div><a class="section__link" href="{BASE}/people/">All people</a></div>
+<div class="rail"><div class="rail__track rail__track--cast">{cast_html or '<p class="muted">Cast details coming soon.</p>'}</div></div>
+</section>
+
+<section class="section section--split" id="details">
+{dblock}
+<div class="panel"><p class="kicker">Key details</p><h2 class="panel__title">Everything on record</h2><dl class="facts">{facts_html}</dl></div>
+</section>
+
+<section class="section section--narrow" id="reception">
+<div class="reception panel">
+<div class="reception__score"><span class="score-ring score-ring--lg" style="--pct:{pct}"><b>{score(m)}</b><i>/10</i></span><span class="reception__votes">{votes:,} TMDB ratings</span></div>
+<div class="reception__body"><h2 class="panel__title">How audiences rate it</h2>
+<div class="bar" role="img" aria-label="Average rating {score(m)} out of 10"><span style="width:{pct}%"></span></div>
+<p class="muted">Scores are user ratings collected by TMDB and move up or down over time. Treat them as a snapshot, not a verdict.</p></div>
+</div>
+</section>
+
+<section class="section section--split" id="watch">
+<div class="panel"><p class="kicker">Watch</p><h2 class="panel__title">Where to watch {e(t)}</h2>
+<ol class="steps"><li>Open the {e(t)} page on MovieState.</li><li>Check the watch options shown for your region.</li><li>Confirm price, quality and subtitles on the provider page before paying.</li></ol>
+<a class="btn btn--primary" href="{main_url(m)}" target="_blank" rel="noopener">Check availability</a>
+<p class="note">Availability differs by country and changes without notice. This page publishes information only and does not host or stream video.</p></div>
+<div class="panel panel--faq" id="faq"><p class="kicker">FAQ</p><h2 class="panel__title">Questions about {e(t)}</h2>{faq_html}</div>
+</section>
+
+<section class="section"><div class="section__head"><div><p class="kicker">More like this</p><h2 class="section__title">Films similar to {e(t)}</h2></div><a class="section__link" href="{BASE}/movies/">All movies</a></div>
+<div class="grid">{rel_cards or '<p class="muted">More recommendations coming soon.</p>'}</div></section>
+</main>{footer()}"""
+    write(path + "index.html", body)
+
 def main():
     if os.path.isdir("site"): shutil.rmtree("site")
     os.makedirs("site", exist_ok=True)
     page_home(); page_movies_hub(); page_categories_hub(); page_people_hub()
-    for m in D["movies"]: page_movie(m)
+    for m in D["movies"]:
+        (page_movie_flagship(m) if m["tmdb_id"] == FEATURED_ID else page_movie(m))
     for g in GEN: page_category(g)
     for p in PPL: page_person(p)
     page_about(); page_privacy(); page_terms(); page_faq()
