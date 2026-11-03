@@ -1,0 +1,83 @@
+{
+  "description": "MovieState is an independent movie discovery and watch-guide publication covering trending films, cast details and where to watch.",
+  "nav": [
+    ["Trending", "#trending"],
+    ["Popular", "#popular"],
+    ["Genres", "#genres"],
+    ["How it works", "#how"],
+    ["FAQ", "#faq"]
+  ],
+  "featured": {
+    "title": "Spider-Man: Brand New Day",
+    "year": 2026,
+    "slug": "spider-man-brand-new-day",
+    "main_id": "969681",
+    "blurb": "Peter Parker fights crime in a world that no longer remembers him, while a change he cannot control builds inside him. Destin Daniel Cretton directs Tom Holland, Sadie Sink and Zendaya in a 2h 25m Marvel Studios release.",
+    "facts": [
+      ["Rating", "8.5 / 10"],
+      ["Runtime", "2h 25m"],
+      ["Rated", "PG-13"],
+      ["Release", "July 29, 2026"],
+      ["Worldwide", "$2.51B"]
+    ]
+  },
+  "trending": [
+    {"title": "Resident Evil", "year": 2026, "genre": "Horror", "tone": "#2a1418"},
+    {"title": "Primetime", "year": 2026, "tone": "#1c1a2e"},
+    {"title": "The Remarried Empress", "year": 2026, "tone": "#2a1f18"},
+    {"title": "Beware Boiúna", "year": 2026, "tone": "#14261f"},
+    {"title": "Bass X Machina", "year": 2026, "tone": "#1a2030"},
+    {"title": "Wildwood", "year": 2026, "tone": "#1f2a1c"},
+    {"title": "Godzilla Minus Zero", "year": 2026, "genre": "Sci-Fi", "tone": "#241a1a"},
+    {"title": "A Story of Derry", "year": 2026, "tone": "#2b1d24"},
+    {"title": "My Best Friend", "year": 2026, "tone": "#1f2430"},
+    {"title": "Dead-End Job", "year": 2026, "tone": "#241f2b"}
+  ],
+  "popular": [
+    {"title": "The Dark Knight", "year": 2008, "genre": "Action", "tone": "#161a22"},
+    {"title": "Coco", "year": 2017, "genre": "Animation", "tone": "#2a1a2b"},
+    {"title": "Spider-Man: Brand New Day", "year": 2026, "genre": "Action", "tone": "#25161c", "rating": "8.5"},
+    {"title": "The Odyssey", "year": 2026, "genre": "Adventure", "tone": "#2b2318"},
+    {"title": "Apocalypse Z: New World", "year": 2026, "genre": "Horror", "tone": "#2a1717"},
+    {"title": "Fall 2: Deadpoint", "year": 2026, "genre": "Thriller", "tone": "#1a2229"},
+    {"title": "Clayface", "year": 2026, "genre": "Thriller", "tone": "#22201a"},
+    {"title": "Pinocchio: Unstrung", "year": 2026, "genre": "Horror", "tone": "#2b1b14"},
+    {"title": "Insidious: Out of the Further", "year": 2026, "genre": "Horror", "tone": "#1b1b26"},
+    {"title": "Verity", "year": 2026, "tone": "#261a1f"},
+    {"title": "The Dog Stars", "year": 2026, "tone": "#18222a"},
+    {"title": "Collision Course", "year": 2026, "tone": "#221c2b"}
+  ],
+  "most_searched": [
+    "Resident Evil (2026)",
+    "Primetime (2026)",
+    "The Remarried Empress (2026)",
+    "Beware Boiúna (2026)",
+    "Bass X Machina (2026)",
+    "Wildwood (2026)",
+    "Godzilla Minus Zero (2026)",
+    "Apocalypse Z: New World (2026)"
+  ],
+  "genres": [
+    "Action", "Adventure", "Animation", "Comedy", "Crime", "Documentary",
+    "Drama", "Family", "Fantasy", "History", "Horror", "Music",
+    "Mystery", "Romance", "Sci-Fi", "Thriller", "War", "Western"
+  ],
+  "faq": [
+    {
+      "q": "What is MovieState?",
+      "a": "MovieState is an independent movie discovery publication. It covers trending and popular films, plot and cast details, runtime and release information, and clear where-to-watch guides. The full library and HD playback live on the main MovieState site."
+    },
+    {
+      "q": "How do I find where to watch a specific movie?",
+      "a": "Open the film on MovieState and check the watch section. Availability depends on your country and on the streaming services licensed in that region, so always confirm the current option before subscribing to anything."
+    },
+    {
+      "q": "Is MovieState free to browse?",
+      "a": "Browsing the guides, casts and release information on MovieState is free. Watching a film happens on the main MovieState site, where availability and any regional requirements are shown on the film page."
+    },
+    {
+      "q": "How often is the site updated?",
+      "a": "Charts, trending lists and guides are reviewed regularly. New movie pages and watch guides are published in batches, and each page shows the date it was last updated."
+    }
+  ]
+}
