@@ -1,334 +1,105 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MovieState — Watch Movies Online in HD &amp; Where to Watch</title>
-<meta name="description" content="Discover trending and popular movies with full guides: story, cast, runtime, ratings and where to watch online in HD. MovieState — your cinema companion.">
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MovieState — Watch Movies Online in HD &amp; Where to Watch</title><meta name="description" content="Explore trending and new-release movies with cast, runtime, release details and where to watch in HD. Free, ad-free movie guides updated daily.">
 <link rel="canonical" href="https://moviestate.github.io/MovieState/">
-<meta name="robots" content="index,follow,max-image-preview:large">
-<meta name="theme-color" content="#08080A">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="MovieState">
-<meta property="og:title" content="MovieState — Watch Movies Online in HD &amp; Where to Watch">
-<meta property="og:description" content="Trending movies, full film guides and where to watch each one online in HD.">
-<meta property="og:url" content="https://moviestate.github.io/MovieState/">
-<meta property="og:image" content="https://image.tmdb.org/t/p/w1280/4tjxYg2AbOzzG9G1YuiT2NzYhlH.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<meta name="theme-color" content="#05060A">
+<meta property="og:type" content="website"><meta property="og:site_name" content="MovieState">
+<meta property="og:title" content="MovieState — Watch Movies Online in HD &amp; Where to Watch"><meta property="og:description" content="Explore trending and new-release movies with cast, runtime, release details and where to watch in HD. Free, ad-free movie guides updated daily.">
+<meta property="og:url" content="https://moviestate.github.io/MovieState/"><meta property="og:image" content="https://image.tmdb.org/t/p/w1280/4tjxYg2AbOzzG9G1YuiT2NzYhlH.jpg">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="MovieState — Watch Movies Online in HD &amp; Where to Watch">
+<meta name="twitter:description" content="Explore trending and new-release movies with cast, runtime, release details and where to watch in HD. Free, ad-free movie guides updated daily."><meta name="twitter:image" content="https://image.tmdb.org/t/p/w1280/4tjxYg2AbOzzG9G1YuiT2NzYhlH.jpg">
 <link rel="preconnect" href="https://image.tmdb.org" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "MovieState", "url": "https://moviestate.github.io/MovieState/", "description": "Movie guides, cast details and where to watch — curated by MovieState.", "inLanguage": "en"}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "MovieState", "url": "https://moviestate.github.io/MovieState/"}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "Popular movies on MovieState", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "The Dark Knight", "url": "https://moviestate.is-best.net"}, {"@type": "ListItem", "position": 2, "name": "Spider-Man: Brand New Day", "url": "https://moviestate.is-best.net"}, {"@type": "ListItem", "position": 3, "name": "The Odyssey", "url": "https://moviestate.is-best.net"}, {"@type": "ListItem", "position": 4, "name": "Coco", "url": "https://moviestate.is-best.net"}, {"@type": "ListItem", "position": 5, "name": "Fall 2: Deadpoint", "url": "https://moviestate.is-best.net"}, {"@type": "ListItem", "position": 6, "name": "Insidious: Out of the Further", "url": "https://moviestate.is-best.net"}, {"@type": "ListItem", "position": 7, "name": "Pinocchio: Unstrung", "url": "https://moviestate.is-best.net"}, {"@type": "ListItem", "position": 8, "name": "Apocalypse Z: New World", "url": "https://moviestate.is-best.net"}, {"@type": "ListItem", "position": 9, "name": "Wildwood", "url": "https://moviestate.is-best.net"}, {"@type": "ListItem", "position": 10, "name": "Hope", "url": "https://moviestate.is-best.net"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is MovieState?", "acceptedAnswer": {"@type": "Answer", "text": "MovieState is an independent movie discovery site. For each film we publish a detail guide — story, cast, runtime, ratings and where to watch — and link you to the MovieState streaming library when you are ready to watch."}}, {"@type": "Question", "name": "How do I find where to watch a movie?", "acceptedAnswer": {"@type": "Answer", "text": "Open any movie guide and read the where-to-watch section. Streaming availability changes by country and provider, so we point you to the library that keeps availability current instead of publishing a list that goes stale."}}, {"@type": "Question", "name": "Is browsing MovieState free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every guide on this site is free to read, with no account and no paywall. Watching happens on the MovieState streaming site."}}, {"@type": "Question", "name": "How current is the information?", "acceptedAnswer": {"@type": "Answer", "text": "Movie facts come from TMDB and are reviewed by our editors. Ratings and availability move constantly, so each guide shows its last update date — treat it as a snapshot, not a promise."}}, {"@type": "Question", "name": "Can I request a movie guide?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Tell us the title and we will queue it for a guide. Popular requests are prioritised in the publishing calendar."}}]}</script>
-</head>
-<body>
-<a class="skip" href="#main">Skip to content</a>
-<div class="grain" aria-hidden="true"></div>
-
-<header class="header" id="top">
-  <div class="header__inner">
-    <a class="brand" href="https://moviestate.github.io/MovieState/">
-      <span class="brand__mark">MS</span>
-      <span class="brand__name">Movie<em>State</em></span>
-    </a>
-    <nav class="nav" aria-label="Sections">
-      <a href="#trending">Trending</a>
-      <a href="#popular">Popular</a>
-      <a href="#genres">Genres</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-    <a class="btn btn--line btn--sm" href="https://moviestate.is-best.net/" target="_blank" rel="noopener">Open MovieState<svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2"/></svg></a>
-  </div>
-</header>
-
-<main id="main">
-  <section class="hero" aria-labelledby="hero-title">
-    <img class="hero__bg" src="https://image.tmdb.org/t/p/original/4tjxYg2AbOzzG9G1YuiT2NzYhlH.jpg" alt="" fetchpriority="high" decoding="async">
-    <div class="hero__scrim" aria-hidden="true"></div>
-    <div class="hero__inner">
-      <p class="eyebrow eyebrow--line">Featured this week</p>
-      <h1 class="hero__title" id="hero-title">Spider-Man: Brand New Day<span>Dive into the story — and find where to watch in HD</span></h1>
-      <ul class="meta__row"><li>2026</li><li>Science Fiction</li><li>PG-13</li><li>2h 25m</li></ul>
-      <p class="hero__lede">Fighting crime full-time as Spider-Man in a world that doesn&#x27;t remember him—and the pressure of seeing his old friends move on without him—sparks a change in Peter Parker he may not have the…</p>
-      <div class="hero__actions">
-        <a class="btn btn--gold" href="https://moviestate.is-best.net/" target="_blank" rel="noopener">Watch on MovieState</a>
-        <a class="btn btn--line" href="#trending">Explore trending</a>
-      </div>
-      <span class="hero__score">★ 8.5<small>/10</small></span>
-    </div>
-    <div class="hero__edge" aria-hidden="true"></div>
-  </section>
-
-  <div class="ticker" role="presentation"><div class="ticker__track"><span>Resident Evil</span><i aria-hidden="true">◆</i><span>Primetime</span><i aria-hidden="true">◆</i><span>Beware Boiúna</span><i aria-hidden="true">◆</i><span>Wildwood</span><i aria-hidden="true">◆</i><span>Godzilla Minus Zero</span><i aria-hidden="true">◆</i><span>A Story of Derry</span><i aria-hidden="true">◆</i><span>My Best Friend</span><i aria-hidden="true">◆</i><span>Verity</span><i aria-hidden="true">◆</i><span>Clayface</span><i aria-hidden="true">◆</i><span>The Mongoose</span><i aria-hidden="true">◆</i><span>Resident Evil</span><i aria-hidden="true">◆</i><span>Primetime</span><i aria-hidden="true">◆</i><span>Beware Boiúna</span><i aria-hidden="true">◆</i><span>Wildwood</span><i aria-hidden="true">◆</i><span>Godzilla Minus Zero</span><i aria-hidden="true">◆</i><span>A Story of Derry</span><i aria-hidden="true">◆</i><span>My Best Friend</span><i aria-hidden="true">◆</i><span>Verity</span><i aria-hidden="true">◆</i><span>Clayface</span><i aria-hidden="true">◆</i><span>The Mongoose</span><i aria-hidden="true">◆</i></div></div>
-
-  <section class="section" id="trending" aria-labelledby="h-trending">
-    <div class="section__head">
-      <p class="eyebrow">What people are watching</p>
-      <h2 id="h-trending">Trending movies this week</h2>
-      <p class="section__sub">Real search interest, refreshed as the week moves. Every title below has a full guide.</p>
-    </div>
-    <div class="rail" tabindex="0"><article class="card">
-  <div class="card__poster"><img class="card__img" src="https://image.tmdb.org/t/p/w500/gAgWJhUSQWCgtKR8170nMkYlBda.jpg" alt="Resident Evil poster" loading="lazy" decoding="async" width="500" height="750"><span class="card__rank">01</span><span class="card__rating">★ 7.4</span>
-    <div class="card__overlay"><span class="card__genre">Horror</span><span class="card__cue">Read the guide</span></div>
-  </div>
-  <h3 class="card__title">Resident Evil</h3>
-  <p class="card__meta">2026 · Horror · 7.4/10</p>
-</article>
-<article class="card">
-  <div class="card__poster"><img class="card__img" src="https://image.tmdb.org/t/p/w500/lmrulvLbmaejTix1YaMxo1oGhH1.jpg" alt="Primetime poster" loading="lazy" decoding="async" width="500" height="750"><span class="card__rank">02</span><span class="card__rating">★ 6.8</span>
-    <div class="card__overlay"><span class="card__genre">Thriller</span><span class="card__cue">Read the guide</span></div>
-  </div>
-  <h3 class="card__title">Primetime</h3>
-  <p class="card__meta">2026 · Thriller · 6.8/10</p>
-</article>
-<article class="card">
-  <div class="card__poster"><img class="card__img" src="https://image.tmdb.org/t/p/w500/uW5YMPxJUzT9bkafrCKHXjPTCoQ.jpg" alt="Beware Boiúna poster" loading="lazy" decoding="async" width="500" height="750"><span class="card__rank">03</span><span class="card__rating">★ 6.3</span>
-    <div class="card__overlay"><span class="card__genre">Horror</span><span class="card__cue">Read the guide</span></div>
-  </div>
-  <h3 class="card__title">Beware Boiúna</h3>
-  <p class="card__meta">2026 · Horror · 6.3/10</p>
-</article>
-<article class="card">
-  <div class="card__poster"><img class="card__img" src="https://image.tmdb.org/t/p/w500/8g7q6o54WfKWRmUQ0Ye8OskevUY.jpg" alt="Wildwood poster" loading="lazy" decoding="async" width="500" height="750"><span class="card__rank">04</span><span class="card__rating">★ 8.5</span>
-    <div class="card__overlay"><span class="card__genre">Animation</span><span class="card__cue">Read the guide</span></div>
-  </div>
-  <h3 class="card__title">Wildwood</h3>
-  <p class="card__meta">2026 · Animation · 8.5/10</p>
-</article>
-<article class="card">
-  <div class="card__poster"><img class="card__img" src="https://image.tmdb.org/t/p/w500/hSmIJluOJmTWvJs4d7kHRxjc8s8.jpg" alt="Godzilla Minus Zero poster" loading="lazy" decoding="async" width="500" height="750"><span class="card__rank">05</span><span class="card__rating">★ 9.5</span>
-    <div class="card__overlay"><span class="card__genre">Science Fiction</span><span class="card__cue">Read the guide</span></div>
-  </div>
-  <h3 class="card__title">Godzilla Minus Zero</h3>
-  <p class="card__meta">2026 · Science Fiction · 9.5/10</p>
-</article>
-<article class="card">
-  <div class="card__poster"><img class="card__img" src="https://image.tmdb.org/t/p/w500/4PtzGcegF5Po1NmDAW9IklyvAUh.jpg" alt="A Story of Derry poster" loading="lazy" decoding="async" width="500" height="750"><span class="card__rank">06</span><span class="card__rating">★ 6.9</span>
-    <div class="card__overlay"><span class="card__genre">Drama</span><span class="card__cue">Read the guide</span></div>
-  </div>
-  <h3 class="card__title">A Story of Derry</h3>
-  <p class="card__meta">2026 · Drama · 6.9/10</p>
-</article>
-<article class="card">
-  <div class="card__poster"><img class="card__img" src="https://image.tmdb.org/t/p/w500/wGfTFVeguXDXYrwPQ8QMFsaSK2M.jpg" alt="My Best Friend poster" loading="lazy" decoding="async" width="500" height="750"><span class="card__rank">07</span><span class="card__rating">★ 8.4</span>
-    <div class="card__overlay"><span class="card__genre">Comedy</span><span class="card__cue">Read the guide</span></div>
-  </div>
-  <h3 class="card__title">My Best Friend</h3>
-  <p class="card__meta">2026 · Comedy · 8.4/10</p>
-</article>
-<article class="card">
-  <div class="card__poster"><img class="card__img" src="https://image.tmdb.org/t/p/w500/rmaNMA1seHqpjtnYKzyynFAr1g8.jpg" alt="Verity poster" loading="lazy" decoding="async" width="500" height="750"><span class="card__rank">08</span><span class="card__rating">★ 6.9</span>
-    <div class="card__overlay"><span class="card__genre">Mystery</span><span class="card__cue">Read the guide</span></div>
-  </div>
-  <h3 class="card__title">Verity</h3>
-  <p class="card__meta">2026 · Mystery · 6.9/10</p>
-</article>
-<article class="card">
-  <div class="card__poster"><img class="card__img" src="https://image.tmdb.org/t/p/w500/9l1NuFjel2j89hiuiJbsxfblqjy.jpg" alt="Clayface poster" loading="lazy" decoding="async" width="500" height="750"><span class="card__rank">09</span><span class="card__rating">★ 7.4</span>
-    <div class="card__overlay"><span class="card__genre">Horror</span><span class="card__cue">Read the guide</span></div>
-  </div>
-  <h3 class="card__title">Clayface</h3>
-  <p class="card__meta">2026 · Horror · 7.4/10</p>
-</article>
-<article class="card">
-  <div class="card__poster"><img class="card__img" src="https://image.tmdb.org/t/p/w500/eSS5mvSG84UUuvtbHel5Yu3Wik4.jpg" alt="The Mongoose poster" loading="lazy" decoding="async" width="500" height="750"><span class="card__rank">10</span><span class="card__rating">★ 7.5</span>
-    <div class="card__overlay"><span class="card__genre">Action</span><span class="card__cue">Read the guide</span></div>
-  </div>
-  <h3 class="card__title">The Mongoose</h3>
-  <p class="card__meta">2026 · Action · 7.5/10</p>
-</article></div>
-  </section>
-
-  <section class="section" id="popular" aria-labelledby="h-popular">
-    <div class="section__head">
-      <p class="eyebrow">The heavy hitters</p>
-      <h2 id="h-popular">Popular movies to watch online</h2>
-      <p class="section__sub">Films audiences keep coming back to — from new 2026 releases to modern classics.</p>
-    </div>
-    <div class="grid"><article class="card">
-  <div class="card__poster"><img class="card__img" src="https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg" alt="The Dark Knight poster" loading="lazy" decoding="async" width="500" height="750"><span class="card__rating">★ 8.5</span>
-    <div class="card__overlay"><span class="card__genre">Action</span><span class="card__cue">Read the guide</span></div>
-  </div>
-  <h3 class="card__title">The Dark Knight</h3>
-  <p class="card__meta">2008 · Action · 8.5/10</p>
-</article>
-<article class="card">
-  <div class="card__poster"><img class="card__img" src="https://image.tmdb.org/t/p/w500/bjiS5ipwxb9JFy3XRRN4OAilSeX.jpg" alt="Spider-Man: Brand New Day poster" loading="lazy" decoding="async" width="500" height="750"><span class="card__rating">★ 8.5</span>
-    <div class="card__overlay"><span class="card__genre">Science Fiction</span><span class="card__cue">Read the guide</span></div>
-  </div>
-  <h3 class="card__title">Spider-Man: Brand New Day</h3>
-  <p class="card__meta">2026 · Science Fiction · 8.5/10</p>
-</article>
-<article class="card">
-  <div class="card__poster"><img class="card__img" src="https://image.tmdb.org/t/p/w500/9EJDqzAQ0HoNvMDkOQuirXt1RCg.jpg" alt="The Odyssey poster" loading="lazy" decoding="async" width="500" height="750"><span class="card__rating">★ 8.0</span>
-    <div class="card__overlay"><span class="card__genre">Adventure</span><span class="card__cue">Read the guide</span></div>
-  </div>
-  <h3 class="card__title">The Odyssey</h3>
-  <p class="card__meta">2026 · Adventure · 8.0/10</p>
-</article>
-<article class="card">
-  <div class="card__poster"><img class="card__img" src="https://image.tmdb.org/t/p/w500/6Ryitt95xrO8KXuqRGm1fUuNwqF.jpg" alt="Coco poster" loading="lazy" decoding="async" width="500" height="750"><span class="card__rating">★ 8.2</span>
-    <div class="card__overlay"><span class="card__genre">Family</span><span class="card__cue">Read the guide</span></div>
-  </div>
-  <h3 class="card__title">Coco</h3>
-  <p class="card__meta">2017 · Family · 8.2/10</p>
-</article>
-<article class="card">
-  <div class="card__poster"><img class="card__img" src="https://image.tmdb.org/t/p/w500/fgSm5ylwiXbIHn8UbUXDjk9RRu4.jpg" alt="Fall 2: Deadpoint poster" loading="lazy" decoding="async" width="500" height="750"><span class="card__rating">★ 7.3</span>
-    <div class="card__overlay"><span class="card__genre">Thriller</span><span class="card__cue">Read the guide</span></div>
-  </div>
-  <h3 class="card__title">Fall 2: Deadpoint</h3>
-  <p class="card__meta">2026 · Thriller · 7.3/10</p>
-</article>
-<article class="card">
-  <div class="card__poster"><img class="card__img" src="https://image.tmdb.org/t/p/w500/4tTrW9dXCByS5wt2pXVWb58zNjz.jpg" alt="Insidious: Out of the Further poster" loading="lazy" decoding="async" width="500" height="750"><span class="card__rating">★ 7.7</span>
-    <div class="card__overlay"><span class="card__genre">Horror</span><span class="card__cue">Read the guide</span></div>
-  </div>
-  <h3 class="card__title">Insidious: Out of the Further</h3>
-  <p class="card__meta">2026 · Horror · 7.7/10</p>
-</article>
-<article class="card">
-  <div class="card__poster"><img class="card__img" src="https://image.tmdb.org/t/p/w500/hJNdizFlxOW89edX3Rzr6OliSFI.jpg" alt="Pinocchio: Unstrung poster" loading="lazy" decoding="async" width="500" height="750"><span class="card__rating">★ 6.4</span>
-    <div class="card__overlay"><span class="card__genre">Horror</span><span class="card__cue">Read the guide</span></div>
-  </div>
-  <h3 class="card__title">Pinocchio: Unstrung</h3>
-  <p class="card__meta">2026 · Horror · 6.4/10</p>
-</article>
-<article class="card">
-  <div class="card__poster"><img class="card__img" src="https://image.tmdb.org/t/p/w500/wXln4DUrwcyjcFPwgQxFPYTlG1Z.jpg" alt="Apocalypse Z: New World poster" loading="lazy" decoding="async" width="500" height="750"><span class="card__rating">★ 6.1</span>
-    <div class="card__overlay"><span class="card__genre">Action</span><span class="card__cue">Read the guide</span></div>
-  </div>
-  <h3 class="card__title">Apocalypse Z: New World</h3>
-  <p class="card__meta">2026 · Action · 6.1/10</p>
-</article>
-<article class="card">
-  <div class="card__poster"><img class="card__img" src="https://image.tmdb.org/t/p/w500/8g7q6o54WfKWRmUQ0Ye8OskevUY.jpg" alt="Wildwood poster" loading="lazy" decoding="async" width="500" height="750"><span class="card__rating">★ 8.5</span>
-    <div class="card__overlay"><span class="card__genre">Animation</span><span class="card__cue">Read the guide</span></div>
-  </div>
-  <h3 class="card__title">Wildwood</h3>
-  <p class="card__meta">2026 · Animation · 8.5/10</p>
-</article>
-<article class="card">
-  <div class="card__poster"><img class="card__img" src="https://image.tmdb.org/t/p/w500/6VY1ZKgpsc8CfGsQcCGiYEgHdH0.jpg" alt="Hope poster" loading="lazy" decoding="async" width="500" height="750"><span class="card__rating">★ 6.8</span>
-    <div class="card__overlay"><span class="card__genre">Science Fiction</span><span class="card__cue">Read the guide</span></div>
-  </div>
-  <h3 class="card__title">Hope</h3>
-  <p class="card__meta">2026 · Science Fiction · 6.8/10</p>
-</article>
-<article class="card">
-  <div class="card__poster"><img class="card__img" src="https://image.tmdb.org/t/p/w500/5O616X9vmRzQdB68PHzBewPittd.jpg" alt="The Dog Stars poster" loading="lazy" decoding="async" width="500" height="750"><span class="card__rating">★ 7.2</span>
-    <div class="card__overlay"><span class="card__genre">Action</span><span class="card__cue">Read the guide</span></div>
-  </div>
-  <h3 class="card__title">The Dog Stars</h3>
-  <p class="card__meta">2026 · Action · 7.2/10</p>
-</article>
-<article class="card">
-  <div class="card__poster"><img class="card__img" src="https://image.tmdb.org/t/p/w500/1BdZbNvl1SfrrX8J9X5tQzN6Ivu.jpg" alt="Buddy poster" loading="lazy" decoding="async" width="500" height="750"><span class="card__rating">★ 7.0</span>
-    <div class="card__overlay"><span class="card__genre">Horror</span><span class="card__cue">Read the guide</span></div>
-  </div>
-  <h3 class="card__title">Buddy</h3>
-  <p class="card__meta">2026 · Horror · 7.0/10</p>
-</article></div>
-  </section>
-
-  <section class="section section--editorial" aria-labelledby="h-editorial">
-    <div class="section__head">
-      <p class="eyebrow">Go deeper</p>
-      <h2 id="h-editorial">Guides worth your evening</h2>
-    </div>
-    <div class="editorial"><article class="editorial__card">
-  <img class="editorial__img" src="https://image.tmdb.org/t/p/w1280/iDiTY1wA35YWzTmXLTtqaxtN6tc.jpg" alt="The Odyssey still" loading="lazy" decoding="async" width="1280" height="720">
-  <div class="editorial__body">
-    <p class="eyebrow">Adventure</p>
-    <h3>The Odyssey</h3>
-    <p class="editorial__text">Odysseus, the legendary King of Ithaca, embarks on a long and perilous journey home following the Trojan War. Throughout his voyage, he is forced to c…</p>
-  </div>
-</article>
-<article class="editorial__card">
-  <img class="editorial__img" src="https://image.tmdb.org/t/p/w1280/3icyRAqgakNcQn6aDVz9libFmBA.jpg" alt="Resident Evil still" loading="lazy" decoding="async" width="1280" height="720">
-  <div class="editorial__body">
-    <p class="eyebrow">Horror</p>
-    <h3>Resident Evil</h3>
-    <p class="editorial__text">Medical courier Bryan unwittingly finds himself fighting for survival as one fateful, horrifying night collapses around him in chaos.…</p>
-  </div>
-</article>
-<article class="editorial__card">
-  <img class="editorial__img" src="https://image.tmdb.org/t/p/w1280/4tjxYg2AbOzzG9G1YuiT2NzYhlH.jpg" alt="Spider-Man: Brand New Day still" loading="lazy" decoding="async" width="1280" height="720">
-  <div class="editorial__body">
-    <p class="eyebrow">Science Fiction</p>
-    <h3>Spider-Man: Brand New Day</h3>
-    <p class="editorial__text">Fighting crime full-time as Spider-Man in a world that doesn&#x27;t remember him—and the pressure of seeing his old friends move on without him—sparks a ch…</p>
-  </div>
-</article></div>
-  </section>
-
-  <section class="section" id="genres" aria-labelledby="h-genres">
-    <div class="section__head">
-      <p class="eyebrow">Follow a mood</p>
-      <h2 id="h-genres">Browse movies by genre</h2>
-    </div>
-    <ul class="genres"><li class="genre"><span class="genre__name">Action</span></li>
-<li class="genre"><span class="genre__name">Adventure</span></li>
-<li class="genre"><span class="genre__name">Animation</span></li>
-<li class="genre"><span class="genre__name">Comedy</span></li>
-<li class="genre"><span class="genre__name">Crime</span></li>
-<li class="genre"><span class="genre__name">Documentary</span></li>
-<li class="genre"><span class="genre__name">Drama</span></li>
-<li class="genre"><span class="genre__name">Family</span></li>
-<li class="genre"><span class="genre__name">Fantasy</span></li>
-<li class="genre"><span class="genre__name">Horror</span></li>
-<li class="genre"><span class="genre__name">Mystery</span></li>
-<li class="genre"><span class="genre__name">Romance</span></li>
-<li class="genre"><span class="genre__name">Sci-Fi</span></li>
-<li class="genre"><span class="genre__name">Thriller</span></li>
-<li class="genre"><span class="genre__name">War</span></li>
-<li class="genre"><span class="genre__name">Western</span></li></ul>
-  </section>
-
-  <section class="strip" aria-label="About MovieState">
-    <div class="strip__item"><strong>Free to read</strong><span>Every guide, no account</span></div>
-    <div class="strip__item"><strong>Updated weekly</strong><span>New films and fresh facts</span></div>
-    <div class="strip__item"><strong>Region-aware</strong><span>Where to watch near you</span></div>
-    <div class="strip__item"><strong>TMDB data</strong><span>Reviewed by our editors</span></div>
-  </section>
-
-  <section class="section" id="faq" aria-labelledby="h-faq">
-    <div class="section__head">
-      <p class="eyebrow">Good to know</p>
-      <h2 id="h-faq">Frequently asked questions</h2>
-    </div>
-    <div class="faq__list"><details class="faq"><summary>What is MovieState?</summary><p>MovieState is an independent movie discovery site. For each film we publish a detail guide — story, cast, runtime, ratings and where to watch — and link you to the MovieState streaming library when you are ready to watch.</p></details>
-<details class="faq"><summary>How do I find where to watch a movie?</summary><p>Open any movie guide and read the where-to-watch section. Streaming availability changes by country and provider, so we point you to the library that keeps availability current instead of publishing a list that goes stale.</p></details>
-<details class="faq"><summary>Is browsing MovieState free?</summary><p>Yes. Every guide on this site is free to read, with no account and no paywall. Watching happens on the MovieState streaming site.</p></details>
-<details class="faq"><summary>How current is the information?</summary><p>Movie facts come from TMDB and are reviewed by our editors. Ratings and availability move constantly, so each guide shows its last update date — treat it as a snapshot, not a promise.</p></details>
-<details class="faq"><summary>Can I request a movie guide?</summary><p>Yes. Tell us the title and we will queue it for a guide. Popular requests are prioritised in the publishing calendar.</p></details></div>
-  </section>
-</main>
-
-<footer class="footer">
-  <div class="footer__inner">
-    <div class="footer__brand">
-      <a class="brand" href="https://moviestate.github.io/MovieState/"><span class="brand__mark">MS</span><span class="brand__name">Movie<em>State</em></span></a>
-      <p>Independent movie guides — story, cast, ratings and where to watch, kept honest.</p>
-    </div>
-    <nav class="footer__col" aria-label="Explore"><h2>Explore</h2>
-      <a href="#trending">Trending</a><a href="#popular">Popular</a><a href="#genres">Genres</a><a href="#faq">FAQ</a>
-    </nav>
-    <nav class="footer__col" aria-label="MovieState"><h2>MovieState</h2>
-      <a href="https://moviestate.is-best.net/" target="_blank" rel="noopener">Streaming library</a>
-      <a href="https://moviestate.is-best.net/category/popular" target="_blank" rel="noopener">Popular on MovieState</a>
-    </nav>
-  </div>
-  <div class="footer__legal">
-    <p>© 2026 MovieState. Movie information and imagery provided by TMDB. MovieState is not endorsed or certified by TMDB.</p>
-    <p>Streaming availability varies by region and provider. Confirm details with the official service before subscribing.</p>
-  </div>
-</footer>
-<script src="assets/app.js" defer></script>
-</body>
-</html>
+<link rel="preload" href="https://moviestate.github.io/MovieState/assets/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="https://moviestate.github.io/MovieState/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://moviestate.github.io/MovieState/assets/style.css">
+<script src="https://moviestate.github.io/MovieState/assets/app.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "MovieState", "url": "https://moviestate.github.io/MovieState/", "description": "Independent movie guide: trending films, cast and crew, release details and where to watch in HD.", "publisher": {"@type": "Organization", "name": "MovieState", "url": "https://moviestate.github.io/MovieState/", "logo": {"@type": "ImageObject", "url": "https://moviestate.github.io/MovieState/assets/favicon.svg"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "MovieState", "url": "https://moviestate.github.io/MovieState/", "logo": {"@type": "ImageObject", "url": "https://moviestate.github.io/MovieState/assets/favicon.svg"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "Trending movies this week", "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://moviestate.github.io/MovieState/movie/resident-evil-2026/", "name": "Resident Evil"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is MovieState?", "acceptedAnswer": {"@type": "Answer", "text": "MovieState is an independent movie guide. We research films — story, cast, crew, runtime, release details and availability — and publish clear, fact-checked pages so you can decide what to watch next."}}, {"@type": "Question", "name": "How do I find where to watch a movie?", "acceptedAnswer": {"@type": "Answer", "text": "Open any movie page and use the Watch on MovieState button. Availability changes by country and provider, so always confirm on the streaming page before you subscribe."}}, {"@type": "Question", "name": "Is browsing MovieState free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every page on this site is free to read, with no account and no paywall. We do not run pop-ups or forced sign-ups."}}, {"@type": "Question", "name": "Where does the movie data come from?", "acceptedAnswer": {"@type": "Answer", "text": "Posters, backdrops and core metadata come from TMDB. We combine that with editorial checks against official studio and streaming announcements before publishing."}}, {"@type": "Question", "name": "Do you host or stream movie files?", "acceptedAnswer": {"@type": "Answer", "text": "No. This site publishes information only. Playback and downloads are handled on our main site, moviestate.is-best.net."}}]}</script>
+</head><body><a class="skip" href="#main">Skip to content</a>
+<header class="header"><div class="header__inner">
+<a class="brand" href="https://moviestate.github.io/MovieState/"><span class="brand__mark">MS</span><span class="brand__name">MovieState</span></a>
+<nav class="nav" aria-label="Main"><a href="https://moviestate.github.io/MovieState/movies/">Movies</a><a href="https://moviestate.github.io/MovieState/categories/">Categories</a><a href="https://moviestate.github.io/MovieState/people/">People</a><a href="https://moviestate.github.io/MovieState/faq/">FAQ</a><a href="https://moviestate.github.io/MovieState/about/">About</a></nav>
+<a class="btn btn--ghost btn--sm" href="https://moviestate.is-best.net/" target="_blank" rel="noopener">Watch Movies</a>
+</div></header><main id="main">
+<section class="hero">
+<img class="hero__bg" src="https://image.tmdb.org/t/p/w1280/4tjxYg2AbOzzG9G1YuiT2NzYhlH.jpg" alt="" width="1280" height="720" fetchpriority="high" decoding="async">
+<span class="hero__veil" aria-hidden="true"></span>
+<div class="hero__inner">
+<p class="kicker">Featured this week</p>
+<h1 class="hero__title">Spider-Man: Brand New Day <span>— where to watch in HD</span></h1>
+<ul class="meta-row"><li class="meta-row__score">8.5</li><li>2026</li><li>2h 25m</li><li>Science Fiction, Action</li></ul>
+<p class="hero__lede">Fighting crime full-time as Spider-Man in a world that doesn&#x27;t remember him—and the pressure of seeing his old friends move on without him—sparks a change in Peter Parker he may not have the power to control. B</p>
+<div class="hero__cta"><a class="btn btn--primary" href="https://moviestate.is-best.net/movie/969681/spider-man-brand-new-day" target="_blank" rel="noopener">Watch on MovieState</a>
+<a class="btn btn--ghost" href="https://moviestate.github.io/MovieState/movie/spider-man-brand-new-day-2026/">Movie details</a></div>
+</div></section>
+<div class="ticker" aria-hidden="true"><div class="ticker__track"><span>Resident Evil</span><i aria-hidden="true">◆</i><span>Resident Evil</span><i aria-hidden="true">◆</i></div></div>
+<section class="section"><div class="section__head"><p class="kicker">Now trending</p><h2 class="section__title">What everyone is watching this week</h2><a class="section__link" href="https://moviestate.github.io/MovieState/movies/">All movies<span aria-hidden="true"> →</span></a></div>
+<div class="rail"><div class="rail__track"><a class="card" href="/movie/resident-evil-2026/"><div class="card__art"><img src="https://image.tmdb.org/t/p/w342/gAgWJhUSQWCgtKR8170nMkYlBda.jpg" alt="Resident Evil poster" width="342" height="513" loading="lazy" decoding="async">
+<span class="card__score">7.4</span><span class="card__fade" aria-hidden="true"></span></div>
+<div class="card__body"><h3 class="card__title">Resident Evil</h3><p class="card__sub">2026 · Horror</p></div></a></div></div></section>
+<section class="section"><div class="section__head"><p class="kicker">Browse</p><h2 class="section__title">Categories built around how you actually choose films</h2><a class="section__link" href="https://moviestate.github.io/MovieState/categories/">All categories<span aria-hidden="true"> →</span></a></div>
+<div class="cat-grid"><a class="cat" href="https://moviestate.github.io/MovieState/category/action/">
+<img src="https://image.tmdb.org/t/p/w342/qJ2tW6WMUDux911r6m7haRef0WH.jpg" alt="" width="342" height="513" loading="lazy" decoding="async">
+<span class="cat__veil" aria-hidden="true"></span><span class="cat__label"><span class="cat__count">18 films</span>Action</span></a><a class="cat" href="https://moviestate.github.io/MovieState/category/adventure/">
+<img src="https://image.tmdb.org/t/p/w342/8g7q6o54WfKWRmUQ0Ye8OskevUY.jpg" alt="" width="342" height="513" loading="lazy" decoding="async">
+<span class="cat__veil" aria-hidden="true"></span><span class="cat__label"><span class="cat__count">18 films</span>Adventure</span></a><a class="cat" href="https://moviestate.github.io/MovieState/category/animation/">
+<img src="https://image.tmdb.org/t/p/w342/8g7q6o54WfKWRmUQ0Ye8OskevUY.jpg" alt="" width="342" height="513" loading="lazy" decoding="async">
+<span class="cat__veil" aria-hidden="true"></span><span class="cat__label"><span class="cat__count">18 films</span>Animation</span></a><a class="cat" href="https://moviestate.github.io/MovieState/category/comedy/">
+<img src="https://image.tmdb.org/t/p/w342/1BdZbNvl1SfrrX8J9X5tQzN6Ivu.jpg" alt="" width="342" height="513" loading="lazy" decoding="async">
+<span class="cat__veil" aria-hidden="true"></span><span class="cat__label"><span class="cat__count">18 films</span>Comedy</span></a><a class="cat" href="https://moviestate.github.io/MovieState/category/crime/">
+<img src="https://image.tmdb.org/t/p/w342/qJ2tW6WMUDux911r6m7haRef0WH.jpg" alt="" width="342" height="513" loading="lazy" decoding="async">
+<span class="cat__veil" aria-hidden="true"></span><span class="cat__label"><span class="cat__count">18 films</span>Crime</span></a><a class="cat" href="https://moviestate.github.io/MovieState/category/documentary/">
+<img src="https://image.tmdb.org/t/p/w342/Ap8QwmKfSjYbWC4XIP8w9pdn72O.jpg" alt="" width="342" height="513" loading="lazy" decoding="async">
+<span class="cat__veil" aria-hidden="true"></span><span class="cat__label"><span class="cat__count">18 films</span>Documentary</span></a><a class="cat" href="https://moviestate.github.io/MovieState/category/drama/">
+<img src="https://image.tmdb.org/t/p/w342/4PtzGcegF5Po1NmDAW9IklyvAUh.jpg" alt="" width="342" height="513" loading="lazy" decoding="async">
+<span class="cat__veil" aria-hidden="true"></span><span class="cat__label"><span class="cat__count">18 films</span>Drama</span></a><a class="cat" href="https://moviestate.github.io/MovieState/category/family/">
+<img src="https://image.tmdb.org/t/p/w342/6Ryitt95xrO8KXuqRGm1fUuNwqF.jpg" alt="" width="342" height="513" loading="lazy" decoding="async">
+<span class="cat__veil" aria-hidden="true"></span><span class="cat__label"><span class="cat__count">18 films</span>Family</span></a><a class="cat" href="https://moviestate.github.io/MovieState/category/fantasy/">
+<img src="https://image.tmdb.org/t/p/w342/8g7q6o54WfKWRmUQ0Ye8OskevUY.jpg" alt="" width="342" height="513" loading="lazy" decoding="async">
+<span class="cat__veil" aria-hidden="true"></span><span class="cat__label"><span class="cat__count">18 films</span>Fantasy</span></a><a class="cat" href="https://moviestate.github.io/MovieState/category/history/">
+<img src="https://image.tmdb.org/t/p/w342/czsyPHosFNbh4PPqXfqWu1aBXnA.jpg" alt="" width="342" height="513" loading="lazy" decoding="async">
+<span class="cat__veil" aria-hidden="true"></span><span class="cat__label"><span class="cat__count">18 films</span>History</span></a></div></section>
+<section class="section"><div class="section__head"><p class="kicker">Popular now</p><h2 class="section__title">Most-watched movies on MovieState</h2><a class="section__link" href="https://moviestate.github.io/MovieState/movies/">See all<span aria-hidden="true"> →</span></a></div>
+<div class="grid"><a class="card" href="/movie/the-dark-knight-2008/"><div class="card__art"><img src="https://image.tmdb.org/t/p/w342/qJ2tW6WMUDux911r6m7haRef0WH.jpg" alt="The Dark Knight poster" width="342" height="513" loading="lazy" decoding="async">
+<span class="card__score">8.5</span><span class="card__fade" aria-hidden="true"></span></div>
+<div class="card__body"><h3 class="card__title">The Dark Knight</h3><p class="card__sub">2008 · Action</p></div></a><a class="card" href="/movie/spider-man-brand-new-day-2026/"><div class="card__art"><img src="https://image.tmdb.org/t/p/w342/bjiS5ipwxb9JFy3XRRN4OAilSeX.jpg" alt="Spider-Man: Brand New Day poster" width="342" height="513" loading="lazy" decoding="async">
+<span class="card__score">8.5</span><span class="card__fade" aria-hidden="true"></span></div>
+<div class="card__body"><h3 class="card__title">Spider-Man: Brand New Day</h3><p class="card__sub">2026 · Science Fiction</p></div></a><a class="card" href="/movie/the-odyssey-2026/"><div class="card__art"><img src="https://image.tmdb.org/t/p/w342/9EJDqzAQ0HoNvMDkOQuirXt1RCg.jpg" alt="The Odyssey poster" width="342" height="513" loading="lazy" decoding="async">
+<span class="card__score">8.0</span><span class="card__fade" aria-hidden="true"></span></div>
+<div class="card__body"><h3 class="card__title">The Odyssey</h3><p class="card__sub">2026 · Adventure</p></div></a><a class="card" href="/movie/coco-2017/"><div class="card__art"><img src="https://image.tmdb.org/t/p/w342/6Ryitt95xrO8KXuqRGm1fUuNwqF.jpg" alt="Coco poster" width="342" height="513" loading="lazy" decoding="async">
+<span class="card__score">8.2</span><span class="card__fade" aria-hidden="true"></span></div>
+<div class="card__body"><h3 class="card__title">Coco</h3><p class="card__sub">2017 · Family</p></div></a></div></section>
+<section class="section"><div class="section__head"><p class="kicker">Cast &amp;amp; crew</p><h2 class="section__title">The people behind the films</h2><a class="section__link" href="https://moviestate.github.io/MovieState/people/">All people<span aria-hidden="true"> →</span></a></div>
+<div class="rail"><div class="rail__track rail__track--people"><a class="person" href="https://moviestate.github.io/MovieState/person/525-christopher-nolan/"><span class="person__ring"><img src="https://image.tmdb.org/t/p/w185/xuAIuYSmsUzKlUMBFGVZaWsY3DZ.jpg" alt="Christopher Nolan" width="185" height="278" loading="lazy" decoding="async"></span>
+<span class="person__name">Christopher Nolan</span><span class="person__role">Director</span></a><a class="person" href="https://moviestate.github.io/MovieState/person/1813-anne-hathaway/"><span class="person__ring"><img src="https://image.tmdb.org/t/p/w185/s6tflSD20MGz04ZR2R1lZvhmC4Y.jpg" alt="Anne Hathaway" width="185" height="278" loading="lazy" decoding="async"></span>
+<span class="person__name">Anne Hathaway</span><span class="person__role">Actor</span></a><a class="person" href="https://moviestate.github.io/MovieState/person/3141-marisa-tomei/"><span class="person__ring"><img src="https://image.tmdb.org/t/p/w185/vAQ10fvGfVyuJdMNKVMA4ZkacWL.jpg" alt="Marisa Tomei" width="185" height="278" loading="lazy" decoding="async"></span>
+<span class="person__name">Marisa Tomei</span><span class="person__role">Actor</span></a><a class="person" href="https://moviestate.github.io/MovieState/person/11288-robert-pattinson/"><span class="person__ring"><img src="https://image.tmdb.org/t/p/w185/3qZ09UE7lN6AtorfXFRYpEtSY93.jpg" alt="Robert Pattinson" width="185" height="278" loading="lazy" decoding="async"></span>
+<span class="person__name">Robert Pattinson</span><span class="person__role">Actor</span></a><a class="person" href="https://moviestate.github.io/MovieState/person/55585-sam-spruell/"><span class="person__ring"><img src="https://image.tmdb.org/t/p/w185/5xQOHz3uUy20zsUMABaIsAXKFcI.jpg" alt="Sam Spruell" width="185" height="278" loading="lazy" decoding="async"></span>
+<span class="person__name">Sam Spruell</span><span class="person__role">Actor</span></a><a class="person" href="https://moviestate.github.io/MovieState/person/1136406-tom-holland/"><span class="person__ring"><img src="https://image.tmdb.org/t/p/w185/5OK84Wn1bIEIThFKcVoaN087mLj.jpg" alt="Tom Holland" width="185" height="278" loading="lazy" decoding="async"></span>
+<span class="person__name">Tom Holland</span><span class="person__role">Actor</span></a><a class="person" href="https://moviestate.github.io/MovieState/person/1017209-carles-torrens/"><span class="person__ring"><img src="https://image.tmdb.org/t/p/w185/jBGDX4BwsytGhPehgrrPKFFlIgn.jpg" alt="Carles Torrens" width="185" height="278" loading="lazy" decoding="async"></span>
+<span class="person__name">Carles Torrens</span><span class="person__role">Director</span></a><a class="person" href="https://moviestate.github.io/MovieState/person/1232064-casper-kelly/"><span class="person__ring"><img src="https://image.tmdb.org/t/p/w185/uJTvuDrGdO9JnEMWEyI4fFKzApV.jpg" alt="Casper Kelly" width="185" height="278" loading="lazy" decoding="async"></span>
+<span class="person__name">Casper Kelly</span><span class="person__role">Director</span></a><a class="person" href="https://moviestate.github.io/MovieState/person/34017-daniel-s-nchez-ar-valo/"><span class="person__ring"><img src="https://image.tmdb.org/t/p/w185/d73wtgG7uZqhqvusvivSvX6ZR6C.jpg" alt="Daniel Sánchez Arévalo" width="185" height="278" loading="lazy" decoding="async"></span>
+<span class="person__name">Daniel Sánchez Arévalo</span><span class="person__role">Director</span></a><a class="person" href="https://moviestate.github.io/MovieState/person/1144604-destin-daniel-cretton/"><span class="person__ring"><img src="https://image.tmdb.org/t/p/w185/wtA2EtkvCyxu4oWECzqAF7G8IZH.jpg" alt="Destin Daniel Cretton" width="185" height="278" loading="lazy" decoding="async"></span>
+<span class="person__name">Destin Daniel Cretton</span><span class="person__role">Director</span></a><a class="person" href="https://moviestate.github.io/MovieState/person/131873-jacob-chase/"><span class="person__ring"><img src="https://image.tmdb.org/t/p/w185/pp9aLBcpazVrT46a8yw18qMscfT.jpg" alt="Jacob Chase" width="185" height="278" loading="lazy" decoding="async"></span>
+<span class="person__name">Jacob Chase</span><span class="person__role">Director</span></a><a class="person" href="https://moviestate.github.io/MovieState/person/929924-jaime-osorio-m-rquez/"><span class="person__ring"><img src="https://image.tmdb.org/t/p/w185/csale4QEp49q5U4lvxB3OpFdnOy.jpg" alt="Jaime Osorio Márquez" width="185" height="278" loading="lazy" decoding="async"></span>
+<span class="person__name">Jaime Osorio Márquez</span><span class="person__role">Director</span></a></div></div></section>
+<section class="section section--split">
+<div class="panel"><h2 class="panel__title">Every page answers three questions</h2>
+<p>What is this film? Who made it? Where can I watch it? We keep pages short to scan, add the facts that matter, and skip the filler.</p>
+<ul class="ticks"><li>Real cast, crew and runtime data</li><li>Honest availability notes by region</li><li>No pop-ups, no forced sign-ups</li></ul>
+<a class="btn btn--primary" href="https://moviestate.is-best.net/" target="_blank" rel="noopener">Open MovieState</a></div>
+<div class="panel panel--faq"><h2 class="panel__title">Common questions</h2><details class="faq__item"><summary><h3>What is MovieState?</h3></summary><p>MovieState is an independent movie guide. We research films — story, cast, crew, runtime, release details and availability — and publish clear, fact-checked pages so you can decide what to watch next.</p></details><details class="faq__item"><summary><h3>How do I find where to watch a movie?</h3></summary><p>Open any movie page and use the Watch on MovieState button. Availability changes by country and provider, so always confirm on the streaming page before you subscribe.</p></details><details class="faq__item"><summary><h3>Is browsing MovieState free?</h3></summary><p>Yes. Every page on this site is free to read, with no account and no paywall. We do not run pop-ups or forced sign-ups.</p></details><details class="faq__item"><summary><h3>Where does the movie data come from?</h3></summary><p>Posters, backdrops and core metadata come from TMDB. We combine that with editorial checks against official studio and streaming announcements before publishing.</p></details><details class="faq__item"><summary><h3>Do you host or stream movie files?</h3></summary><p>No. This site publishes information only. Playback and downloads are handled on our main site, moviestate.is-best.net.</p></details></div>
+</section>
+</main><footer class="footer"><div class="footer__inner">
+<div class="footer__brand"><span class="brand__mark">MS</span><div><strong>MovieState</strong>
+<p>An independent movie guide. We research films, cast, release details and where you can watch them — then send you to the right place.</p></div></div>
+<div class="footer__cols">
+<div><h3>Explore</h3><a href="https://moviestate.github.io/MovieState/movies/">All movies</a><a href="https://moviestate.github.io/MovieState/categories/">Categories</a><a href="https://moviestate.github.io/MovieState/people/">People</a></div>
+<div><h3>Company</h3><a href="https://moviestate.github.io/MovieState/about/">About</a><a href="https://moviestate.github.io/MovieState/faq/">FAQ</a><a href="https://moviestate.github.io/MovieState/privacy-policy/">Privacy Policy</a><a href="https://moviestate.github.io/MovieState/terms/">Terms &amp; Conditions</a></div>
+<div><h3>Watch</h3><a href="https://moviestate.is-best.net/" target="_blank" rel="noopener">MovieState streaming</a><span class="muted">Streaming and downloads are handled on our main site.</span></div>
+</div>
+<p class="footer__legal">© 2026 MovieState. Movie metadata and images provided by TMDB. MovieState is not endorsed or certified by TMDB. This site publishes information only; we do not host or stream video files.</p>
+</div></footer></body></html>

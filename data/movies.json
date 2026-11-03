@@ -37,7 +37,80 @@
     "Adventure"
    ],
    "lang": "en",
-   "popularity": 190.4858
+   "popularity": 190.4858,
+   "runtime": 95,
+   "tagline": "A new era of evil.",
+   "status": "Released",
+   "budget": 75000000,
+   "revenue": 385886554,
+   "language": "en",
+   "director": {
+    "id": 84833,
+    "name": "Zach Cregger",
+    "profile": "/bpFGFfWYIrZVK7WjwkVLwIoMKEb.jpg"
+   },
+   "cast": [
+    {
+     "id": 148992,
+     "name": "Austin Abrams",
+     "character": "Bryan",
+     "profile": "/nvbJNwyhIICUFcS4lhxj9mGvL5z.jpg"
+    },
+    {
+     "id": 1294982,
+     "name": "Paul Walter Hauser",
+     "character": "Paul",
+     "profile": "/hXjjbYg1Ah8mFf5ZcaakyXzDKMx.jpg"
+    },
+    {
+     "id": 3119545,
+     "name": "Kali Reis",
+     "character": "Maxine",
+     "profile": "/ruLDXHnKA4aHEQCcFGDAJ7bLTdt.jpg"
+    },
+    {
+     "id": 1838225,
+     "name": "Zach Cherry",
+     "character": "Carl",
+     "profile": "/fT3Wv8ef0Vn0daHWAObCp2Bd4Y.jpg"
+    },
+    {
+     "id": 1169291,
+     "name": "Johnno Wilson",
+     "character": "Officer Wilson",
+     "profile": "/eZtBoBE0F7Qb9ZyNpacMOQtmWnM.jpg"
+    },
+    {
+     "id": 2445714,
+     "name": "Shaun W. Loeser",
+     "character": "Puker",
+     "profile": "/pMV7kzy7OHk4X93uRGbrdvuFgQB.jpg"
+    },
+    {
+     "id": 84833,
+     "name": "Zach Cregger",
+     "character": "Intercom (voice)",
+     "profile": "/bpFGFfWYIrZVK7WjwkVLwIoMKEb.jpg"
+    },
+    {
+     "id": 1362996,
+     "name": "Emily Piggford",
+     "character": "Dr. Maria Stokes",
+     "profile": "/ruijvaNNXzGXqGphQXsoHts1Ovc.jpg"
+    },
+    {
+     "id": 1221073,
+     "name": "Will Merrick",
+     "character": "Dave",
+     "profile": "/zqyH01TJ9WW6TaAULCG2ChSbNwI.jpg"
+    },
+    {
+     "id": 5848547,
+     "name": "Zoé Bellas",
+     "character": "Birdie",
+     "profile": "/3nw4EhStA4IcJQxz4Yevm25u5ov.jpg"
+    }
+   ]
   },
   {
    "tmdb_id": 1375441,
@@ -54,7 +127,80 @@
     "Drama"
    ],
    "lang": "en",
-   "popularity": 56.1029
+   "popularity": 56.1029,
+   "runtime": 110,
+   "tagline": "Are you ready to make television history?",
+   "status": "Released",
+   "budget": 14500000,
+   "revenue": 52704611,
+   "language": "en",
+   "director": {
+    "id": 1405665,
+    "name": "Lance Oppenheim",
+    "profile": "/h12zgCaZ24imkZlw0nry9T9mjGD.jpg"
+   },
+   "cast": [
+    {
+     "id": 11288,
+     "name": "Robert Pattinson",
+     "character": "Chris Hansen",
+     "profile": "/3qZ09UE7lN6AtorfXFRYpEtSY93.jpg"
+    },
+    {
+     "id": 28044,
+     "name": "Merritt Wever",
+     "character": "Andie Bender",
+     "profile": "/ldd1WntzQ72DVuNLoko8yMFHH7j.jpg"
+    },
+    {
+     "id": 61263,
+     "name": "Skyler Gisondo",
+     "character": "Dan Plum",
+     "profile": "/4oywya1Roukq6FJFuWjU5z61WUg.jpg"
+    },
+    {
+     "id": 1232599,
+     "name": "Matthew Maher",
+     "character": "Xavier Von Erck",
+     "profile": "/3RPEUaliXJ9lcoL5R5IbcAOwd5D.jpg"
+    },
+    {
+     "id": 2344346,
+     "name": "Phoebe Bridgers",
+     "character": "Del",
+     "profile": "/3Br0mutrOkKaemjXsh9m6ejFfRx.jpg"
+    },
+    {
+     "id": 5268306,
+     "name": "Victor Brunette",
+     "character": "Frag",
+     "profile": "/oVLryWXSuHFNWceoY61nzOiB1ti.jpg"
+    },
+    {
+     "id": 71913,
+     "name": "Bokeem Woodbine",
+     "character": "Cortland Gunn",
+     "profile": "/pnPyA5pJn94zUzuLWTNkGBNZxza.jpg"
+    },
+    {
+     "id": 6400465,
+     "name": "Michael Chachere",
+     "character": "Michael Chachere",
+     "profile": "/z3GdHd9fJni93zvqpIyLJvKKH99.jpg"
+    },
+    {
+     "id": 18355,
+     "name": "Alex Winter",
+     "character": "Bill Conradt",
+     "profile": "/7wPi7qrHrsqy1VJ2wQTatIwKjHH.jpg"
+    },
+    {
+     "id": 1291350,
+     "name": "Tony Revolori",
+     "character": "MarriedAndLookingForFun31313",
+     "profile": "/tSF6XmXDikrKZbFUeoDnafXxKjT.jpg"
+    }
+   ]
   },
   {
    "tmdb_id": 1244523,
@@ -71,7 +217,80 @@
     "Thriller"
    ],
    "lang": "en",
-   "popularity": 47.1881
+   "popularity": 47.1881,
+   "runtime": 104,
+   "tagline": "Witness terror on a gigantic scale.",
+   "status": "Released",
+   "budget": 0,
+   "revenue": 962070,
+   "language": "en",
+   "director": {
+    "id": 1039364,
+    "name": "Mike P. Nelson",
+    "profile": "/wVK5bqU88avx8mYN2EBfJNzWIww.jpg"
+   },
+   "cast": [
+    {
+     "id": 142115,
+     "name": "Kiana Madeira",
+     "character": "Lena",
+     "profile": "/sw5jTOmdHhAZzVMIzSVEDi5g7lz.jpg"
+    },
+    {
+     "id": 1427680,
+     "name": "Jessica Rothe",
+     "character": "Alli",
+     "profile": "/oItPXy56W0Y5taqIMZilRtnPDMn.jpg"
+    },
+    {
+     "id": 2427360,
+     "name": "Will Close",
+     "character": "Callum",
+     "profile": null
+    },
+    {
+     "id": 565373,
+     "name": "Juan Pablo Shuk",
+     "character": "Miguel",
+     "profile": "/bUJgufFSqWMpa8gEXPTNun8MP8i.jpg"
+    },
+    {
+     "id": 130253,
+     "name": "Logan Marshall-Green",
+     "character": "Brennan",
+     "profile": "/oogXh2Osxw43bfjMVCcCH8SGsUB.jpg"
+    },
+    {
+     "id": 5184997,
+     "name": "Jaime Newball",
+     "character": "Raúl",
+     "profile": null
+    },
+    {
+     "id": 1502461,
+     "name": "Jackson Bews",
+     "character": "Shawn",
+     "profile": "/of70BbE1KAq6J1PuUFnEHRyzh3Z.jpg"
+    },
+    {
+     "id": 3692568,
+     "name": "Vicente Peña",
+     "character": "Pedro",
+     "profile": null
+    },
+    {
+     "id": 5184999,
+     "name": "Mateo Moreno",
+     "character": "Diego",
+     "profile": null
+    },
+    {
+     "id": 929933,
+     "name": "Nelson Camayo",
+     "character": "Guilherme",
+     "profile": "/rWlL59TzadOr9jUs73ClyZoM0iO.jpg"
+    }
+   ]
   },
   {
    "tmdb_id": 791523,
@@ -89,7 +308,80 @@
     "Fantasy"
    ],
    "lang": "en",
-   "popularity": 1725.7447
+   "popularity": 1725.7447,
+   "runtime": 132,
+   "tagline": "How far would you go for those you love?",
+   "status": "Released",
+   "budget": 100000000,
+   "revenue": 28871577,
+   "language": "en",
+   "director": {
+    "id": 1033661,
+    "name": "Travis Knight",
+    "profile": "/5JmhiYsF0H1geSwbX5NtByZuJjC.jpg"
+   },
+   "cast": [
+    {
+     "id": 1768964,
+     "name": "Peyton Elizabeth Lee",
+     "character": "Prue McKeel (voice)",
+     "profile": "/hnEl4HxqGNGHCJ7Y8l3dJ21WHeG.jpg"
+    },
+    {
+     "id": 1277188,
+     "name": "Jacob Tremblay",
+     "character": "Curtis Mehlberg (voice)",
+     "profile": "/h8CXDp86Y36CUENF4SXJq5ZRTsf.jpg"
+    },
+    {
+     "id": 36662,
+     "name": "Carey Mulligan",
+     "character": "Alexandra (voice)",
+     "profile": "/iwVHhqoz5b62FR0SDpZ7wfsuTBI.jpg"
+    },
+    {
+     "id": 932967,
+     "name": "Mahershala Ali",
+     "character": "Brenden (voice)",
+     "profile": "/9ZmSejm5lnUVY5IJ1iNx2QEjnHb.jpg"
+    },
+    {
+     "id": 20766,
+     "name": "Richard E. Grant",
+     "character": "Owl Rex (voice)",
+     "profile": "/92oaBntIXhndCxUXaGywUyILIIE.jpg"
+    },
+    {
+     "id": 9780,
+     "name": "Angela Bassett",
+     "character": "The General (voice)",
+     "profile": "/tKnuviliyeKNGlo26IU5gIrJAtd.jpg"
+    },
+    {
+     "id": 1625558,
+     "name": "Awkwafina",
+     "character": "Septima (voice)",
+     "profile": "/l5AKkg3H1QhMuXmTTmq1EyjyiRb.jpg"
+    },
+    {
+     "id": 561869,
+     "name": "Amandla Stenberg",
+     "character": "Niamh (voice)",
+     "profile": "/1Kv2sVVUkNSXyvmma8RBAX0CNGA.jpg"
+    },
+    {
+     "id": 2887,
+     "name": "Tom Waits",
+     "character": "Maxim (voice)",
+     "profile": "/kmPOnRmxUgL0rjIUF98uToQrQKB.jpg"
+    },
+    {
+     "id": 95101,
+     "name": "Charlie Day",
+     "character": "Dmitri (voice)",
+     "profile": "/c0HNhjChGybnHa4eoLyqO4dDu1j.jpg"
+    }
+   ]
   },
   {
    "tmdb_id": 1381071,
@@ -107,7 +399,80 @@
     "Action"
    ],
    "lang": "ja",
-   "popularity": 38.7101
+   "popularity": 38.7101,
+   "runtime": 135,
+   "tagline": "Returning to zero is not an option.",
+   "status": "Released",
+   "budget": 0,
+   "revenue": 0,
+   "language": "ja",
+   "director": {
+    "id": 43652,
+    "name": "Takashi Yamazaki",
+    "profile": "/aRxPJuOij3DUUGojtBmjAAxfL9x.jpg"
+   },
+   "cast": [
+    {
+     "id": 225730,
+     "name": "Ryunosuke Kamiki",
+     "character": "Koichi Shikishima",
+     "profile": "/ut7ewXjdgUmgkhJ1EtbOo9tbc7s.jpg"
+    },
+    {
+     "id": 1516266,
+     "name": "Minami Hamabe",
+     "character": "Noriko Oishi",
+     "profile": "/eQN8N2chINckvQDiNqzDXI0v9vN.jpg"
+    },
+    {
+     "id": 1161474,
+     "name": "Yuki Yamada",
+     "character": "Shiro Mizushima",
+     "profile": "/1oRe8UYddBYzyqAjlSwMTIFgg4K.jpg"
+    },
+    {
+     "id": 121716,
+     "name": "Kuranosuke Sasaki",
+     "character": "Seiji Akitsu",
+     "profile": "/lPDKfLKIKDCBdqig3uhYnPjwY5h.jpg"
+    },
+    {
+     "id": 2541,
+     "name": "Jun Kunimura",
+     "character": "",
+     "profile": "/zC0GbuXQGPur7i8AkdPUWedmDKz.jpg"
+    },
+    {
+     "id": 2430993,
+     "name": "Miou Tanaka",
+     "character": "Captain Tatsuo Hotta",
+     "profile": "/4dXKZqcF1K6n6yVAGVVRlsc1RU0.jpg"
+    },
+    {
+     "id": 100766,
+     "name": "Sakura Ando",
+     "character": "Sumiko Ota",
+     "profile": "/k2R2ryEFEuUe2f3Dsd5yH8aRdqV.jpg"
+    },
+    {
+     "id": 87637,
+     "name": "Masami Nagasawa",
+     "character": "Aoyama",
+     "profile": "/yvHhfDOral1DeyBRSzpxsoHz60t.jpg"
+    },
+    {
+     "id": 136191,
+     "name": "Min Tanaka",
+     "character": "Kanji Murakami",
+     "profile": "/bXmBnejA48Da7LzLdJqTKSVPCwd.jpg"
+    },
+    {
+     "id": 111691,
+     "name": "Hidetaka Yoshioka",
+     "character": "Kenji Noda",
+     "profile": "/xWNS6qStVthhWoxmKDfNS729BjJ.jpg"
+    }
+   ]
   },
   {
    "tmdb_id": 1813355,
@@ -125,7 +490,80 @@
     "Mystery"
    ],
    "lang": "en",
-   "popularity": 164.1442
+   "popularity": 164.1442,
+   "runtime": 30,
+   "tagline": "",
+   "status": "Released",
+   "budget": 0,
+   "revenue": 0,
+   "language": "en",
+   "director": {
+    "id": 2521383,
+    "name": "Tazbah Chavez",
+    "profile": null
+   },
+   "cast": [
+    {
+     "id": 2718335,
+     "name": "Kiawentiio",
+     "character": "Neekani",
+     "profile": "/wc2giacMf80eXDjZn9JpzhOfOKG.jpg"
+    },
+    {
+     "id": 3820201,
+     "name": "Isabel DeRoy-Olson",
+     "character": "Kino",
+     "profile": "/5Q00DYyruBqaJQuHqnu6qxVnpXT.jpg"
+    },
+    {
+     "id": 2530541,
+     "name": "Michael Podemski",
+     "character": "Maneese",
+     "profile": "/rKhfWIIQhiGKLyhB238wFCDv1nE.jpg"
+    },
+    {
+     "id": 42376,
+     "name": "Zahn McClarnon",
+     "character": "Mitig",
+     "profile": "/54M2t1gziirkDdvj4SxAl6dXaVO.jpg"
+    },
+    {
+     "id": 1591305,
+     "name": "MorningStar Angeline",
+     "character": "Sesqui",
+     "profile": "/nB1PCopniuETacJofZ254Cr4CFo.jpg"
+    },
+    {
+     "id": 1529984,
+     "name": "Brandon Oakes",
+     "character": "Apto",
+     "profile": "/iiEiwcEaOObQXHoOitU1wstZmMF.jpg"
+    },
+    {
+     "id": 186495,
+     "name": "Jennifer Podemski",
+     "character": "Miko",
+     "profile": "/5LlDHLrj0QRyQ0IpPgXr419tXRF.jpg"
+    },
+    {
+     "id": 236022,
+     "name": "Kimberly Guerrero",
+     "character": "Rose",
+     "profile": "/mmadpo2S9FkZ17c2GDOGQwVPH7h.jpg"
+    },
+    {
+     "id": 5541689,
+     "name": "Brenda Odjick",
+     "character": "Nebowist",
+     "profile": "/4KCBWor11HngnJygKA7GJhu3PDQ.jpg"
+    },
+    {
+     "id": 4229638,
+     "name": "Thosh Collins",
+     "character": "",
+     "profile": "/fOnqZREIdxVllZFgkz7GU1FbXd9.jpg"
+    }
+   ]
   },
   {
    "tmdb_id": 1257147,
@@ -141,7 +579,80 @@
     "Comedy"
    ],
    "lang": "pt",
-   "popularity": 11.3802
+   "popularity": 11.3802,
+   "runtime": 125,
+   "tagline": "",
+   "status": "Released",
+   "budget": 0,
+   "revenue": 0,
+   "language": "pt",
+   "director": {
+    "id": 1706418,
+    "name": "Susana Garcia",
+    "profile": "/o5hcdEO1mpkQmwnzKZhgLgk13h7.jpg"
+   },
+   "cast": [
+    {
+     "id": 228028,
+     "name": "Ingrid Guimarães",
+     "character": "Clara",
+     "profile": "/cK9Skq9tN7YdB3n1AiD5VeavxYP.jpg"
+    },
+    {
+     "id": 562161,
+     "name": "Mônica Martelli",
+     "character": "Julia",
+     "profile": "/yo71UP4C3LITHXcP0r1SG4oo0wT.jpg"
+    },
+    {
+     "id": 1918332,
+     "name": "Giulia Benite",
+     "character": "Manu",
+     "profile": "/jyQK0gnTPzJkKP1CqOAYFx3K0ir.jpg"
+    },
+    {
+     "id": 5556777,
+     "name": "Gabi Amaral",
+     "character": "Isadora",
+     "profile": "/7fe6jT86wbi16rCqSUAPoNLpOoY.jpg"
+    },
+    {
+     "id": 107920,
+     "name": "Ricardo Pereira",
+     "character": "Antônio - Médico",
+     "profile": "/ka35HapmYDkf1GSzmcDcl3YWEQa.jpg"
+    },
+    {
+     "id": 1406326,
+     "name": "Michel Melamed",
+     "character": "Breno",
+     "profile": "/wAXJBqg77X9pSYLcJGcS7Sf8tAT.jpg"
+    },
+    {
+     "id": 1245028,
+     "name": "Thaila Ayala",
+     "character": "Elisa",
+     "profile": "/cqYxvSXju0RJPV4uhJkDPzsHCae.jpg"
+    },
+    {
+     "id": 144807,
+     "name": "Gustavo Machado",
+     "character": "André",
+     "profile": "/maiSPgEboi2alwssKiUQDL3iWuK.jpg"
+    },
+    {
+     "id": 544602,
+     "name": "Albano Jerónimo",
+     "character": "Nuno",
+     "profile": "/qiXVwTbsoY6xEViJZgoqy9sKPfO.jpg"
+    },
+    {
+     "id": 1170973,
+     "name": "Alejandro Albarracín",
+     "character": "Ramon",
+     "profile": "/34RnAj40ZvWAEHDCRXMmXnkUOJi.jpg"
+    }
+   ]
   },
   {
    "tmdb_id": 13667,
@@ -158,7 +669,80 @@
     "Romance"
    ],
    "lang": "en",
-   "popularity": 3.0781
+   "popularity": 3.0781,
+   "runtime": 97,
+   "tagline": "Insanity doesn't run in the family, it gallops.",
+   "status": "Released",
+   "budget": 3500000,
+   "revenue": 10297601,
+   "language": "en",
+   "director": {
+    "id": 87565,
+    "name": "Savage Steve Holland",
+    "profile": "/3GADF4j8wNAxPJIsipQnrd2ieTt.jpg"
+   },
+   "cast": [
+    {
+     "id": 3036,
+     "name": "John Cusack",
+     "character": "Lane Meyer",
+     "profile": "/aCwCx6JU7Jxbg6Q1ygcnLY750le.jpg"
+    },
+    {
+     "id": 13656,
+     "name": "Amanda Wyss",
+     "character": "Beth Truss",
+     "profile": "/9vSHplyPkPVyBo7OjdWTOVgYumn.jpg"
+    },
+    {
+     "id": 80137,
+     "name": "Diane Franklin",
+     "character": "Monique Junot",
+     "profile": "/xvMGJAUPS0xrxMH3mkHGq6G1zjF.jpg"
+    },
+    {
+     "id": 1073810,
+     "name": "Aaron Dozier",
+     "character": "Roy Stalin",
+     "profile": null
+    },
+    {
+     "id": 87003,
+     "name": "Curtis Armstrong",
+     "character": "Charles De Mar",
+     "profile": "/3ZAX6NoU47Qshk0svFxkEcJ5fhI.jpg"
+    },
+    {
+     "id": 28010,
+     "name": "David Ogden Stiers",
+     "character": "Al Meyer",
+     "profile": "/cgCTQt3RZVkhkusG77l4HwHEH6A.jpg"
+    },
+    {
+     "id": 15655,
+     "name": "Kim Darby",
+     "character": "Jenny Meyer",
+     "profile": "/w1dwAymNXsi16SAuZZsl2JTEWFd.jpg"
+    },
+    {
+     "id": 87562,
+     "name": "Demian Slade",
+     "character": "Johnny Gasparini",
+     "profile": "/3eKtsyXImI81s25566FECbJw9hG.jpg"
+    },
+    {
+     "id": 182416,
+     "name": "Laura Waterbury",
+     "character": "Mrs. Smith",
+     "profile": null
+    },
+    {
+     "id": 70804,
+     "name": "Dan Schneider",
+     "character": "Ricky Smith",
+     "profile": "/kUD4fR3yxW2PTFQjEHqWJq3SzEq.jpg"
+    }
+   ]
   },
   {
    "tmdb_id": 155,
@@ -176,7 +760,80 @@
     "Crime"
    ],
    "lang": "en",
-   "popularity": 3418.3661
+   "popularity": 3418.3661,
+   "runtime": 152,
+   "tagline": "Welcome to a world without rules.",
+   "status": "Released",
+   "budget": 185000000,
+   "revenue": 1008480529,
+   "language": "en",
+   "director": {
+    "id": 525,
+    "name": "Christopher Nolan",
+    "profile": "/xuAIuYSmsUzKlUMBFGVZaWsY3DZ.jpg"
+   },
+   "cast": [
+    {
+     "id": 3894,
+     "name": "Christian Bale",
+     "character": "Bruce Wayne",
+     "profile": "/7Pxez9J8fuPd2Mn9kex13YALrCQ.jpg"
+    },
+    {
+     "id": 1810,
+     "name": "Heath Ledger",
+     "character": "Joker",
+     "profile": "/p2z2bURSg7nuMsN9P2s61e2RvNz.jpg"
+    },
+    {
+     "id": 6383,
+     "name": "Aaron Eckhart",
+     "character": "Harvey Dent",
+     "profile": "/u5JjnRMr9zKEVvOP7k3F6gdcwT6.jpg"
+    },
+    {
+     "id": 3895,
+     "name": "Michael Caine",
+     "character": "Alfred",
+     "profile": "/bVZRMlpjTAO2pJK6v90buFgVbSW.jpg"
+    },
+    {
+     "id": 1579,
+     "name": "Maggie Gyllenhaal",
+     "character": "Rachel",
+     "profile": "/vsfkWdYWmA9CpzMHTJzrFxlDnEZ.jpg"
+    },
+    {
+     "id": 64,
+     "name": "Gary Oldman",
+     "character": "Gordon",
+     "profile": "/yhaSM5habNNI1Tf4ALRwRk3VvSZ.jpg"
+    },
+    {
+     "id": 192,
+     "name": "Morgan Freeman",
+     "character": "Lucius Fox",
+     "profile": "/905k0RFzH0Kd6gx8oSxRdnr6FL.jpg"
+    },
+    {
+     "id": 53651,
+     "name": "Monique Gabriela Curnen",
+     "character": "Ramirez",
+     "profile": "/lJgLQs7cfM49m8VzVviwxIByz76.jpg"
+    },
+    {
+     "id": 57597,
+     "name": "Ron Dean",
+     "character": "Wuertz",
+     "profile": "/mgqdr4VFrTVZatkki2suNLYxeDG.jpg"
+    },
+    {
+     "id": 2037,
+     "name": "Cillian Murphy",
+     "character": "Scarecrow",
+     "profile": "/2lKs67r7FI4bPu0AXxMUJZxmUXn.jpg"
+    }
+   ]
   },
   {
    "tmdb_id": 1058424,
@@ -194,7 +851,80 @@
     "Action"
    ],
    "lang": "ko",
-   "popularity": 454.8376
+   "popularity": 454.8376,
+   "runtime": 157,
+   "tagline": "Is this how it ends?",
+   "status": "Released",
+   "budget": 46000000,
+   "revenue": 49456866,
+   "language": "ko",
+   "director": {
+    "id": 75915,
+    "name": "Na Hong-jin",
+    "profile": "/hgOX3rbIDfE2JOFlWzrAMsNzWke.jpg"
+   },
+   "cast": [
+    {
+     "id": 68903,
+     "name": "Hwang Jung-min",
+     "character": "Go Bum-seok",
+     "profile": "/hKF1uh0iEfuZlBE79CXPw415qyn.jpg"
+    },
+    {
+     "id": 127564,
+     "name": "Zo In-sung",
+     "character": "Go Sung-ki",
+     "profile": "/69gbyFI0ET0l0dyjKChlx1Zx269.jpg"
+    },
+    {
+     "id": 3194501,
+     "name": "Hoyeon",
+     "character": "Lim Sung-ae",
+     "profile": "/AfQFFyGeG9xOQnEJb1Ash1RomkP.jpg"
+    },
+    {
+     "id": 227454,
+     "name": "Alicia Vikander",
+     "character": "J'aur",
+     "profile": "/lZu8qiTwiQIN96cuptgqMCCaUtg.jpg"
+    },
+    {
+     "id": 17288,
+     "name": "Michael Fassbender",
+     "character": "Ma'veyyo",
+     "profile": "/xvbnUiB2ZBR3QIt595OzNy657Vw.jpg"
+    },
+    {
+     "id": 1353827,
+     "name": "Taylor Russell",
+     "character": "Ai'dovor",
+     "profile": "/3kW1SvpzyOPPZHxbz7cgR7ilmtQ.jpg"
+    },
+    {
+     "id": 1286537,
+     "name": "Cameron Britton",
+     "character": "Va'migere",
+     "profile": "/9HFxi8ZnBiby3AQ7tBOPDxXFkCT.jpg"
+    },
+    {
+     "id": 564847,
+     "name": "Lee Sang-hee",
+     "character": "Nak-yeon",
+     "profile": "/wOYFSg20yGe48VFALqGAlrLjFHV.jpg"
+    },
+    {
+     "id": 2370779,
+     "name": "Um Mun-suk",
+     "character": "Yang-bae",
+     "profile": "/niV5OXu1cgKnlIU1Iamp1BVeCdT.jpg"
+    },
+    {
+     "id": 1305674,
+     "name": "Im Hyun-sik",
+     "character": "Hae-sul",
+     "profile": "/syQMfT7qchOwKDMXc3vQB57v1ZL.jpg"
+    }
+   ]
   },
   {
    "tmdb_id": 969681,
@@ -212,7 +942,80 @@
     "Adventure"
    ],
    "lang": "en",
-   "popularity": 358.627
+   "popularity": 358.627,
+   "runtime": 145,
+   "tagline": "A brand new day starts now.",
+   "status": "Released",
+   "budget": 225000000,
+   "revenue": 2519512338,
+   "language": "en",
+   "director": {
+    "id": 1144604,
+    "name": "Destin Daniel Cretton",
+    "profile": "/wtA2EtkvCyxu4oWECzqAF7G8IZH.jpg"
+   },
+   "cast": [
+    {
+     "id": 1136406,
+     "name": "Tom Holland",
+     "character": "Peter Parker / Spider-Man",
+     "profile": "/5OK84Wn1bIEIThFKcVoaN087mLj.jpg"
+    },
+    {
+     "id": 1590797,
+     "name": "Sadie Sink",
+     "character": "Jean Grey",
+     "profile": "/ivvCh7VtfXflXhv9ie2gtnp4U2i.jpg"
+    },
+    {
+     "id": 2028037,
+     "name": "Tramell Tillman",
+     "character": "William 'Bill' Metzger",
+     "profile": "/bEA15zMnkcXlRroYjKrFUWiiK7y.jpg"
+    },
+    {
+     "id": 505710,
+     "name": "Zendaya",
+     "character": "MJ",
+     "profile": "/qGkBlyn1AwQpuFnRARMRwj0iHZp.jpg"
+    },
+    {
+     "id": 1649152,
+     "name": "Jacob Batalon",
+     "character": "Ned Leeds",
+     "profile": "/53YhaL4xw4Sb1ssoHkeSSBaO29c.jpg"
+    },
+    {
+     "id": 19498,
+     "name": "Jon Bernthal",
+     "character": "Frank Castle / Punisher",
+     "profile": "/bjcglF1IpDcZNs1HwFxakGpzBo6.jpg"
+    },
+    {
+     "id": 103,
+     "name": "Mark Ruffalo",
+     "character": "Bruce Banner / Hulk",
+     "profile": "/5GilHMOt5PAQh6rlUKZzGmaKEI7.jpg"
+    },
+    {
+     "id": 1373737,
+     "name": "Florence Pugh",
+     "character": "Yelena Belova / Black Widow",
+     "profile": "/1QfiLnofJFlOJOLCWaxyDpIN03v.jpg"
+    },
+    {
+     "id": 59693,
+     "name": "Liza Colón-Zayas",
+     "character": "Detective Jean DeWolff",
+     "profile": "/q2gHcef0wckji0AS8ZEO6cYx065.jpg"
+    },
+    {
+     "id": 3141,
+     "name": "Marisa Tomei",
+     "character": "May Parker",
+     "profile": "/vAQ10fvGfVyuJdMNKVMA4ZkacWL.jpg"
+    }
+   ]
   },
   {
    "tmdb_id": 1596275,
@@ -229,7 +1032,80 @@
     "Thriller"
    ],
    "lang": "de",
-   "popularity": 295.8946
+   "popularity": 295.8946,
+   "runtime": 103,
+   "tagline": "",
+   "status": "Released",
+   "budget": 0,
+   "revenue": 0,
+   "language": "de",
+   "director": {
+    "id": 45689,
+    "name": "Sergej Moya",
+    "profile": "/rOTaoIk2jhVLyjtsAtbbiQ5zmuQ.jpg"
+   },
+   "cast": [
+    {
+     "id": 1283954,
+     "name": "Lisa-Marie Koroll",
+     "character": "Sarah Jenkins",
+     "profile": "/5wgbyqv6MK3hQyeKdQrIf3k3nZW.jpg"
+    },
+    {
+     "id": 4580908,
+     "name": "Amin Baahmed",
+     "character": "Dante Annunziata",
+     "profile": "/oyFyPJkzefovbnRE6DnWwwYLZaD.jpg"
+    },
+    {
+     "id": 1947797,
+     "name": "Gustav Schmidt",
+     "character": "Ruben Laroch",
+     "profile": "/okAsgPvMjDEVkLg5S2lyfZbsGvD.jpg"
+    },
+    {
+     "id": 45972,
+     "name": "Mišel Matičević",
+     "character": "Alexander Bronson",
+     "profile": "/jKYzgKIBs4O7eBBMDKk1T5RWYjN.jpg"
+    },
+    {
+     "id": 1035846,
+     "name": "Lucie Heinze",
+     "character": "Tanya Stein",
+     "profile": "/mOOEz6Xx06RGPn6Wqo2Thy4H2XI.jpg"
+    },
+    {
+     "id": 935730,
+     "name": "Frederic Linkemann",
+     "character": "Jack Schroder",
+     "profile": "/wjjTwrOFcW3KZua8ah2j8qBqVFe.jpg"
+    },
+    {
+     "id": 5510,
+     "name": "Inka Friedrich",
+     "character": "Irene Jenkins",
+     "profile": "/a90LTNdgFE5NHPGTNurWO2IXKhc.jpg"
+    },
+    {
+     "id": 49018,
+     "name": "Jeanette Hain",
+     "character": "Sofia Annunziata",
+     "profile": "/6FkzcacM6wCKovrE7OIvN74KPMZ.jpg"
+    },
+    {
+     "id": 49201,
+     "name": "Philippe Brenninkmeyer",
+     "character": "Dr. Frederic Richter",
+     "profile": "/cfYuU75rDWr5xnpodR7FLbzvv4o.jpg"
+    },
+    {
+     "id": 68368,
+     "name": "Leslie Malton",
+     "character": "Eva Maria Fischer",
+     "profile": "/sC8tgPm1jF73u2eeK2ZiZ9uI3MA.jpg"
+    }
+   ]
   },
   {
    "tmdb_id": 1507696,
@@ -247,7 +1123,80 @@
     "Horror"
    ],
    "lang": "es",
-   "popularity": 324.0359
+   "popularity": 324.0359,
+   "runtime": 96,
+   "tagline": "",
+   "status": "Released",
+   "budget": 0,
+   "revenue": 0,
+   "language": "es",
+   "director": {
+    "id": 1017209,
+    "name": "Carles Torrens",
+    "profile": "/jBGDX4BwsytGhPehgrrPKFFlIgn.jpg"
+   },
+   "cast": [
+    {
+     "id": 2556046,
+     "name": "Carlos Alcaide",
+     "character": "Roberto",
+     "profile": "/rl8fxgvKu56zxf5kIMGVTX3ju7Q.jpg"
+    },
+    {
+     "id": 4847621,
+     "name": "Julia Martínez",
+     "character": "Marina",
+     "profile": "/kkw8za1vSW4uLXBdakwbFLO7TCU.jpg"
+    },
+    {
+     "id": 72128,
+     "name": "José María Yázpik",
+     "character": "Pritchenko",
+     "profile": "/GEV4PnIhxAAPxIHvsyhdLUjnSv.jpg"
+    },
+    {
+     "id": 67262,
+     "name": "Mónica López",
+     "character": "Castro",
+     "profile": "/7Gm2h0ApsorCUJhUA8gUtxrWzMd.jpg"
+    },
+    {
+     "id": 2072194,
+     "name": "Tamara Casellas",
+     "character": "Comillas",
+     "profile": "/nCXGGmFP7pyNrdUtrsDUIOVjyc.jpg"
+    },
+    {
+     "id": 1457340,
+     "name": "Berta Vázquez",
+     "character": "Lucía",
+     "profile": "/2QNOI5L03XomONmCR42GPyVYryy.jpg"
+    },
+    {
+     "id": 3330834,
+     "name": "Santiago Vaca Narvaja",
+     "character": "Core",
+     "profile": "/sXJgtXMQkwfno6J9BpC3V50awG1.jpg"
+    },
+    {
+     "id": 2013170,
+     "name": "Mario Mayo",
+     "character": "Comandante De Luna",
+     "profile": "/xzEjSgLCkrwQ1HZ7OY6CbSNM9wM.jpg"
+    },
+    {
+     "id": 93649,
+     "name": "Javier Godino",
+     "character": "González-Escalona",
+     "profile": "/qwXxX6gKIphuCXJ2wgeROPjIdic.jpg"
+    },
+    {
+     "id": 1446100,
+     "name": "Pedro Hernández",
+     "character": "Guzmán",
+     "profile": "/fCqOynLjB8pqLTxGoiGnX0yeJIV.jpg"
+    }
+   ]
   },
   {
    "tmdb_id": 1101412,
@@ -263,7 +1212,80 @@
     "Thriller"
    ],
    "lang": "en",
-   "popularity": 249.5294
+   "popularity": 249.5294,
+   "runtime": 98,
+   "tagline": "Are you down?",
+   "status": "Released",
+   "budget": 3000000,
+   "revenue": 9256541,
+   "language": "en",
+   "director": {
+    "id": 56501,
+    "name": "Michael Spierig",
+    "profile": "/hDj7wXT937jZZjU7lJ8aTuKoBg5.jpg"
+   },
+   "cast": [
+    {
+     "id": 2480853,
+     "name": "Harriet Slater",
+     "character": "Jax Hunter",
+     "profile": "/9BJxdhi4tuiQdgT8bfDuiPipnsx.jpg"
+    },
+    {
+     "id": 3486664,
+     "name": "Arsema Thomas",
+     "character": "Luce",
+     "profile": "/tFdTyIrWsPIItcOP3OcyHtCboqC.jpg"
+    },
+    {
+     "id": 1626604,
+     "name": "Tom Brittney",
+     "character": "Jon Platt",
+     "profile": "/qSe3SuZHVPR5AMOuOAGxLdD6kYv.jpg"
+    },
+    {
+     "id": 521673,
+     "name": "Sahajak Boonthanakit",
+     "character": "Thai Barman",
+     "profile": "/a36MI02S0f11bJZjBoxkZTsUDAK.jpg"
+    },
+    {
+     "id": 6455282,
+     "name": "Korakod Yensuk",
+     "character": "Large Woman",
+     "profile": null
+    },
+    {
+     "id": 3698000,
+     "name": "Jordan Coleman",
+     "character": "Real Luce",
+     "profile": "/57FrMe016RyMHm8WDL2mK7P0bmS.jpg"
+    },
+    {
+     "id": 3725028,
+     "name": "Maryna Bennett",
+     "character": "Female Teenager",
+     "profile": "/alqr0Hx7kgLZ38QvwdQKFIA8Y8l.jpg"
+    },
+    {
+     "id": 3743780,
+     "name": "Noen Perez",
+     "character": "Male Teenager",
+     "profile": "/aokiUcwDJlZcTditvVfkRaSLG98.jpg"
+    },
+    {
+     "id": 3314680,
+     "name": "Nattapon Sukphiam",
+     "character": "Thai Climber 1",
+     "profile": null
+    },
+    {
+     "id": 1163445,
+     "name": "Charlie Ruedpokanon",
+     "character": "Thai Climber 2",
+     "profile": "/rzZ5WGsuXmnb1tIoPTPQvOJuArn.jpg"
+    }
+   ]
   },
   {
    "tmdb_id": 1657630,
@@ -283,7 +1305,80 @@
     "Thriller"
    ],
    "lang": "es",
-   "popularity": 243.753
+   "popularity": 243.753,
+   "runtime": 96,
+   "tagline": "Old sins. New blood.",
+   "status": "Released",
+   "budget": 0,
+   "revenue": 0,
+   "language": "es",
+   "director": {
+    "id": 929924,
+    "name": "Jaime Osorio Márquez",
+    "profile": "/csale4QEp49q5U4lvxB3OpFdnOy.jpg"
+   },
+   "cast": [
+    {
+     "id": 1633150,
+     "name": "Claudio Cataño",
+     "character": "",
+     "profile": "/k5L4EDlJVhqvzQojcwvbrohKeJm.jpg"
+    },
+    {
+     "id": 2436759,
+     "name": "Alejandro Buitrago",
+     "character": "",
+     "profile": "/74JZNNKShepwhSIHVq1L2vk9pDX.jpg"
+    },
+    {
+     "id": 1653153,
+     "name": "Hector Sánchez",
+     "character": "",
+     "profile": "/9hBuxzcIBUzGA7xsoE0VAQztAFv.jpg"
+    },
+    {
+     "id": 3255498,
+     "name": "Andrea Olaya",
+     "character": "",
+     "profile": null
+    },
+    {
+     "id": 3418396,
+     "name": "Quique Sanmartin",
+     "character": "",
+     "profile": null
+    },
+    {
+     "id": 3255496,
+     "name": "Jaisson Jeack",
+     "character": "",
+     "profile": null
+    },
+    {
+     "id": 2712252,
+     "name": "Carlos Mariño",
+     "character": "",
+     "profile": "/jhLjLb2QmklMWN9bwZHxnVbelQu.jpg"
+    },
+    {
+     "id": 1018723,
+     "name": "Andres Londono",
+     "character": "",
+     "profile": "/fUxP97lr48yA8nEElT0exoAuOGm.jpg"
+    },
+    {
+     "id": 4951863,
+     "name": "Salvador Bridges",
+     "character": "",
+     "profile": null
+    },
+    {
+     "id": 3034208,
+     "name": "Sebastian Velasquez",
+     "character": "",
+     "profile": null
+    }
+   ]
   },
   {
    "tmdb_id": 1283515,
@@ -300,7 +1395,80 @@
     "Thriller"
    ],
    "lang": "en",
-   "popularity": 235.311
+   "popularity": 235.311,
+   "runtime": 117,
+   "tagline": "There is no light where we're going.",
+   "status": "Released",
+   "budget": 40000000,
+   "revenue": 163738361,
+   "language": "en",
+   "director": {
+    "id": 22215,
+    "name": "Michael Showalter",
+    "profile": "/7HsDKRrjmsZvXVQgsF0kQxIR0oJ.jpg"
+   },
+   "cast": [
+    {
+     "id": 118545,
+     "name": "Dakota Johnson",
+     "character": "Lowen Ashleigh",
+     "profile": "/bSfVBJ8S3F1MPpCmIWb8UJcUZGP.jpg"
+    },
+    {
+     "id": 1813,
+     "name": "Anne Hathaway",
+     "character": "Verity Crawford",
+     "profile": "/s6tflSD20MGz04ZR2R1lZvhmC4Y.jpg"
+    },
+    {
+     "id": 2299,
+     "name": "Josh Hartnett",
+     "character": "Jeremy Crawford",
+     "profile": "/5eMo8D7h1XrSu6ZN4UXhPcS6YNG.jpg"
+    },
+    {
+     "id": 5269231,
+     "name": "Brady Wagner",
+     "character": "Crew Crawford",
+     "profile": "/zs3cN1hphCAAuSKQt1sOPnUzCWg.jpg"
+    },
+    {
+     "id": 1100144,
+     "name": "Ismael Cruz Cordova",
+     "character": "Corey",
+     "profile": "/oXcrsQGndk60iFkNB8qFnMHlNzL.jpg"
+    },
+    {
+     "id": 1429011,
+     "name": "Iryna Dvorovenko",
+     "character": "Anna",
+     "profile": "/hGmlhlYZEU73AlaiUqAcoIWtYU8.jpg"
+    },
+    {
+     "id": 6497911,
+     "name": "Sienna Kulovitz",
+     "character": "Harper Crawford",
+     "profile": "/s9LYDcNvnHH9UPXyZBosCfxlSC4.jpg"
+    },
+    {
+     "id": 221810,
+     "name": "K.K. Moggie",
+     "character": "Amanda Thomas",
+     "profile": "/hQvZKknETtr4eTuK5I27f6jdRUY.jpg"
+    },
+    {
+     "id": 1620969,
+     "name": "Tom Galantich",
+     "character": "Barron Stephens",
+     "profile": "/5d1I6tyB1CnECYhos3rX3xOqH9R.jpg"
+    },
+    {
+     "id": 106187,
+     "name": "Lou Martini Jr.",
+     "character": "Limo Driver",
+     "profile": "/85s5KR0BA6dhMJtOrvtKGY8Bz8E.jpg"
+    }
+   ]
   },
   {
    "tmdb_id": 1368337,
@@ -318,7 +1486,80 @@
     "Fantasy"
    ],
    "lang": "en",
-   "popularity": 208.3078
+   "popularity": 208.3078,
+   "runtime": 173,
+   "tagline": "Defy the gods.",
+   "status": "Released",
+   "budget": 250000000,
+   "revenue": 1796113523,
+   "language": "en",
+   "director": {
+    "id": 525,
+    "name": "Christopher Nolan",
+    "profile": "/xuAIuYSmsUzKlUMBFGVZaWsY3DZ.jpg"
+   },
+   "cast": [
+    {
+     "id": 1892,
+     "name": "Matt Damon",
+     "character": "Odysseus",
+     "profile": "/aCvBXTAR9B1qRjIRzMBYhhbm1fR.jpg"
+    },
+    {
+     "id": 1136406,
+     "name": "Tom Holland",
+     "character": "Telemachus",
+     "profile": "/5OK84Wn1bIEIThFKcVoaN087mLj.jpg"
+    },
+    {
+     "id": 1813,
+     "name": "Anne Hathaway",
+     "character": "Penelope",
+     "profile": "/s6tflSD20MGz04ZR2R1lZvhmC4Y.jpg"
+    },
+    {
+     "id": 11288,
+     "name": "Robert Pattinson",
+     "character": "Antinous",
+     "profile": "/3qZ09UE7lN6AtorfXFRYpEtSY93.jpg"
+    },
+    {
+     "id": 1227717,
+     "name": "Himesh Patel",
+     "character": "Eurylochus",
+     "profile": "/icqsXLmU0FxBGTv63kkA0GcrecO.jpg"
+    },
+    {
+     "id": 6885,
+     "name": "Charlize Theron",
+     "character": "Calypso",
+     "profile": "/gd7ShD0yt4bsR2STeQ19KQ6hvXL.jpg"
+    },
+    {
+     "id": 5723,
+     "name": "John Leguizamo",
+     "character": "Eumaeus",
+     "profile": "/kwYCdxTlDh9zauUCg4mp2XTCQTw.jpg"
+    },
+    {
+     "id": 1978406,
+     "name": "Travis Scott",
+     "character": "Bard",
+     "profile": "/eBdm7HQS6lLGg4BocgfoJ5qB9yp.jpg"
+    },
+    {
+     "id": 1154054,
+     "name": "Corey Hawkins",
+     "character": "Polybus",
+     "profile": "/wRt0Bc0chN5BSjvYzmg2evgqNzp.jpg"
+    },
+    {
+     "id": 84706,
+     "name": "Jarreth J. Merz",
+     "character": "Leodes",
+     "profile": "/ze8WDEujZmTXdCLcUy0IaymwlcS.jpg"
+    }
+   ]
   },
   {
    "tmdb_id": 1514026,
@@ -336,7 +1577,80 @@
     "Fantasy"
    ],
    "lang": "en",
-   "popularity": 191.5709
+   "popularity": 191.5709,
+   "runtime": 96,
+   "tagline": "It's Buddy!",
+   "status": "Released",
+   "budget": 3000000,
+   "revenue": 26972221,
+   "language": "en",
+   "director": {
+    "id": 1232064,
+    "name": "Casper Kelly",
+    "profile": "/uJTvuDrGdO9JnEMWEyI4fFKzApV.jpg"
+   },
+   "cast": [
+    {
+     "id": 298410,
+     "name": "Keegan-Michael Key",
+     "character": "Buddy / Dark Buddy (voice)",
+     "profile": "/xmdzYXP9j87a43FSiL138nLesuS.jpg"
+    },
+    {
+     "id": 3484285,
+     "name": "Delaney Quinn",
+     "character": "Freddy",
+     "profile": "/byBPP7Zg4NKQEejOBme9PUdRAZp.jpg"
+    },
+    {
+     "id": 4119575,
+     "name": "Tristan Borders",
+     "character": "Oliver",
+     "profile": "/sSXJnfhtw8CbFJKRwd3cMEdhFAq.jpg"
+    },
+    {
+     "id": 4505121,
+     "name": "Madison Skyy Polan",
+     "character": "Hannah",
+     "profile": "/9O5EsUmfrr4uHvjFV9sJJFg900g.jpg"
+    },
+    {
+     "id": 3173336,
+     "name": "Caleb Williams",
+     "character": "Wade",
+     "profile": "/6I6wWh2dDYziQhqncAT0isaDGoY.jpg"
+    },
+    {
+     "id": 204392,
+     "name": "Cristin Milioti",
+     "character": "Grace",
+     "profile": "/aiOOWmej3qYSiR9cUs3lm5x5SkB.jpg"
+    },
+    {
+     "id": 17052,
+     "name": "Topher Grace",
+     "character": "Ben",
+     "profile": "/89sF57Br5lq8nrepS7HLzJ41QD1.jpg"
+    },
+    {
+     "id": 10872,
+     "name": "Patton Oswalt",
+     "character": "Strappy (voice)",
+     "profile": "/ljQvjbPmcIAl205Lb2Mu4CW8WO7.jpg"
+    },
+    {
+     "id": 335,
+     "name": "Michael Shannon",
+     "character": "Willie (voice)",
+     "profile": "/6mMczfjM8CiS1WuBOgo5Xom1TcR.jpg"
+    },
+    {
+     "id": 15661,
+     "name": "Clint Howard",
+     "character": "George",
+     "profile": "/qC7AgKmcBFk76ojTYELeirw1viQ.jpg"
+    }
+   ]
   },
   {
    "tmdb_id": 354912,
@@ -355,7 +1669,80 @@
     "Adventure"
    ],
    "lang": "en",
-   "popularity": 260.2082
+   "popularity": 260.2082,
+   "runtime": 105,
+   "tagline": "The celebration of a lifetime.",
+   "status": "Released",
+   "budget": 175000000,
+   "revenue": 814641172,
+   "language": "en",
+   "director": {
+    "id": 8,
+    "name": "Lee Unkrich",
+    "profile": "/crb297utC6W4HSstOe5djDPTwEN.jpg"
+   },
+   "cast": [
+    {
+     "id": 1193391,
+     "name": "Anthony Gonzalez",
+     "character": "Miguel Rivera (voice)",
+     "profile": "/WF7bn6t0LkxwBWyDMWvomVujn7.jpg"
+    },
+    {
+     "id": 258,
+     "name": "Gael García Bernal",
+     "character": "Héctor (voice)",
+     "profile": "/7uEO29wtdyY9bjt2JN43gVpE6vt.jpg"
+    },
+    {
+     "id": 4589,
+     "name": "Benjamin Bratt",
+     "character": "Ernesto de la Cruz (voice)",
+     "profile": "/hBenHPT4iJEG2kt5z2TOGnkRZwh.jpg"
+    },
+    {
+     "id": 10402,
+     "name": "Alanna Ubach",
+     "character": "Mamá Imelda (voice)",
+     "profile": "/ffyBAEoW3bDgVJQV3GaHsZ9x29W.jpg"
+    },
+    {
+     "id": 154004,
+     "name": "Renée Victor",
+     "character": "Abuelita (voice)",
+     "profile": "/wAVDqwFhQsRQgO6VIYq6T9Wbbx8.jpg"
+    },
+    {
+     "id": 545087,
+     "name": "Jaime Camil",
+     "character": "Papá (voice)",
+     "profile": "/njvdXEGN3bSSXpsyVnyKQTXdf1V.jpg"
+    },
+    {
+     "id": 22767,
+     "name": "Alfonso Arau",
+     "character": "Papá Julio (voice)",
+     "profile": "/5ishPim5akWXSnMbwOWSc3KxDx8.jpg"
+    },
+    {
+     "id": 178667,
+     "name": "Herbert Siguenza",
+     "character": "Tío Oscar / Tío Felipe (voice)",
+     "profile": "/aVLX3sRMZp1qIfqCRHgjjy2NfGI.jpg"
+    },
+    {
+     "id": 86498,
+     "name": "Gabriel Iglesias",
+     "character": "Clerk (voice)",
+     "profile": "/8Bjy3RZ5TfNs3oUOUpxTv84G01f.jpg"
+    },
+    {
+     "id": 4992,
+     "name": "Lombardo Boyar",
+     "character": "Plaza Mariachi / Gustavo (voice)",
+     "profile": "/wwWs0u2QDz1XOakR05C0BYJCfM1.jpg"
+    }
+   ]
   },
   {
    "tmdb_id": 1384216,
@@ -373,7 +1760,80 @@
     "Science Fiction"
    ],
    "lang": "en",
-   "popularity": 166.362
+   "popularity": 166.362,
+   "runtime": 119,
+   "tagline": "At the end of the world, no one survives alone.",
+   "status": "Released",
+   "budget": 110000000,
+   "revenue": 39203493,
+   "language": "en",
+   "director": {
+    "id": 578,
+    "name": "Ridley Scott",
+    "profile": "/zABJmN9opmqD4orWl3KSdCaSo7Q.jpg"
+   },
+   "cast": [
+    {
+     "id": 2034418,
+     "name": "Jacob Elordi",
+     "character": "Hig",
+     "profile": "/9FGS8AGjVNtpWuUeoipYWR23sRZ.jpg"
+    },
+    {
+     "id": 16851,
+     "name": "Josh Brolin",
+     "character": "Bangley",
+     "profile": "/7QpneI3HoZCCDVPyWx3p3t7yeo7.jpg"
+    },
+    {
+     "id": 1392137,
+     "name": "Margaret Qualley",
+     "character": "Cima",
+     "profile": "/r5WeMrU4YLJqRRE3joeOrBVicAH.jpg"
+    },
+    {
+     "id": 529,
+     "name": "Guy Pearce",
+     "character": "Pops",
+     "profile": "/vTqk6Nh3WgqPubkS23eOlMAwmwa.jpg"
+    },
+    {
+     "id": 30082,
+     "name": "Benedict Wong",
+     "character": "Aaron",
+     "profile": "/yYfLyrC2CE6vBWSJfkpuVKL2POM.jpg"
+    },
+    {
+     "id": 19,
+     "name": "Allison Janney",
+     "character": "Darlene",
+     "profile": "/AnpevvFjyFPRL3vDGo7o1Woina1.jpg"
+    },
+    {
+     "id": 1125,
+     "name": "Ewen Bremner",
+     "character": "Crossbow Hunter",
+     "profile": "/7ZayRqxxy5JsQpiUPA0iVeRHny6.jpg"
+    },
+    {
+     "id": 55585,
+     "name": "Sam Spruell",
+     "character": "John",
+     "profile": "/5xQOHz3uUy20zsUMABaIsAXKFcI.jpg"
+    },
+    {
+     "id": 1885355,
+     "name": "James Craze",
+     "character": "Logan",
+     "profile": "/hxDWYepyFe0WmpMvuLV2FJXqdpP.jpg"
+    },
+    {
+     "id": 1141632,
+     "name": "Sai Bennett",
+     "character": "Melissa",
+     "profile": "/u1kUF1bM6Mppf5SpkqEWV49Ql4i.jpg"
+    }
+   ]
   },
   {
    "tmdb_id": 1232569,
@@ -391,7 +1851,80 @@
     "Mystery"
    ],
    "lang": "en",
-   "popularity": 167.1512
+   "popularity": 167.1512,
+   "runtime": 82,
+   "tagline": "He has no strings to hold him back now.",
+   "status": "Released",
+   "budget": 500000,
+   "revenue": 822910,
+   "language": "en",
+   "director": {
+    "id": 3122176,
+    "name": "Rhys Frake-Waterfield",
+    "profile": "/a0ETg5j54Nca7dO2s9Tfhco0u40.jpg"
+   },
+   "cast": [
+    {
+     "id": 5752734,
+     "name": "Jude Evan Lloyd",
+     "character": "Pinocchio (voice)",
+     "profile": "/5lcnZuR8L3W64DOICg9h5VE6uW4.jpg"
+    },
+    {
+     "id": 4916781,
+     "name": "Cameron Bell",
+     "character": "James",
+     "profile": "/mjSipiIUJFqhdjmBdtttsmZGgx1.jpg"
+    },
+    {
+     "id": 3901,
+     "name": "Richard Brake",
+     "character": "Geppetto",
+     "profile": "/JwsiErANShzPSdYsNoiNYdrSg1.jpg"
+    },
+    {
+     "id": 3909217,
+     "name": "Jessica Balmer",
+     "character": "Mia",
+     "profile": "/fhb5Oj719yH7z5f2lYU2r8Lyu46.jpg"
+    },
+    {
+     "id": 5692794,
+     "name": "Jack Art Gray",
+     "character": "Dudley",
+     "profile": "/pysea7rtgJOHRv77WXD1RNHkWku.jpg"
+    },
+    {
+     "id": 5139,
+     "name": "Robert Englund",
+     "character": "Cricket (voice)",
+     "profile": "/cjGEkiavinHa1dnetDvnEhlD2Wm.jpg"
+    },
+    {
+     "id": 185065,
+     "name": "Emma Tate",
+     "character": "Woodmother (voice)",
+     "profile": "/in8SZAA5dG6wW1LBCU10j1J7W8V.jpg"
+    },
+    {
+     "id": 4438472,
+     "name": "Toni Olabanji",
+     "character": "Trey",
+     "profile": "/48XYJ3UBF2uIeeAO2e12vHg37yX.jpg"
+    },
+    {
+     "id": 6363580,
+     "name": "Luca Marandola",
+     "character": "Logan",
+     "profile": "/9u9WsKV69ijFZD1gKiz4TIpFZeh.jpg"
+    },
+    {
+     "id": 5060873,
+     "name": "Karolina Ugrenyuk",
+     "character": "Amanda",
+     "profile": "/AqyQiGLHKDjXrAL1kjqU0t9h3wZ.jpg"
+    }
+   ]
   },
   {
    "tmdb_id": 1291595,
@@ -408,7 +1941,80 @@
     "Thriller"
    ],
    "lang": "en",
-   "popularity": 151.4509
+   "popularity": 151.4509,
+   "runtime": 106,
+   "tagline": "Evil found a way out.",
+   "status": "Released",
+   "budget": 18000000,
+   "revenue": 171453839,
+   "language": "en",
+   "director": {
+    "id": 131873,
+    "name": "Jacob Chase",
+    "profile": "/pp9aLBcpazVrT46a8yw18qMscfT.jpg"
+   },
+   "cast": [
+    {
+     "id": 2769222,
+     "name": "Amelia Eve",
+     "character": "Gemma Hall",
+     "profile": "/Am54f1ys9nqZKuFDEkSwkqhRAuo.jpg"
+    },
+    {
+     "id": 5426738,
+     "name": "Island Austin",
+     "character": "Maya Hall",
+     "profile": "/663fMDrygvPYcV4L567iHVzEfXD.jpg"
+    },
+    {
+     "id": 1602972,
+     "name": "Brandon Perea",
+     "character": "Nick Mendoza",
+     "profile": "/hEzljVgsho0Uwd8tg7AGB5Uy3Lr.jpg"
+    },
+    {
+     "id": 7401,
+     "name": "Lin Shaye",
+     "character": "Elise Rainier",
+     "profile": "/aL87Za52elH81zMiXQn5C7AXAeg.jpg"
+    },
+    {
+     "id": 1399526,
+     "name": "Maisie Richardson-Sellers",
+     "character": "Clare",
+     "profile": "/7Rue8ZtZ8uLb1x0YC9viieunoC0.jpg"
+    },
+    {
+     "id": 55585,
+     "name": "Sam Spruell",
+     "character": "Cyrus Lam",
+     "profile": "/5xQOHz3uUy20zsUMABaIsAXKFcI.jpg"
+    },
+    {
+     "id": 2143439,
+     "name": "Joseph Lopez",
+     "character": "Lester",
+     "profile": "/tmhwEUByCT6iXlxmJvpTsX97Css.jpg"
+    },
+    {
+     "id": 1547432,
+     "name": "Robina Beard",
+     "character": "Edna",
+     "profile": "/meXi83rata9p6LqRiRhqI8MPLvj.jpg"
+    },
+    {
+     "id": 1507371,
+     "name": "Susan Gray",
+     "character": "Patsy",
+     "profile": null
+    },
+    {
+     "id": 187400,
+     "name": "Laura Gordon",
+     "character": "Ingrid Lilith Hall",
+     "profile": "/7Gro37r1iqm4Wiyf2QlvMPgSeza.jpg"
+    }
+   ]
   },
   {
    "tmdb_id": 1294189,
@@ -425,7 +2031,80 @@
     "Thriller"
    ],
    "lang": "en",
-   "popularity": 160.6032
+   "popularity": 160.6032,
+   "runtime": 99,
+   "tagline": "",
+   "status": "Released",
+   "budget": 0,
+   "revenue": 0,
+   "language": "en",
+   "director": {
+    "id": 1416819,
+    "name": "Mark Vanselow",
+    "profile": "/6JujySQUNRPg1k1V0s51wzqZMwd.jpg"
+   },
+   "cast": [
+    {
+     "id": 3896,
+     "name": "Liam Neeson",
+     "character": "Ryan 'Fang' Flanagan",
+     "profile": "/sRLev3wJioBgun3ZoeAUFpkLy0D.jpg"
+    },
+    {
+     "id": 3141,
+     "name": "Marisa Tomei",
+     "character": "Tara",
+     "profile": "/vAQ10fvGfVyuJdMNKVMA4ZkacWL.jpg"
+    },
+    {
+     "id": 10182,
+     "name": "Ving Rhames",
+     "character": "Tanker",
+     "profile": "/tOVDvu1EQP78AwaUw6uh1wN818E.jpg"
+    },
+    {
+     "id": 55174,
+     "name": "Marcus Thomas",
+     "character": "Munch",
+     "profile": "/wpsm5roIsSqaOX9ApIJqCxDAqgD.jpg"
+    },
+    {
+     "id": 19654,
+     "name": "Michael Chiklis",
+     "character": "Major Walter Pope",
+     "profile": "/pAkKjbzxP6Z6Y5zAGpwmWQo1iji.jpg"
+    },
+    {
+     "id": 4056071,
+     "name": "Maurice Marvel Meredith",
+     "character": "Major James Tilton",
+     "profile": null
+    },
+    {
+     "id": 1224188,
+     "name": "Brett Tucker",
+     "character": "Todd",
+     "profile": "/6IUQyy2pA8PRXX1MEx088JH6pcu.jpg"
+    },
+    {
+     "id": 3072766,
+     "name": "Ryan Morgan",
+     "character": "Wiz",
+     "profile": "/zogTGGsLvQCxvuwkyOtwtbKAz3o.jpg"
+    },
+    {
+     "id": 2500993,
+     "name": "Laura Coates",
+     "character": "Laura Coates",
+     "profile": "/m7mBluZQoWKPvYqDKFsiS0oCnXm.jpg"
+    },
+    {
+     "id": 93119,
+     "name": "Geoff Morrell",
+     "character": "Ernie",
+     "profile": "/zdbbOZPOb1VeAXh1idj9fKeHE87.jpg"
+    }
+   ]
   },
   {
    "tmdb_id": 1400940,
@@ -443,7 +2122,80 @@
     "Science Fiction"
    ],
    "lang": "en",
-   "popularity": 149.0958
+   "popularity": 149.0958,
+   "runtime": 109,
+   "tagline": "Look fear in the face.",
+   "status": "Released",
+   "budget": 44000000,
+   "revenue": 82964000,
+   "language": "en",
+   "director": {
+    "id": 63306,
+    "name": "James Watkins",
+    "profile": "/tZextIeFu04YIBBRjKOQuMyP2O9.jpg"
+   },
+   "cast": [
+    {
+     "id": 1327945,
+     "name": "Tom Rhys Harries",
+     "character": "Matt Hagen / Clayface",
+     "profile": "/elxvpHPqOxGcKe6U2hcArIcpyWo.jpg"
+    },
+    {
+     "id": 1537686,
+     "name": "Naomi Ackie",
+     "character": "Caitlyn Corr",
+     "profile": "/dijwuTAEZUzQtoJfK49S4X80fQw.jpg"
+    },
+    {
+     "id": 1665,
+     "name": "Eddie Marsan",
+     "character": "Frank Fitzpatrick",
+     "profile": "/9atfOgIxhfOKvv2be8HEp6SzOct.jpg"
+    },
+    {
+     "id": 2978,
+     "name": "Max Minghella",
+     "character": "John Borrelli",
+     "profile": "/AhVDxsOOoAnwwVBL7ZY8W0mGsYJ.jpg"
+    },
+    {
+     "id": 93236,
+     "name": "David Dencik",
+     "character": "Markos Szabo",
+     "profile": "/q5wLADc6yYd3owxSEG8VKbf7YWV.jpg"
+    },
+    {
+     "id": 3286781,
+     "name": "Francesca Corney",
+     "character": "Rosie",
+     "profile": "/p2B2dYAvl0TMUtbrZxzOdNgBbSE.jpg"
+    },
+    {
+     "id": 4577931,
+     "name": "Ruby Sear",
+     "character": "Theresa",
+     "profile": "/hNlLm6NaHPjakDJhPEY1suGcxKi.jpg"
+    },
+    {
+     "id": 1815694,
+     "name": "Wil Coban",
+     "character": "Bones",
+     "profile": "/73REwJckTBMNJoiGIrrGhcCdTqf.jpg"
+    },
+    {
+     "id": 1344715,
+     "name": "Joshua James",
+     "character": "Corey Bowery",
+     "profile": "/jw1n2Pzi2LJvyu6OkXTHMXPV7Q4.jpg"
+    },
+    {
+     "id": 3551,
+     "name": "Jake Curran",
+     "character": "Patches",
+     "profile": "/pC6ozticiOmovaPpwqKVOMhn0b9.jpg"
+    }
+   ]
   },
   {
    "tmdb_id": 1571955,
@@ -461,7 +2213,80 @@
     "Crime"
    ],
    "lang": "es",
-   "popularity": 161.4203
+   "popularity": 161.4203,
+   "runtime": 122,
+   "tagline": "",
+   "status": "Released",
+   "budget": 0,
+   "revenue": 0,
+   "language": "es",
+   "director": {
+    "id": 34017,
+    "name": "Daniel Sánchez Arévalo",
+    "profile": "/d73wtgG7uZqhqvusvivSvX6ZR6C.jpg"
+   },
+   "cast": [
+    {
+     "id": 1425019,
+     "name": "Laia Costa",
+     "character": "Carla Mencía",
+     "profile": "/kSbdpHWLlfzvOfZKJ0dgP0ieVL6.jpg"
+    },
+    {
+     "id": 24977,
+     "name": "Karra Elejalde",
+     "character": "Pedro",
+     "profile": "/kHODqgc2c7RaZz9Sp7cedgadvzG.jpg"
+    },
+    {
+     "id": 28511,
+     "name": "Luis Zahera",
+     "character": "Ernesto",
+     "profile": "/ozfRIrvu8i93RJAaeWbaCLKAlPq.jpg"
+    },
+    {
+     "id": 33411,
+     "name": "Tamar Novas",
+     "character": "Tomás",
+     "profile": "/3MpjB6lxeTUA9EunaV4kAyvOvIG.jpg"
+    },
+    {
+     "id": 224874,
+     "name": "Álvaro Cervantes",
+     "character": "Raúl",
+     "profile": "/6RAiI4SXIMxLRM1RejLJzMPK7wa.jpg"
+    },
+    {
+     "id": 1604,
+     "name": "Lluís Homar",
+     "character": "Luis",
+     "profile": "/p1AFBzyZRbHzA6S8q3RWw0YXoAf.jpg"
+    },
+    {
+     "id": 224518,
+     "name": "Luz Valdenebro",
+     "character": "Lola",
+     "profile": "/mTmN3m2gII511LUYMHBRPmCdvdG.jpg"
+    },
+    {
+     "id": 1412355,
+     "name": "Víctor Duplá",
+     "character": "Pablo",
+     "profile": "/veMvq4qfmVriQpk7SicCk6tEIKa.jpg"
+    },
+    {
+     "id": 1074580,
+     "name": "Jorge Cabrera",
+     "character": "Turrientes",
+     "profile": "/lE1wXFPu11zyxCroaVfYNryvsHn.jpg"
+    },
+    {
+     "id": 2775604,
+     "name": "Mónica Miranda",
+     "character": "Lucía",
+     "profile": "/cSeiAVcFQ5BdG9W6WPt06TyoUT3.jpg"
+    }
+   ]
   }
  ],
  "misses": [
