@@ -34,7 +34,8 @@ def esc_js(s): return json.dumps(s, ensure_ascii=False)
 PAGES = []
 
 def head(title, desc, path, og_image=None, jsonld=None, extra_css=""):
-    url = f"{BASE}/{path}" if path else f"{BASE}/"
+    clean = "" if path in ("", "index.html") else re.sub(r"index\.html$", "", path)
+    url = f"{BASE}/{clean}" if clean else f"{BASE}/"
     og = og_image or f"{BASE}/assets/og-default.jpg"
     parts = [f"""<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -125,10 +126,13 @@ def card(m, href=None, rating=True, lazy=True):
 <span class="card__score">{r:.1f}</span><span class="card__fade" aria-hidden="true"></span></div>
 <div class="card__body"><h3 class="card__title">{e(t)}</h3><p class="card__sub">{e(y)}{" · " + e(m.get("genres", [""])[0]) if m.get("genres") else ""}</p></div>'''
     if href:
+        if href.startswith('/'): href = BASE + href
         return f'<a class="card" href="{href}">{inner}</a>'
     return f'<div class="card card--static">{inner}</div>'
 
 def person_card(p, href=None):
+    if href and href.startswith('/'): href = BASE + href
+    if href and href.startswith("/"): href = BASE + href
     img = poster(p.get("profile"), "w185")
     role = "Director" if "Director" in p.get("roles", []) else "Actor"
     body = f'''<span class="person__ring"><img src="{img}" alt="{e(p["name"])}" width="185" height="278" loading="lazy" decoding="async"></span>
@@ -387,7 +391,8 @@ def page_movies_hub():
 <div class="wrap">{crumbs([("Home", "/"), ("Movies", None)])}</div>
 <section class="page-head"><div class="wrap"><p class="kicker">Library</p><h1 class="page-title">All movies</h1>
 <p class="page-lede">Every film in the MovieState guide library, sorted by audience rating. Each page covers the story, the cast, technical details and where the film is streaming.</p></div></section>
-<section class="section"><div class="grid">{cards}</div></section>
+<section class="section"><div class="grid" id="movieGrid">{cards}</div><div class="more-wrap"><button class="btn btn--ghost" id="loadMore" type="button">Load more movies</button><p class="note" id="moreCount"></p></div></section>
+<section class="section section--narrow"><div class="section__head"><div><p class="kicker">How to use this list</p><h2 class="section__title">Sorted by audience rating, not by marketing budget</h2></div></div><div class="panel"><p>Each entry links to a full guide with the story, cast and crew, runtime, certification, box office and the streaming, rental and purchase options reported for six markets. Ratings come from TMDB user scores and move as new votes arrive, so the order shifts over time.</p></div></section>
 <section class="section section--narrow"><div class="panel"><h2 class="panel__title">Browse by category</h2><div class="chips">{chips}</div></div></section>
 </main>{footer()}"""
     write(path, body)
@@ -430,6 +435,7 @@ def page_people_hub():
 <section class="page-head"><div class="wrap"><p class="kicker">People</p><h1 class="page-title">Actors &amp; directors</h1>
 <p class="page-lede">The faces and filmmakers behind the movies in our library — with the credits that matter and the films worth starting with.</p></div></section>
 <section class="section"><div class="grid grid--people">{cards}</div></section>
+<section class="section section--narrow"><div class="section__head"><div><p class="kicker">How profiles work</p><h2 class="section__title">Credits first, biography second</h2></div></div><div class="panel"><p>Every profile lists the films that person worked on inside our library, with the character or crew role they covered. Biographies are sourced from TMDB and shortened where needed; where no biography exists we publish credits only rather than filler text.</p></div></section>
 <section class="section section--narrow"><div class="section__head"><div><p class="kicker">Why credits matter</p><h2 class="section__title">Follow the people, not just the title</h2></div></div>
 <div class="prose"><p>Most viewers pick a film by title. A smaller, happier group picks by person: the director whose last three films landed, the actor who turns a thin script into something watchable, the cinematographer whose work you recognise before you know why. This index exists for that second group.</p>
 <p>Each profile lists every film we cover in which that person appears or directs, with the character name where the film's credits confirm it, plus the ratings and runtime for a quick reality check. Where a biography is available, we include it so you can place the person's career without opening five other tabs.</p>
@@ -489,7 +495,7 @@ def static_page(path, title, desc, kicker, h1, sections, active=""):
     write(path, out)
 
 def page_about():
-    static_page("about/index.html", "About MovieState", "Who runs MovieState, how we research movies, and the standards we follow before publishing a page.", "About", "About MovieState", [
+    static_page("about/index.html", "About MovieState — Our Editorial Standards", "Who runs MovieState, how we research movies, and the standards we follow before publishing a page.", "About", "About MovieState", [
       ("What this site is", [
         "MovieState is an independent movie guide. We publish plain-English pages about films: what the story is, who made it, how long it runs, when it came out, and where it can be watched right now.",
         "We are not a studio, a streaming service or a review aggregator. We are a small editorial project that reads primary sources, checks the details, and writes the page a person actually needs before deciding what to watch.",
@@ -511,7 +517,7 @@ def page_about():
     ], "/about/")
 
 def page_privacy():
-    static_page("privacy-policy/index.html", "Privacy Policy", "What MovieState does and does not collect when you browse our movie guides.", "Legal", "Privacy Policy", [
+    static_page("privacy-policy/index.html", "Privacy Policy — What We Collect and Why", "What MovieState does and does not collect when you browse our movie guides.", "Legal", "Privacy Policy", [
       ("The short version", [
         "This site is a set of static pages. We do not create accounts, we do not ask for your name or email, and we do not run advertising networks or cross-site trackers.",
       ]),
@@ -535,7 +541,7 @@ def page_privacy():
     ], "")
 
 def page_terms():
-    static_page("terms/index.html", "Terms & Conditions", "The terms that apply when you use the MovieState movie guide.", "Legal", "Terms & Conditions", [
+    static_page("terms/index.html", "Terms & Conditions", "The terms that apply when you use the MovieState movie guide: what the site covers, how linked streaming pages work, accuracy limits and your responsibilities.", "Legal", "Terms & Conditions", [
       ("What you are using", [
         "MovieState publishes information about films. It is not a streaming service, a download service or a video host. By using this site you accept these terms.",
       ]),
@@ -577,7 +583,9 @@ FAQ_ITEMS = [
 
 def page_faq():
     path = "faq/index.html"
-    items = "".join(f'<details class="faq__item"><summary><h3>{e(q)}</h3></summary><p>{e(a)}</p></details>' for q, a in FAQ_ITEMS)
+    half = max(1, len(FAQ_ITEMS) - 4)
+    def block(pairs): return "".join(f'<details class="faq__item"><summary><h3>{e(q)}</h3></summary><p>{e(a)}</p></details>' for q, a in pairs)
+    items_a = block(FAQ_ITEMS[:half]); items_b = block(FAQ_ITEMS[half:])
     ld = [crumb_ld([("Home", "/"), ("FAQ", "/faq/")]),
           {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
               {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ_ITEMS]}]
@@ -586,7 +594,8 @@ def page_faq():
 <div class="wrap">{crumbs([("Home", "/"), ("FAQ", None)])}</div>
 <section class="page-head"><div class="wrap"><p class="kicker">Help</p><h1 class="page-title">Frequently asked questions</h1>
 <p class="page-lede">Short, direct answers about the site, the data and the way we link to streaming pages.</p></div></section>
-<section class="section section--narrow"><div class="panel panel--faq">{items}</div></section>
+<section class="section section--narrow"><div class="section__head"><div><p class="kicker">The basics</p><h2 class="section__title">About the guide</h2></div></div><div class="panel panel--faq">{items_a}</div></section>
+<section class="section section--narrow"><div class="section__head"><div><p class="kicker">Watching</p><h2 class="section__title">Availability and playback</h2></div></div><div class="panel panel--faq">{items_b}</div></section>
 </main>{footer()}"""
     write(path, body)
 
@@ -762,7 +771,7 @@ def page_movie_v2(m):
     dn = d.get("name") or "not confirmed"
     prov = m.get("providers") or {}
     rels = m.get("releases") or []
-    title = f"{t} ({y}): Cast, Streaming & Where to Watch"
+    title = f"{t} ({y}): Cast & Where to Watch"
     desc = f"{t} ({y}) — full story, cast and crew, ratings, box office, release dates and where to stream, rent or buy it. Updated watch options by region."
     cert_map = {r["country"]: r["cert"] for r in rels if r.get("cert")}
     cert_line = ", ".join(f"{c} in {k}" for k, c in list(cert_map.items())[:3]) or "check your local rating"
@@ -853,7 +862,7 @@ def page_movie_v2(m):
     H = []
     H.append(page_head + header())
     H.append('<main id="main"><div class="wrap crumbs-wrap">' + crumbs([("Home","/"),("Movies","/movies/"),(t,None)]) + '</div>')
-    H.append(f'''<section class="film"><img class="film__bg" src="{backdrop(m.get("backdrop"),"w1280")}" alt="" fetchpriority="high" decoding="async"><span class="film__veil" aria-hidden="true"></span>
+    H.append(f'''<section class="film"><img class="film__bg" src="{backdrop(m.get("backdrop"),"w1280")}" alt="" width="1280" height="720" fetchpriority="high" decoding="async"><span class="film__veil" aria-hidden="true"></span>
 <div class="film__inner wrap"><div class="poster-xl"><img src="{poster(m.get("poster"),"w500")}" alt="{e(t)} poster" width="500" height="750" fetchpriority="high"><span class="score-ring" style="--pct:{int((m.get('rating') or 0)*10)}"><b>{m.get('rating') or '—'}</b><i>/10</i></span></div>
 <div class="film__head"><p class="kicker">{e(" · ".join(m.get("genres",[])))}</p><h1 class="film__title">{e(t)}</h1>
 <p class="film__tag">&ldquo;{e((m.get('tagline') or '').strip() or ('A ' + str(y) + ' release'))}&rdquo;</p>
@@ -864,6 +873,8 @@ def page_movie_v2(m):
 
     kws = "".join(f"<li>{e(k)}</li>" for k in (m.get("keywords") or [])[:10])
     tags_html = ('<ul class="tags">' + kws + "</ul>") if kws else ""
+    mlink = MAIN + f"/movie/{m['tmdb_id']}/{slug(m['title'])}"
+    H.append(f'''<section class="section section--narrow"><div class="panel cta-band"><div><p class="kicker">Watch now</p><h2 class="panel__title">Watch {e(t)} on MovieState</h2><p>Open the film in the MovieState library for the HD player, subtitle options and the rest of the catalogue.</p><p class="note">You are leaving this guide. Price, quality and availability are shown on MovieState.</p></div><a class="btn btn--primary btn--lg" href="{mlink}" target="_blank" rel="noopener">Open on MovieState</a></div></section>''')
     H.append(f'''<section id="overview" class="section section--narrow"><div class="section__head"><div><p class="kicker">The story</p><h2 class="section__title">What {e(t)} is about</h2></div></div>
 <div class="prose prose--lead">{("<p>" + e(m.get("overview","")) + "</p>") if m.get("overview") else ""}
 <p>{e(t)} is a {e(", ".join(m.get("genres",[])).lower())} film from {e(str(y))}, directed by {e(dn)}. It runs {e(rtime(m.get("runtime")))}{(", is rated " + e(cert_map.get("US","")) ) if cert_map.get("US") else ""}, and was produced by {e(", ".join((m.get("studios") or [])[:3]) or "its production team")}.</p>
@@ -887,16 +898,78 @@ def page_movie_v2(m):
     H.append(f'''<section id="details" class="section section--narrow"><div class="section__head"><div><p class="kicker">The facts</p><h2 class="section__title">{e(t)} key details</h2></div></div><div class="panel"><table class="tbl"><tbody>{facts_html}</tbody></table></div></section>''')
     H.append(f'''<section id="releases" class="section section--narrow"><div class="section__head"><div><p class="kicker">Release information</p><h2 class="section__title">Release dates by country</h2></div></div><div class="panel"><table class="tbl"><thead><tr><th>Country</th><th>Date</th><th>Cert</th></tr></thead><tbody>{rel_rows}</tbody></table>{trailer_html}</div></section>''')
     H.append(f'''<section id="faq" class="section section--narrow"><div class="section__head"><div><p class="kicker">Quick answers</p><h2 class="section__title">Frequently asked questions</h2></div></div><div class="faq">{faq_html}</div></section>''')
+    dir_more = [x for x in D["movies"] if (m.get("director") and x.get("director") and x["director"]["id"] == m["director"]["id"] and x["tmdb_id"] != m["tmdb_id"])]
+    if dir_more:
+        H.append(f'''<section class="section"><div class="section__head"><div><p class="kicker">Director filmography</p><h2 class="section__title">More from {e(dn)}</h2></div></div><div class="rail"><div class="rail__track">{"".join(card(x, BASE + movie_path(x)) for x in dir_more)}</div></div></section>''')
     rel_cards = "".join(card(x, BASE + movie_path(x)) for x in rel_movies)
     H.append(f'''<section class="section"><div class="section__head"><div><p class="kicker">Keep watching</p><h2 class="section__title">More films like {e(t)}</h2></div><a class="section__link" href="{BASE}/movies/">All movies</a></div><div class="rail"><div class="rail__track">{rel_cards}</div></div></section>''')
     H.append(f'<section class="section section--narrow"><p class="note">Data sources: TMDB (titles, cast, crew, release dates, provider listings and user ratings). Availability and box office figures change over time; this page was last rebuilt on {date.today().isoformat()}. Streaming and downloads are handled on MovieState.</p></section></main>')
     H.append(footer())
     write(file_path, "".join(H))
 
+
+def page_home_v2():
+    f = MOV[FEATURED_ID]
+    trend = [MOV[i] for i in [1423191,1156593,1311031,1083381,1368166,1315985,1232493,1368316,1300118,1339713,1316311,1368337] if i in MOV]
+    top = sorted([m for m in D["movies"] if (m.get("votes") or 0) > 400], key=lambda m: -(m.get("rating") or 0))[:6]
+    editors = [MOV[i] for i in [969681, 1368337, 1423191] if i in MOV]
+    scores = "".join(f'<li class="chip">{e(s)}</li>' for s in sorted({n for m in D["movies"] for cc in (m.get("providers") or {}).values() for k in ("flatrate","rent","buy") for n in (cc.get(k) or [])})[:10])
+    H = [head("MovieState — Watch Movies Online in HD & Find Where to Watch",
+              "Independent movie guide: what to watch now, full cast and crew, ratings, box office and exactly where to stream, rent or buy each film in HD.",
+              "index.html", og_image=backdrop(f.get("backdrop"),"w1280"),
+              jsonld=[
+                {"@context":"https://schema.org","@type":"WebSite","name":BRAND,"url":BASE+"/","publisher":ORG,
+                 "description":"Movie guides, cast and crew, release details and streaming availability for popular films."},
+                {"@context":"https://schema.org",**ORG},
+                {"@context":"https://schema.org","@type":"ItemList","name":"Trending movies","itemListElement":[{"@type":"ListItem","position":i+1,"url":BASE+movie_path(m),"name":m["title"]} for i,m in enumerate(trend)]},
+                {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in HOME_FAQ]}
+              ])]
+    H.append(header(""))
+    H.append('<main id="main">')
+    H.append(f'''<section class="hero hero--spot"><img class="hero__bg" src="{backdrop(f.get("backdrop"),"w1280")}" alt="" width="1280" height="720" fetchpriority="high" decoding="async">
+<span class="hero__veil" aria-hidden="true"></span>
+<div class="hero__inner wrap">
+ <div class="hero__copy">
+  <p class="kicker">Featured this week</p>
+  <h1 class="hero__title">{e(f["title"])}<span>Where to watch, who is in it, and whether it is worth your night</span></h1>
+  <p class="hero__lede">{e(f.get("tagline") or "")}</p>
+  <ul class="chips"><li class="chip">{f["year"]}</li><li class="chip">{e(rtime(f.get("runtime")))}</li><li class="chip">{e(f.get("certification") or "")}</li><li class="chip">{e(f.get("genres",[""])[0])}</li></ul>
+  <div class="hero__cta"><a class="btn btn--primary" href="{BASE}{movie_path(f)}">Open the full guide</a><a class="btn btn--ghost" href="{BASE}/movies/">Browse all movies</a></div>
+ </div>
+ <a class="hero__poster" href="{BASE}{movie_path(f)}" aria-label="{e(f["title"])} guide"><img src="{poster(f.get("poster"),"w500")}" alt="{e(f["title"])} poster" width="500" height="750" fetchpriority="high" decoding="async"><span class="score-ring" style="--pct:{int((f.get('rating') or 0)*10)}"><b>{f.get('rating')}</b><i>/10</i></span></a>
+</div>
+<div class="quickbar wrap"><div><span>Release</span><strong>{e(f.get("release_date") or "—")}</strong></div><div><span>Runtime</span><strong>{e(rtime(f.get("runtime")))}</strong></div><div><span>Director</span><strong>{e((f.get("director") or {}).get("name") or "—")}</strong></div><div><span>Worldwide</span><strong>{e(money(f.get("revenue")) or "—")}</strong></div></div>
+</section>''')
+    tick = "".join(f'<span>{e(m["title"])}</span><i aria-hidden="true">◆</i>' for m in trend)
+    H.append(f'<div class="ticker" aria-hidden="true"><div class="ticker__track">{tick}{tick}</div></div>')
+    H.append(f'''<section class="section">{section_head("Now trending","What everyone is watching this week",("All movies",BASE+"/movies/"))}
+<div class="rail"><div class="rail__track">{"".join(card(m, movie_path(m)) for m in trend)}</div></div></section>''')
+    ed = "".join(f'''<a class="ed-pick" href="{BASE}{movie_path(m)}"><img src="{backdrop(m.get("backdrop"),"w780")}" alt="" width="780" height="439" loading="lazy" decoding="async"><span class="ed-pick__veil" aria-hidden="true"></span><span class="ed-pick__body"><span class="ed-pick__meta">{m.get('rating')}/10 · {m['year']} · {e(m.get("genres",[""])[0])}</span><strong>{e(m["title"])}</strong><span class="ed-pick__line">{e((m.get("overview") or "")[:110])}…</span></span></a>''' for m in editors)
+    H.append(f'''<section class="section"><div class="section__head"><div><p class="kicker">Editor picks</p><h2 class="section__title">Three films worth clearing an evening for</h2></div></div><div class="ed-grid">{ed}</div></section>''')
+    rows = "".join(f'''<a class="rank" href="{BASE}{movie_path(m)}"><span class="rank__n">{i+1}</span><img src="{poster(m.get("poster"),"w185")}" alt="{e(m["title"])} poster" width="92" height="138" loading="lazy" decoding="async"><span class="rank__txt"><strong>{e(m["title"])}</strong><span>{m["year"]} · {e(", ".join(m.get("genres",[])[:2]))}</span></span><span class="rank__score">{m.get("rating")}</span></a>''' for i,m in enumerate(top))
+    H.append(f'''<section class="section"><div class="section__head"><div><p class="kicker">Top rated</p><h2 class="section__title">Highest rated films in the library</h2></div><a class="section__link" href="{BASE}/movies/">See all</a></div><div class="ranklist">{rows}</div></section>''')
+    cats = "".join(f'''<a class="cat" href="{BASE}/category/{g['slug']}/"><img src="{poster(g['movies'][0]['poster'],'w342')}" alt="" width="342" height="513" loading="lazy" decoding="async"><span class="cat__veil" aria-hidden="true"></span><span class="cat__label"><span class="cat__count">{len(g['movies'])} films</span>{e(g['name'])}</span></a>''' for g in GEN[:10])
+    H.append(f'''<section class="section">{section_head("Browse","Categories built around how you actually choose films",("All categories",BASE+"/categories/"))}<div class="cat-grid">{cats}</div></section>''')
+    H.append(f'''<section class="section"><div class="section__head"><div><p class="kicker">Where to watch</p><h2 class="section__title">How to find the right stream in under a minute</h2></div></div>
+<div class="cols"><div class="panel"><ol class="steps"><li><strong>Open the film's guide.</strong> Every page lists streaming, rental and purchase options reported for the US, UK, Canada, Australia, India and Bangladesh.</li>
+<li><strong>Check your region.</strong> Rights change per country, so the same film can be included with one service and pay-per-view on another.</li>
+<li><strong>Confirm quality and price on the provider.</strong> We link out to the service; the final price, HD/4K availability and subtitle tracks are set there.</li></ol>
+<a class="btn btn--primary" href="{MAIN}/" target="_blank" rel="noopener">Open MovieState library</a></div>
+<div class="panel"><h3 class="panel__title">Services we track</h3><ul class="chips">{scores}</ul><p class="note">Provider names are pulled from live availability data and change as licensing deals move. If a service is missing, the film is not listed there for the regions we check.</p></div></div></section>''')
+    H.append(f'''<section class="section">{section_head("Cast & crew","The people behind the films",("All people",BASE+"/people/"))}<div class="rail"><div class="rail__track rail__track--people">{"".join(person_card(p, person_path(p)) for p in PPL[:14])}</div></div></section>''')
+    faq_html = "".join(f'<details class="faq__item"><summary><h3>{e(q)}</h3></summary><p>{e(a)}</p></details>' for q,a in HOME_FAQ)
+    H.append(f'''<section class="section"><div class="section__head"><div><p class="kicker">How we work</p><h2 class="section__title">Editorial standards, not scraped trivia</h2></div></div>
+<div class="ed-grid"><div class="ed-card"><h3>Data with a source</h3><p>Titles, cast, crew, release dates and box office come from TMDB and are re-checked every time a page is rebuilt. When a figure is not reported, we say so instead of guessing.</p></div>
+<div class="ed-card"><h3>Availability we verify</h3><p>Watch options are grouped by country because streaming rights are regional. Each film page names the services reported for that market and links you to the provider to confirm price.</p></div>
+<div class="ed-card"><h3>Written for decisions</h3><p>Every guide answers three questions in order: what the film is, whether it fits your taste, and how to watch it. No autoplay, no pop-ups, no fake download buttons.</p></div></div></section>
+<section id="faq" class="section section--narrow"><div class="section__head"><div><p class="kicker">FAQ</p><h2 class="section__title">Questions people ask before pressing play</h2></div></div><div class="panel panel--faq">{faq_html}</div></section>''')
+    H.append('</main>' + footer())
+    write("index.html", "".join(H))
+
 def main():
     if os.path.isdir("site"): shutil.rmtree("site")
     os.makedirs("site", exist_ok=True)
-    page_home(); page_movies_hub(); page_categories_hub(); page_people_hub()
+    page_home_v2(); page_movies_hub(); page_categories_hub(); page_people_hub()
     for m in D["movies"]: page_movie_v2(m)
     for g in GEN: page_category(g)
     for p in PPL: page_person(p)

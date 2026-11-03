@@ -23,3 +23,26 @@
     io.observe(el);
   });
 })();
+
+// Load more for the movies grid (all cards stay in the DOM for crawlers)
+(function () {
+  var grid = document.getElementById('movieGrid');
+  var btn = document.getElementById('loadMore');
+  var count = document.getElementById('moreCount');
+  if (!grid || !btn) return;
+  var BATCH = 12, shown = BATCH;
+  var total = grid.children.length;
+  grid.classList.add('is-limited');
+  function sync() {
+    var hidden = Math.max(0, total - shown);
+    if (count) count.textContent = 'Showing ' + Math.min(shown, total) + ' of ' + total + ' movies';
+    if (hidden <= 0) { btn.style.display = 'none'; grid.classList.remove('is-limited'); }
+  }
+  btn.addEventListener('click', function () {
+    shown += BATCH;
+    Array.prototype.forEach.call(grid.children, function (el, i) { if (i < shown) el.style.display = ''; });
+    grid.classList.remove('is-limited');
+    sync();
+  });
+  sync();
+})();
