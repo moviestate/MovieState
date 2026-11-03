@@ -123,7 +123,7 @@ def card(m, href=None, rating=True, lazy=True):
     t, y = m.get("title", ""), m.get("year", "")
     r = m.get("rating") or 0
     inner = f'''<div class="card__art"><img src="{img}" alt="{e(t)} poster" width="342" height="513" {'loading="lazy" ' if lazy else ''}decoding="async">
-<span class="card__score">{r:.1f}</span><span class="card__fade" aria-hidden="true"></span></div>
+<span class="card__score">{r:.1f}</span><span class="card__fade" aria-hidden="true"></span><span class="card__cta">View guide <i>&#8594;</i></span></div>
 <div class="card__body"><h3 class="card__title">{e(t)}</h3><p class="card__sub">{e(y)}{" · " + e(m.get("genres", [""])[0]) if m.get("genres") else ""}</p></div>'''
     if href:
         if href.startswith('/'): href = BASE + href
@@ -993,24 +993,27 @@ def home3():
     H.append('<main id="main">')
     sl = ""
     for i, m in enumerate(slides):
+        tag = "h1" if i == 0 else "h2"
+        chips = "".join(f'<li>{e(x)}</li>' for x in [str(m["year"]), rtime(m.get("runtime")), m.get("certification") or "NR", (m.get("genres") or ["Film"])[0]])
         sl += f'''<article class="slide{' is-on' if i==0 else ''}" data-i="{i}" {'inert' if i else ''}>
 <img class="slide__bg" src="{backdrop(m.get("backdrop"),"w780")}" srcset="{backdrop(m.get("backdrop"),"w780")} 780w, {backdrop(m.get("backdrop"),"w1280")} 1280w" sizes="100vw" alt="" width="1280" height="720" {'fetchpriority="high"' if i==0 else 'loading="lazy"'} decoding="async">
 <span class="slide__veil" aria-hidden="true"></span>
 <div class="slide__in wrap"><div class="slide__copy">
-<p class="kicker">{e("Featured" if i==0 else "Editor pick")}</p>
-<h2 class="slide__title">{e(m["title"])}</h2>
-<p class="slide__meta">{m["year"]} · {e(rtime(m.get("runtime")))} · {e(m.get("certification") or "—")} · {e(m.get("genres",[""])[0])}</p>
-<p class="slide__line">{e((m.get("overview") or "")[:150])}…</p>
-<div class="slide__cta"><a class="btn btn--primary" href="{BASE}{movie_path(m)}">View guide &amp; watch options</a><a class="btn btn--ghost" href="{BASE}/movies/">All movies</a></div>
+<p class="kicker"><span class="live" aria-hidden="true"></span>Popular right now</p>
+<{tag} class="slide__title">{e(m["title"])}</{tag}>
+<ul class="slide__chips">{chips}</ul>
+<p class="slide__line">{e((m.get("overview") or "")[:140])}…</p>
+<div class="slide__cta"><a class="btn btn--primary" href="{BASE}{movie_path(m)}">Where to watch</a><a class="btn btn--ghost" href="{BASE}{movie_path(m)}#cast">Cast &amp; details</a></div>
 </div>
 <a class="slide__poster" href="{BASE}{movie_path(m)}" aria-label="View {e(m["title"])} guide"><img src="{poster(m.get("poster"),"w500")}" alt="{e(m["title"])} poster" width="500" height="750" {'fetchpriority="high"' if i==0 else 'loading="lazy"'} decoding="async"><span class="score-ring" style="--pct:{int((m.get('rating') or 0)*10)}"><b>{m.get('rating')}</b><i>/10</i></span></a>
 </div></article>'''
-    dots = "".join(f'<button class="dot{" is-on" if i==0 else ""}" type="button" data-goto="{i}" aria-label="Slide {i+1}"></button>' for i in range(len(slides)))
-    H.append(f'''<section class="hero hero--carousel" id="hero">
-<div class="hero__slides">{sl}</div>
-<div class="hero__nav wrap"><div class="dots">{dots}</div><div class="hero__arrows"><button class="arrow" type="button" data-prev aria-label="Previous">&#8249;</button><button class="arrow" type="button" data-next aria-label="Next">&#8250;</button></div></div>
-<div class="quickbar wrap"><div><span>Films</span><strong data-count="{cnt}">{cnt}</strong></div><div><span>Genres</span><strong data-count="{gcnt}">{gcnt}</strong></div><div><span>Profiles</span><strong data-count="{ppl}">{ppl}</strong></div><div><span>Avg rating</span><strong>{avg}</strong></div></div>
+    thumbs = "".join(f'''<button class="thumb{' is-on' if i==0 else ''}" type="button" data-goto="{i}" aria-label="Show {e(m["title"])}"><span class="thumb__art"><img src="{poster(m.get("poster"),"w185")}" alt="" width="185" height="278" loading="lazy" decoding="async"></span><span class="thumb__t">{e(m["title"])}</span></button>''' for i, m in enumerate(slides))
+    H.append(f'''<section class="hero" id="hero" aria-roledescription="carousel" aria-label="Popular movies">
+<div class="hero__stage">{sl}</div>
+<div class="hero__bar wrap"><div class="thumbs">{thumbs}</div><div class="hero__arrows"><button class="arrow" type="button" data-prev aria-label="Previous movie">&#8249;</button><button class="arrow" type="button" data-next aria-label="Next movie">&#8250;</button></div></div>
+<div class="hero__progress" aria-hidden="true"><span></span></div>
 </section>''')
+    H.append(f'''<div class="quickbar wrap"><div><span>Films</span><strong data-count="{cnt}">{cnt}</strong></div><div><span>Genres</span><strong data-count="{gcnt}">{gcnt}</strong></div><div><span>Profiles</span><strong data-count="{ppl}">{ppl}</strong></div><div><span>Avg rating</span><strong>{avg}</strong></div></div>''')
     H.append(f'''<section class="searchbar wrap"><form class="search" role="search" action="{BASE}/movies/" method="get" autocomplete="off"><label class="sr-only" for="q">Search movies</label><input id="q" name="q" type="search" placeholder="Search {cnt} films — title, year or genre" aria-describedby="qhelp"><button class="btn btn--primary" type="submit">Search</button><div class="search__res" id="qres" role="listbox" aria-label="Suggestions"></div><p id="qhelp" class="sr-only">Type at least two characters to see suggestions.</p></form></section>''')
     t10 = "".join(f'''<a class="t10__item" href="{BASE}{movie_path(m)}"><span class="t10__num">{i+1}</span><img src="{poster(m.get("poster"),"w342")}" alt="{e(m["title"])} poster" width="342" height="513" loading="{'eager' if i<3 else 'lazy'}" decoding="async"><span class="t10__cap"><strong>{e(m["title"])}</strong><span>{m["year"]} · {m.get('rating')}/10</span></span></a>''' for i,m in enumerate(top10[:5]))
     t10b = "".join(f'''<a class="t10__item" href="{BASE}{movie_path(m)}"><span class="t10__num">{i+6}</span><img src="{poster(m.get("poster"),"w342")}" alt="{e(m["title"])} poster" width="342" height="513" loading="lazy" decoding="async"><span class="t10__cap"><strong>{e(m["title"])}</strong><span>{m["year"]} · {m.get('rating')}/10</span></span></a>''' for i,m in enumerate(top10[5:10]))
