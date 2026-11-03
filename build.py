@@ -975,7 +975,7 @@ def home3():
     ppl = len(PPL)
     gcnt = len(GEN)
     avg = round(sum(m.get("rating") or 0 for m in allm) / max(1, cnt), 1)
-    slides = [MOV[i] for i in [1423191, 969681, 1156593, 1232493] if i in MOV]
+    slides = sorted([m for m in allm if m.get("backdrop") and (m.get("votes") or 0) > 300], key=lambda m: -(m.get("rating") or 0))[:5]
     top10 = sorted([m for m in allm if (m.get("votes") or 0) > 200], key=lambda m: -(m.get("rating") or 0))[:10]
     upc = sorted([m for m in allm if (m.get("release_date") or "") >= "2026-11-04"], key=lambda m: m.get("release_date") or "")[:6]
     trend = [MOV[i] for i in [1423191,1156593,1311031,1083381,1368166,1315985,1232493,1368316,1300118,1339713,1316311,1368337] if i in MOV]
