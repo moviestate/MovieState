@@ -1,5 +1,16 @@
 """Builds a film-specific editor's note from real fields. No invented facts: every sentence is conditional on data."""
 import re
+from datetime import date
+
+TODAY = "2026-11-04"
+MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+
+def fmt_date(iso):
+    try:
+        y, mo, d = [int(x) for x in str(iso)[:10].split("-")]
+        return f"{MON[mo-1]} {d}, {y}"
+    except Exception:
+        return str(iso or "")
 
 PARENT = {
  "G": "suitable for all ages", "PG": "suitable for most viewers, with some parental guidance for younger children",
@@ -38,7 +49,16 @@ def note(m, cert_us, similar_titles):
     out["who"] = who
 
     # --- What the audience says (honest about sample size) ---
-    if votes >= 5000:
+    _du = None
+    try:
+        from datetime import date
+        y_, m_, d_ = [int(x) for x in (m.get("release_date") or "")[:10].split("-")]
+        _du = (date(y_, m_, d_) - date(*[int(x) for x in TODAY.split("-")])).days
+    except Exception:
+        _du = None
+    if _du is not None and _du > 0:
+        out["audience"] = f"{t} has not been released yet. It is dated for {fmt_date(m.get('release_date'))}, so there are no audience ratings to judge it by. Use the cast, the director and the trailer to decide whether it is for you."
+    elif votes >= 5000:
         out["audience"] = f"With {_fmt_votes(votes)} TMDB ratings averaging {rating}/10, this is one of the most widely seen titles in our library, so the score is a reliable signal."
     elif votes >= 300:
         out["audience"] = f"{_fmt_votes(votes)} TMDB users have rated it {rating}/10. That is a solid sample, though scores can still move as more people watch."

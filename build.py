@@ -28,6 +28,44 @@ def rtime(x):
 def score(m): return f"{m['rating']:.1f}" if m.get("rating") else "NR"
 def poster(p, size="w500"): return f"https://image.tmdb.org/t/p/{size}{p}" if p else ""
 def backdrop(p, size="w1280"): return f"https://image.tmdb.org/t/p/{size}{p}" if p else ""
+MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+MONFULL = ["January","February","March","April","May","June","July","August","September","October","November","December"]
+def _pd(iso):
+    try: return tuple(int(x) for x in str(iso)[:10].split("-"))
+    except Exception: return None
+def fmt_date(iso, long=False):
+    t = _pd(iso)
+    if not t: return ""
+    y, mo, d = t
+    return f"{MON[mo-1]} {d}, {y}" if not long else f"{MONFULL[mo-1]} {d}, {y}"
+def month_key(iso):
+    t = _pd(iso)
+    return f"{MONFULL[t[1]-1]} {t[0]}" if t else "TBA"
+def days_until(iso):
+    from datetime import date
+    t = _pd(iso); n = _pd(TODAY)
+    if not t or not n: return None
+    return (date(*t) - date(*n)).days
+def until_label(iso):
+    d = days_until(iso)
+    if d is None: return ""
+    if d == 0: return "Out today"
+    if d == 1: return "Out tomorrow"
+    if d < 0: return "Released"
+    if d < 14: return f"In {d} days"
+    if d < 60: return f"In {round(d/7)} weeks"
+    return f"In {round(d/30)} months"
+def release_label(m):
+    iso = m.get("release_date") or ""; st = (m.get("status") or "").strip()
+    d = days_until(iso)
+    if d is not None and d > 0:
+        low = st.lower()
+        if low in ("released", "", "in production", "post production", "planned", "rumored"):
+            st = "In cinemas" if low == "released" else (st or "Announced")
+        return {"date": fmt_date(iso), "phase": "upcoming", "note": until_label(iso), "status": st}
+    return {"date": fmt_date(iso), "phase": "released", "note": "", "status": st or "Released"}
+UPCOMING = lambda: sorted([m for m in D["movies"] if (days_until(m.get("release_date") or "") or -1) > 0], key=lambda m: m.get("release_date") or "")
+
 def main_url(m): return f"{MAIN}/movie/{m['tmdb_id']}/{slug(m['title'])}"
 def esc_js(s): return json.dumps(s, ensure_ascii=False)
 
@@ -479,11 +517,24 @@ def page_movies_hub():
                {"@type": "ListItem", "position": i + 1, "name": m["title"], "url": f"{BASE}{movie_path(m)}"} for i, m in enumerate(D["movies"])]}}]
     h = head(f"All Movies — Guides, Cast & Where to Watch | {BRAND}",
              "Browse every movie we cover: cast, runtime, release details and where to watch in HD.", path, jsonld=ld)
+    _ups = UPCOMING()[:12]
+    _rows = ""
+    for _m in _ups:
+        _rl = release_label(_m); _t = _pd(_m.get("release_date")) or (0,1,1)
+        _mon = MON[_t[1]-1] if 1 <= _t[1] <= 12 else ""
+        _meta = join_and((_m.get("genres") or ["Film"])[:2])
+        _rows += ('<a class="cal__row" href="%s%s"><span class="cal__date"><b>%s</b><i>%s</i></span>'
+                  '<span class="cal__body"><strong>%s</strong><span>%s · %s</span></span>'
+                  '<span class="cal__when">%s</span></a>') % (BASE, movie_path(_m), _t[2], e(_mon), e(_m["title"]),
+                  e(_meta), e(_rl["status"]), e(_rl["note"]))
+    ups_html = (f'<section class="section" id="upcoming"><div class="section__head"><div><p class="kicker">Coming up</p>'
+                f'<h2 class="section__title">Upcoming releases</h2><p class="section__lede">Announced US dates for the next six months. '
+                f'Schedules move, so check the film page for the latest listed date.</p></div></div><div class="panel cal">{_rows}</div></section>') if _rows else ""
     body = f"""{h}{header("/movies/")}<main id="main">
 <div class="wrap">{crumbs([("Home", "/"), ("Movies", None)])}</div>
 <section class="page-head"><div class="wrap"><p class="kicker">Library</p><h1 class="page-title">All movies</h1>
 <p class="page-lede">Every film in the MovieState guide library, sorted by audience rating. Each page covers the story, the cast, technical details and where the film is streaming.</p></div></section>
-<section class="section"><div class="grid" id="movieGrid">{cards}</div><div class="more-wrap"><button class="btn btn--ghost" id="loadMore" type="button">Load more movies</button><p class="note" id="moreCount"></p></div></section>
+{ups_html}<section class="section"><div class="grid" id="movieGrid">{cards}</div><div class="more-wrap"><button class="btn btn--ghost" id="loadMore" type="button">Load more movies</button><p class="note" id="moreCount"></p></div></section>
 <section class="section section--narrow"><div class="section__head"><div><p class="kicker">How to use this list</p><h2 class="section__title">Sorted by audience rating, not by marketing budget</h2></div></div><div class="panel"><p>Each entry links to a full guide with the story, cast and crew, runtime, certification, box office and the streaming, rental and purchase options reported for six markets. Ratings come from TMDB user scores and move as new votes arrive, so the order shifts over time.</p></div></section>
 <section class="section section--narrow"><div class="panel"><h2 class="panel__title">Browse by category</h2><div class="chips">{chips}</div></div></section>
 </main>{footer()}"""
@@ -893,8 +944,13 @@ def page_movie_v2(m):
     cert_line = ", ".join(f"{c} in {k}" for k, c in list(cert_map.items())[:3]) or "check your local rating"
 
     # ---- watch rows ----
+    rl = release_label(m)
     wrows = []
+    if rl["phase"] == "upcoming":
+        wrows.append(f'<div class="watch__row"><span class="watch__cc">US</span><div><p class="watch__line"><b>Scheduled</b>{e(t)} is dated for {e(rl["date"])} in the United States ({e(rl["note"])}). Streaming and rental listings appear after the cinema window, usually a few weeks to a few months later.</p></div></div>')
+        wrows.append('<div class="watch__row"><span class="watch__cc">All</span><div><p class="watch__line"><b>Now</b>No legal stream, rental or purchase exists before the release date. Cinemas and the distributor\'s own site are the only official options until then.</p></div></div>')
     for cc in ["US","GB","CA","AU","IN","BD"]:
+        if rl["phase"] == "upcoming" and cc == "US": continue
         v = prov.get(cc) or {}
         if not (v.get("flatrate") or v.get("rent") or v.get("buy")):
             wrows.append(f'<div class="watch__row"><span class="watch__cc">{cc}</span><div><p class="watch__line"><b>{CC.get(cc, cc)}</b>{e(NO_LISTING.get(cc, NO_LISTING["_"]))}</p></div></div>')
@@ -1139,9 +1195,28 @@ def home3():
     t10 = "".join(f'''<a class="t10__item" href="{BASE}{movie_path(m)}"><span class="t10__num">{i+1}</span><img src="{poster(m.get("poster"),"w342")}" alt="{e(m["title"])} poster" width="342" height="513" loading="{'eager' if i<3 else 'lazy'}" decoding="async"><span class="t10__cap"><strong>{e(m["title"])}</strong><span>{m["year"]} · {m.get('rating')}/10</span></span></a>''' for i,m in enumerate(top10[:5]))
     t10b = "".join(f'''<a class="t10__item" href="{BASE}{movie_path(m)}"><span class="t10__num">{i+6}</span><img src="{poster(m.get("poster"),"w342")}" alt="{e(m["title"])} poster" width="342" height="513" loading="lazy" decoding="async"><span class="t10__cap"><strong>{e(m["title"])}</strong><span>{m["year"]} · {m.get('rating')}/10</span></span></a>''' for i,m in enumerate(top10[5:10]))
     H.append(f'''<section class="section"><div class="section__head"><div><p class="kicker">Top 10 this week</p><h2 class="section__title">The highest rated films in our library</h2></div><a class="section__link" href="{BASE}/movies/">See all {cnt}</a></div><div class="t10">{t10}</div><div class="t10 t10--b">{t10b}</div></section>''')
-    tl = "".join(f'''<a class="tl__row" href="{BASE}{movie_path(m)}"><time>{e((m.get("release_date") or "")[5:])}</time><span class="tl__dot" aria-hidden="true"></span><span class="tl__txt"><strong>{e(m["title"])}</strong><span>{e(", ".join(m.get("genres",[])[:2]))} · {e(m.get("status") or "")}</span></span><span class="tl__go" aria-hidden="true">→</span></a>''' for m in upc)
-    if tl:
-        H.append(f'''<section class="section"><div class="section__head"><div><p class="kicker">Coming up</p><h2 class="section__title">Release calendar</h2></div><a class="section__link" href="{BASE}/movies/">All releases</a></div><div class="panel tl">{tl}</div></section>''')
+    ups = UPCOMING()[:8]
+    cal = ""
+    if ups:
+        groups = {}
+        for m in ups: groups.setdefault(month_key(m.get("release_date")), []).append(m)
+        for mk, rows in groups.items():
+            items = ""
+            for m in rows:
+                rl = release_label(m)
+                _t = _pd(m.get("release_date")) or (0, 1, 1)
+                _day = str(_t[2])
+                _mon = MON[_t[1] - 1] if 1 <= _t[1] <= 12 else ""
+                _meta = join_and((m.get("genres") or ["Film"])[:2])
+                if rl["status"]: _meta = _meta + " \u00b7 " + rl["status"]
+                items += ('<a class="cal__row" href="%s%s">'
+                          '<span class="cal__date"><b>%s</b><i>%s</i></span>'
+                          '<span class="cal__body"><strong>%s</strong><span>%s</span></span>'
+                          '<span class="cal__when">%s</span></a>') % (
+                          BASE, movie_path(m), e(_day), e(_mon), e(m["title"]), e(_meta), e(rl["note"]))
+            cal += f'<div class="cal__group"><h3 class="cal__month">{e(mk)}</h3>{items}</div>'
+    if cal:
+        H.append(f'''<section class="section" id="calendar"><div class="section__head"><div><p class="kicker">Coming up</p><h2 class="section__title">Release calendar</h2><p class="section__lede">Dated releases in the next six months, from studio schedules and TMDB. Dates are the announced US date and can move.</p></div><a class="section__link" href="{BASE}/movies/#upcoming">All upcoming</a></div><div class="panel cal">{cal}</div></section>''')
     H.append(f'''<section class="section">{section_head("Now trending","What everyone is watching this week",("All movies",BASE+"/movies/"))}<div class="rail"><div class="rail__track">{"".join(card(m, movie_path(m)) for m in trend)}</div></div></section>''')
     editors = [MOV[i] for i in [969681, 1368337, 1423191] if i in MOV]
     ed = "".join(f'''<a class="ed-pick" href="{BASE}{movie_path(m)}"><img src="{backdrop(m.get("backdrop"),"w780")}" alt="{e(m['title'])} ({m['year']}) backdrop" width="780" height="439" loading="lazy" decoding="async"><span class="ed-pick__veil" aria-hidden="true"></span><span class="ed-pick__body"><span class="ed-pick__meta">{m.get('rating')}/10 · {m['year']} · {e(m.get("genres",[""])[0])}</span><strong>{e(m["title"])}</strong><span class="ed-pick__line">{e((m.get("overview") or "")[:110])}…</span></span></a>''' for m in editors)
