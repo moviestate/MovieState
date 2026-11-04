@@ -4,7 +4,7 @@ import json, html, os, re, shutil, hashlib
 from urllib.parse import quote_plus
 from datetime import date
 
-BASE = "https://moviestate.github.io/MovieState"
+BASE = "https://moviestate.github.io"
 BRAND = "MovieState"
 TODAY = "2026-11-04"
 

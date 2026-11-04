@@ -2,7 +2,7 @@
 adds an Articles section, and refreshes sitemap.xml."""
 import os, re, json, html, urllib.parse
 
-BASE = "https://moviestate.github.io/MovieState"
+BASE = "https://moviestate.github.io"
 stats = {}
 
 
