@@ -8,7 +8,7 @@ def get(p, **kw):
             with urllib.request.urlopen(url, timeout=30) as r: return json.load(r)
         except Exception: time.sleep(0.5*(i+1))
     return {}
-APPEND="credits,release_dates,providers,videos,keywords,reviews,similar,external_ids,alternative_titles"
+APPEND="credits,release_dates,watch/providers,videos,keywords,reviews,similar,external_ids,alternative_titles"
 D=json.load(open("data/movies.json")); GN={g["id"]:g["name"] for g in get("/genre/movie/list", language="en-US")["genres"]}
 have={m["tmdb_id"] for m in D["movies"]}
 TODAY="2026-11-04"
@@ -47,7 +47,7 @@ def build(i):
         dts.sort(key=lambda d: d["release_date"]); rels.append({"country":r.get("iso_3166_1"),"cert":dts[0].get("certification") or "","date":dts[0]["release_date"][:10]})
     prov={}
     for cc in ["US","GB","CA","AU","IN","BD"]:
-        v=(j.get("providers",{}) or {}).get("results",{}).get(cc) or {}
+        v=(j.get("watch/providers",{}) or {}).get("results",{}).get(cc) or {}
         prov[cc]={k:[x["provider_name"] for x in v.get(k,[])][:4] for k in ("flatrate","rent","buy") if v.get(k)}
     tr=None
     for v in (j.get("videos",{}) or {}).get("results",[]) or []:

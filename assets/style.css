@@ -13,3 +13,9 @@
 .cal__body span{font-size:13px;color:var(--muted)}
 .cal__when{font-size:12px;font-weight:600;white-space:nowrap;padding:6px 10px;border-radius:999px;background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent-ink)}
 @media (max-width:600px){.cal__group{padding:4px 14px}.cal__row{grid-template-columns:52px 1fr;gap:12px}.cal__when{grid-column:2;justify-self:start;font-size:11px;padding:4px 9px}.cal__body strong{font-size:15px}}
+
+/* pagination */
+.pager{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:34px 0 6px}
+.pager__a{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:42px;padding:0 14px;border-radius:12px;border:1px solid var(--line);color:var(--ink);text-decoration:none;font-weight:600;font-size:14px;background:var(--surface);transition:background .2s,border-color .2s,transform .2s}
+a.pager__a:hover{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 9%,var(--surface));transform:translateY(-1px)}
+.pager__a.is-current{background:var(--accent);border-color:var(--accent);color:#fff}

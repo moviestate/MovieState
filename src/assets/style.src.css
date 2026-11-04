@@ -788,3 +788,9 @@ a.card:hover{transform:translateY(-6px)}
 [data-theme="light"] .crumbs,[data-theme="light"] .crumbs a{color:#5A6780}
 .section__title em{font-style:normal;color:var(--royal2)}
 [data-theme="light"] .section__title em{color:#2748F2}
+
+/* pagination */
+.pager{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:34px 0 6px}
+.pager__a{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:42px;padding:0 14px;border-radius:12px;border:1px solid var(--line);color:var(--ink);text-decoration:none;font-weight:600;font-size:14px;background:var(--surface);transition:background .2s,border-color .2s,transform .2s}
+a.pager__a:hover{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 9%,var(--surface));transform:translateY(-1px)}
+.pager__a.is-current{background:var(--accent);border-color:var(--accent);color:#fff}
