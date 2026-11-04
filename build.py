@@ -152,14 +152,12 @@ def genre_path(g): return f"/category/{slug(g)}/"
 
 FEATURED_ID = 969681
 HOME_FAQ = [
- ("Is MovieState free to use?", "Yes. Every guide, cast list and availability table on this site is free to read. Watching happens on our main site, where each title has its own page."),
- ("Do you host or stream the movies?", "No. We publish information: story, cast, crew, ratings, release dates and where a film is available. Streaming and downloads are handled on MovieState."),
- ("How often is this site updated?", "Pages are rebuilt daily from live movie data, so ratings, box office figures and streaming listings change as the sources change."),
- ("What is MovieState?", "MovieState is an independent movie guide. We research films — story, cast, crew, runtime, release details and availability — and publish clear, fact-checked pages so you can decide what to watch next."),
- ("How do I find where to watch a movie?", "Open any movie page and use the Watch on MovieState button. Availability changes by country and provider, so always confirm on the streaming page before you subscribe."),
- ("Is browsing MovieState free?", "Yes. Every page on this site is free to read, with no account and no paywall. We do not run pop-ups or forced sign-ups."),
- ("Where does the movie data come from?", "Posters, backdrops and core metadata come from TMDB. We combine that with editorial checks against official studio and streaming announcements before publishing."),
- ("Do you host or stream movie files?", "No. This site publishes information only. Playback and downloads are handled on our main site, moviestate.is-best.net."),
+ ("What is MovieState?", "MovieState is an independent movie guide. We research each film - story, cast, crew, runtime, release details and where it is available - and publish clear, fact-checked pages so you can decide what to watch next."),
+ ("Is MovieState free to use?", "Yes. Every guide, cast list and availability table on this site is free to read, with no account and no paywall."),
+ ("Do you host or stream the movies?", "No. We publish information only. Streaming and downloads are handled on our main site, where each title has its own page."),
+ ("How do I find where to watch a movie?", "Open any movie page and use the Where to watch section. Availability changes by country and provider, so confirm on the provider page before you subscribe."),
+ ("Where does the movie data come from?", "Posters, backdrops and core metadata come from TMDB. We check details against studio and streaming announcements before publishing."),
+ ("How often is this site updated?", "Pages are rebuilt from live movie data, so ratings, box office figures and streaming listings change as the sources change."),
 ]
 
 def page_home():
