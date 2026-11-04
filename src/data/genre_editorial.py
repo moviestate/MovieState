@@ -1,0 +1,118 @@
+# Hand-written, genre-specific editorial copy. Each entry: intro (shown under H1), lens (what to look for),
+# starter (how to pick a first film), and two genre-specific FAQs. {top} and {n} are filled from library data.
+EDIT = {
+"Action": dict(
+ intro="Action is the genre where you can judge the craft in the first five minutes: is the camera clear, can you follow the geography, does the hero pay a price? {top}.",
+ lens="Look at who staged the stunts and whether the fights are shot wide enough to read. Practical work and clean editing age far better than effects that lean on blur. Runtime matters too: the best entries rarely need more than two hours.",
+ starter="Start with the highest rated title in the list, then move to the one with the most unusual setting. A Japanese monster drama and a superhero sequel are both 'action', but they ask for very different evenings.",
+ faq=[("How do I pick between a grounded action film and a spectacle?","Check the director's earlier work and the runtime. Grounded thrillers tend to run tighter and rely on stunt performers. Franchise spectacle leans on effects and often assumes you have seen earlier films."),
+      ("Are older action films still worth watching?","Yes. Several of the best-rated titles here are over a decade old and still outscore newer releases because their set pieces were built with real stunts and clear editing.")]),
+"Adventure": dict(
+ intro="Adventure sells scale: a map, a journey and a reason to keep moving. The best of it makes the location feel like a character. {top}.",
+ lens="Judge adventure films by how well they use their setting. A good one lets you remember routes and landmarks, and keeps the stakes personal even when the backdrop is huge.",
+ starter="If you want family-friendly, start with the animated entries. If you want myth and scale, pick the longest film on the page and give it a full evening.",
+ faq=[("Are adventure films suitable for children?","Many are, but ratings vary a lot. Animated adventures are usually PG, while live-action epics can carry PG-13 or R certificates. Check the certification on each film page before you watch together."),
+      ("What is the difference between adventure and action?","Action is built around physical conflict. Adventure is built around travel and discovery, and the conflict is a consequence of the journey rather than the point of it.")]),
+"Animation": dict(
+ intro="Animation is a method, not a genre, and it spans hand-drawn, stop-motion and full CG. What separates the strong ones is design and timing. {top}.",
+ lens="Watch for character design that reads at a glance, jokes that work for adults as well as children, and music that is part of the storytelling rather than a bolt-on.",
+ starter="Pick by technique first. Stop-motion and hand-drawn films reward a big screen and patience. CG features are usually the easier family evening.",
+ faq=[("Is animation only for children?","No. Animated features run from preschool comedies to adult drama and horror. The certification shown on each film page tells you which audience it was made for."),
+      ("Which animation studios are covered here?","The studio is listed on every film page under details, so you can follow a studio's work across titles.")]),
+"Comedy": dict(
+ intro="Comedy is the hardest genre to recommend blind, because tone and timing are personal. We list what is rated well and let the details help you choose. {top}.",
+ lens="Read the tagline and the cast. Improvisers and stage performers tend to deliver loose, quotable comedies. Tightly scripted farces live or die on pacing, so check the runtime.",
+ starter="If you are unsure, pick the shortest film. A comedy that finishes before the joke runs out is almost always the better evening.",
+ faq=[("Do comedy ratings mean as much as drama ratings?","Less. Humour is subjective, so use the score as a rough guide and read the premise. A 7 for a comedy that matches your taste beats an 8 that does not."),
+      ("Can I find comedy films from different countries?","Yes. The country field on each film page shows where it was produced, so you can follow regional comedy beyond Hollywood.")]),
+"Crime": dict(
+ intro="Crime stories trade in procedure, motive and consequence. The best ones keep the tension in the choices, not the body count. {top}.",
+ lens="Ask what the film is about besides the crime. Great entries are really about corruption, loyalty or a city. Check the writer and director: crime films are among the most writer-driven in cinema.",
+ starter="Start with the one that has the strongest ensemble cast. Crime stories live in the supporting roles.",
+ faq=[("What separates a crime film from a thriller?","Crime centres on the act and its investigation or consequences. Thrillers centre on the threat and keeping you uneasy. Many films here are both, which is why they appear in several categories."),
+      ("Are crime films violent?","Often, but not always graphically. The certification on each film page reflects the level, so check it before a family viewing.")]),
+"Documentary": dict(
+ intro="Documentaries turn research into narrative. We do not have a published documentary guide yet, and we would rather leave this page empty than fill it with filler. Guides will be added here as soon as they are researched.",
+ lens="When documentary guides arrive, we will list the filmmaker, the sources used and whether the film has been disputed.",
+ starter="Until then, browse the full movie library or the drama and history categories.",
+ faq=[("Why is there no documentary guide yet?","We publish guides only when the data and editorial notes are ready. Documentary pages need source checks, so they take longer."),
+      ("Can I request a documentary guide?","Yes. Tell us the title and we will add it to the queue.")]),
+"Drama": dict(
+ intro="Drama is the widest shelf in the library: family stories, courtroom battles and quiet character studies. The common thread is performance-led writing. {top}.",
+ lens="Dramas rise or fall on casting and script. Check who wrote it, and see whether the lead has done comparable work, because the person page links their other films.",
+ starter="If you want something light, choose the shortest. If you want to be moved, choose the highest rated and set aside the evening.",
+ faq=[("Why are some dramas rated lower than action films?","Drama audiences are smaller and more divided, and slow pacing costs scores. A 7 for a drama is often a strong result."),
+      ("How long are drama films?","Longer than average, often two hours or more. The runtime is on every film page so you can plan.")]),
+"Family": dict(
+ intro="Family films have to work for two audiences at once: children following the action and adults reading the jokes underneath. {top}.",
+ lens="Check the certification and the themes. A G or PG label does not mean a film is gentle, and some animated titles deal with loss.",
+ starter="Choose by age of the youngest viewer, then by runtime. Under 100 minutes is the safe range for younger children.",
+ faq=[("What age are the family films here suitable for?","It varies by film. Use the certification on each page and the overview to decide, and preview anything you are unsure about."),
+      ("Are family films only animated?","No. Live-action family features exist too, and some animated ones are aimed at older children.")]),
+"Fantasy": dict(
+ intro="Fantasy builds rules and then tests them. The films that last use magic to talk about power, loyalty and loss. {top}.",
+ lens="Look at how much the film asks you to learn up front. The strongest fantasy teaches its rules through story, not exposition. Franchise entries may assume prior knowledge.",
+ starter="Pick a standalone title first. If it works for you, move to the franchise entries.",
+ faq=[("Do I need to know the books or earlier films?","Not for standalone titles. For sequels, the overview on each film page says whether it continues an earlier story."),
+      ("What is the difference between fantasy and sci-fi?","Fantasy relies on magic and myth. Science fiction explains its world through technology or science, even when the science is invented.")]),
+"History": dict(
+ intro="Historical films sit between research and drama. We do not have a published history guide yet. Guides will be added here once the facts have been checked.",
+ lens="Treat on-screen timelines as interpretation, not record. When guides arrive, we will note where a film departs from the documented history.",
+ starter="Until then, browse the drama and war categories, or the full movie library.",
+ faq=[("Why is there no history guide yet?","We publish only when the data is ready and checked."),
+      ("Are historical films accurate?","Rarely entirely. Production design carries the period, but scripts compress and invent. Use them as a way into the subject, not as a source.")]),
+"Horror": dict(
+ intro="Horror runs on restraint and release: what the camera withholds, how long a shot holds and when the sound drops out. {top}.",
+ lens="Subgenre matters more than the label. Slow-burn haunted-house stories, creature features and splatter comedy are very different evenings. Read the overview before you commit.",
+ starter="Start with the highest rated title if you want atmosphere. Start with a sequel only if you have seen the earlier films, because horror franchises often rely on callbacks.",
+ faq=[("Are these horror films suitable for teenagers?","Check the certification on each film page. R-rated titles are not recommended for younger viewers, and PG-13 horror can still be intense."),
+      ("Do I need to watch earlier films in a horror franchise first?","Often yes. Where a title is a sequel, the overview and related films on its page show where it sits in the series.")]),
+"Music": dict(
+ intro="Music films live on performance. Biopics, concert films and musicals all depend on how honestly the camera captures a voice. {top}.",
+ lens="Check how much of the music is live or newly recorded, and who composed the score. The composer is listed in the crew section of each film page.",
+ starter="Choose by the music you already like. A great soundtrack for your taste lifts a good film.",
+ faq=[("Are music films the same as musicals?","No. A musical has characters sing within the story. A music film can be a biopic, concert or documentary about musicians."),
+      ("Where can I hear the soundtrack?","The composer and music credits are in the crew section of each film page, which is the best starting point for finding the official release.")]),
+"Mystery": dict(
+ intro="Mystery rewards attention. Clues, alibis and unreliable narrators are the toolkit, and the pleasure is the gap between what you know and what can be proved. {top}.",
+ lens="The best mysteries play fair: every clue is on screen before the reveal. Check the writer's other work, because a strong plotter usually repeats the trick.",
+ starter="Watch with the sound up and the phone away. These are the films where a missed line is a missed clue.",
+ faq=[("Do mystery films have spoilers on these pages?","No. Our overviews describe the setup only and never the resolution."),
+      ("How do mysteries differ from thrillers?","Mysteries are about finding out what happened. Thrillers are about what will happen next. Many films blend the two.")]),
+"Romance": dict(
+ intro="Romance depends on chemistry and structure: two people, an obstacle and a reason to keep watching after the meet-cute. {top}.",
+ lens="Judge the leads first. A romance without chemistry is a failed film regardless of production value. Then check the tone: warm comedy, period drama and tragedy are different evenings.",
+ starter="Choose by mood. Pick comedy for a light night and drama for one you want to feel.",
+ faq=[("Are romance films only for date nights?","No. Many are driven by family, friendship and loss as much as love, and work well alone."),
+      ("Are there romances outside Hollywood?","Yes. Check the country on each film page to follow regional romance cinema.")]),
+"Science Fiction": dict(
+ intro="Science fiction uses speculative ideas to test questions about technology, identity and power. The best keep the concept legible. {top}.",
+ lens="Ask what the idea is, and whether the characters, not the exposition, carry the argument. Production design and sound are doing a lot of the work, so a large screen helps.",
+ starter="For ideas, pick the highest rated. For spectacle, pick the biggest budget on the page. They are rarely the same film.",
+ faq=[("Is science fiction the same as superhero films?","They overlap, but superhero films are about powers and morality, while science fiction is about an idea about the world. The genre labels on each film page show which tags apply."),
+      ("Do sci-fi films date badly?","The predictions do, but the questions do not. Films that focus on people age better than those that focus on gadgets.")]),
+"TV Movie": dict(
+ intro="TV movies range from network thrillers to prestige limited productions. We do not have a published TV movie guide yet, and this page will fill as guides are researched.",
+ lens="When guides arrive, we will note the network, cast and whether the production had a cinema release.",
+ starter="Browse the full movie library in the meantime.",
+ faq=[("Why is there no TV movie guide yet?","We publish only when the data and editorial notes are ready."),
+      ("Are TV movies lower quality?","Not necessarily. Quality varies widely, so check the cast, crew and rating on each film page.")]),
+"Thriller": dict(
+ intro="Thrillers are engineered for tension: a clock, a threat and someone with too little information. Pacing does most of the work. {top}.",
+ lens="Editing and sound design matter as much as the plot. Check the runtime: a thriller over two hours must keep raising the stakes to hold you.",
+ starter="Pick the highest rated for a safe evening. Pick the one with the least familiar cast if you want to be surprised.",
+ faq=[("Why are so many films listed as thrillers?","The label is broad. It covers horror, crime, action and mystery titles that rely on suspense, so many films carry it alongside another genre."),
+      ("Are thrillers scary?","Some are, but suspense is different from fear. Horror aims to frighten. Thrillers aim to make you anxious about what happens next.")]),
+"War": dict(
+ intro="War films carry documentary weight even when fictional. The strongest avoid triumphalism and stay with the people inside the machinery. {top}.",
+ lens="Check whether the story follows a real event, and treat the film as interpretation. The strongest war films are honest about how little control individuals have.",
+ starter="If you are new to the genre, pick the one with the shortest runtime. These films take a lot out of you.",
+ faq=[("Are war films historically accurate?","Not fully. Even the most researched compress events and invent characters. Use them as a way in, then read the history."),
+      ("Are war films suitable for teenagers?","Most carry R or PG-13 certificates. Check the certification on each film page.")]),
+"Western": dict(
+ intro="The western studies frontier rules: land, law, violence and who gets to start over. We do not have a published western guide yet. Guides will be added here as they are researched.",
+ lens="When guides arrive, we will note whether each film follows or subverts the classic form.",
+ starter="Browse the adventure and drama categories in the meantime.",
+ faq=[("Why is there no western guide yet?","We publish only when the data and editorial notes are ready."),
+      ("Are westerns still being made?","Yes. Modern entries often revise the classic myths. Browse the library to see current titles.")]),
+}

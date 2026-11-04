@@ -32,16 +32,24 @@ def main_url(m): return f"{MAIN}/movie/{m['tmdb_id']}/{slug(m['title'])}"
 def esc_js(s): return json.dumps(s, ensure_ascii=False)
 
 def trim(s, n=155):
-    """Cut at a sentence boundary, else a clause, else a clean word boundary. Never ends mid-phrase."""
+    """Cut at a real sentence end, else a clause, else a clean word boundary."""
     s = re.sub(r"\s+", " ", str(s or "")).strip()
     if len(s) <= n: return s
     cut = s[:n]
-    k = max(cut.rfind(". "), cut.rfind("! "), cut.rfind("? "))
-    if k >= 70: return cut[:k+1]
-    k = max(cut.rfind(", "), cut.rfind("; "), cut.rfind(": "), cut.rfind(" – "), cut.rfind(" - "))
-    if k >= 70: return cut[:k].rstrip(",;:- ") + "."
+    best = -1
+    for m in re.finditer(r"[.!?]\s", cut):
+        k = m.start()
+        prev = cut[:k].split(" ")[-1]
+        if len(prev.rstrip(".")) == 1:  # single-letter abbreviation, not a sentence end
+            continue
+        if k >= 70: best = max(best, k)
+        break
+    if best > 0: return cut[:best+1]
+    for sep in (", ", "; ", ": ", " - ", " – "):
+        k = cut.rfind(sep)
+        if k >= 70: return cut[:k].rstrip(",;:- ") + "."
     cut = cut[:cut.rfind(" ")] if " " in cut else cut
-    stop = {"a","an","the","and","or","of","in","on","for","to","with","by","his","her","their","its","as","at","from","is","are","was","best","known"}
+    stop = {"a","an","the","and","or","of","in","on","for","to","with","by","his","her","their","its","as","at","from","is","are","was","best","known","who","that"}
     words = cut.split()
     while words and words[-1].lower().strip(",.;:") in stop: words.pop()
     return " ".join(words).rstrip(",;:- ") + "."
@@ -554,9 +562,13 @@ def page_person(p):
       (f"Where can I watch {p['name']}'s films?", "Open any film on MovieState to see streaming, rental and purchase options reported for your region."),
     ]
     faq_html = "".join(f'<details class="faq__item"><summary><h3>{e(q)}</h3></summary><p>{e(a)}</p></details>' for q, a in gfaq)
-    first = lead if lead.lower().startswith(p["name"].split()[0].lower()) else f"{p['name']}. {lead}"
-    tail = f" Credits, films and where to watch them." if len(first) < 110 else ""
-    desc = trim(first + tail, 156)
+    sents = [x for x in re.split(r"(?<=[.!?])\s+(?=[A-Z0-9\"'])", clean_bio(bio)) if x.strip()]
+    core = " ".join(sents[:2]) if sents else lead
+    if not core.lower().startswith(p["name"].split()[0].lower()):
+        core = p["name"] + ". " + core
+    if len(core) < 95:
+        core += f" See every {role.lower()} credit and the films they appear in."
+    desc = trim(core, 156)
     ld = [crumb_ld([("Home", "/"), ("People", "/people/"), (p["name"], person_path(p))]),
           {"@context": "https://schema.org", "@type": "Person", "name": p["name"], "url": f"{BASE}/{path}",
            "image": poster(p.get("profile"), "w500"), "description": trim(lead, 300), "jobTitle": role, **({"birthDate": p["birthday"]} if p.get("birthday") else {}), **({"birthPlace": p["place"]} if p.get("place") else {}), "sameAs": ([f"https://www.themoviedb.org/person/{p['id']}"])},
@@ -874,6 +886,7 @@ def page_movie_v2(m):
     rels = m.get("releases") or []
     title = f"{t} ({y}): Cast, Ratings & Where to Watch"
     if len(title) > 66: title = f"{t} ({y}): Cast & Where to Watch"
+    if len(title) > 66: title = f"{t} ({y}) Movie Guide"
     desc = f"{t} ({y}): story, cast, crew, ratings and release dates, plus where to stream, rent or buy it in the US, UK, India and Bangladesh."
     if len(desc) > 158: desc = f"{t} ({y}): cast, crew, ratings, release dates and where to stream, rent or buy it by region."
     cert_map = {r["country"]: r["cert"] for r in rels if r.get("cert")}
@@ -959,12 +972,12 @@ def page_movie_v2(m):
     if trailer: ld_list[0]["trailer"] = {"@type":"VideoObject","name":trailer["name"],"embedUrl":f"https://www.youtube.com/embed/{trailer['key']}"}
     ld_list.append(crumb_ld([("Home","/"),("Movies","/movies/"),(t,movie_path(m))]))
     ld_list.append({"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in fq]})
-    page_head = head(title, desc, path, og_image=backdrop(m.get("backdrop"),"w1280"), jsonld=ld_list, og_type="video.movie")
+    page_head = head(title, desc, path, og_image=backdrop(m.get("backdrop"),"w1280"), jsonld=ld_list, og_type="video.movie", preload_img=backdrop(m.get("backdrop"),"w780"))
 
     H = []
     H.append(page_head + header())
     H.append('<main id="main"><div class="wrap crumbs-wrap">' + crumbs([("Home","/"),("Movies","/movies/"),(t,None)]) + '</div>')
-    H.append(f'''<section class="film"><img class="film__bg" src="{backdrop(m.get("backdrop"),"w1280")}" alt="" width="1280" height="720" fetchpriority="high" decoding="async"><span class="film__veil" aria-hidden="true"></span>
+    H.append(f'''<section class="film"><img class="film__bg" src="{backdrop(m.get("backdrop"),"w780")}" srcset="{backdrop(m.get("backdrop"),"w780")} 780w, {backdrop(m.get("backdrop"),"w1280")} 1280w" sizes="100vw" alt="" width="1280" height="720" fetchpriority="high" decoding="async"><span class="film__veil" aria-hidden="true"></span>
 <div class="film__inner wrap"><div class="poster-xl"><img src="{poster(m.get("poster"),"w500")}" alt="{e(t)} poster" width="500" height="750" fetchpriority="high"><span class="score-ring" style="--pct:{int((m.get('rating') or 0)*10)}"><b>{m.get('rating') or '—'}</b><i>/10</i></span></div>
 <div class="film__head"><p class="kicker">{e(" · ".join(m.get("genres",[])))}</p><h1 class="film__title">{e(t)}</h1>
 <p class="film__tag">&ldquo;{e((m.get('tagline') or '').strip() or ('A ' + str(y) + ' release'))}&rdquo;</p>
