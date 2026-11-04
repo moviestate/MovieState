@@ -243,8 +243,11 @@ def build_articles():
             html.escape(str(m.get("lastmod", m.get("date", "")))), md_blocks(a["body"]))
         write(path + "index.html", set_head(head, title, desc, path, jsonld) + body + tail)
         urls.append((path, str(m.get("lastmod", m.get("date", "")))))
-    # sitemap
+    # sitemap - single generator (hashed lastmod, noindex-safe)
+    import sitemap_build
+    sitemap_build.build(".")
     sm = open("sitemap.xml", encoding="utf-8").read()
+    if False:
     have = set(re.findall(r"<loc>([^<]+)</loc>", sm))
     rows = []
     if BASE + "/articles/" not in have:

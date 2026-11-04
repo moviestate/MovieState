@@ -836,6 +836,11 @@ def write_sitemap():
     for p in sorted(set(PAGES) - NOINDEX_PATHS):
         pr, cf = priority(p)
         rows.append(f"<url><loc>{url_for(p)}</loc><lastmod>{TODAY}</lastmod><changefreq>{cf}</changefreq><priority>{pr}</priority></url>")
+    import sitemap_build
+    if hasattr(sitemap_build, "build"):
+        sitemap_build.build(os.path.join(os.getcwd(), "site"))
+        write_raw("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n")
+        return
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">\n'.replace("www.sitemap.org", "www.sitemaps.org")
     write_raw("sitemap.xml", sm + "\n".join(rows) + "\n</urlset>\n")
     write_raw("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n")

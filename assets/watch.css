@@ -48,3 +48,5 @@
 .w2-logo{max-width:70px}
 .w2-reg>summary{min-height:56px}
 }
+.w2-jw{display:flex;align-items:center;justify-content:center;min-height:44px;margin:10px 0 2px;padding:0 14px;border:1px dashed var(--line);border-radius:10px;font-size:.8rem;font-weight:600;color:#AFC0FF;text-decoration:none}
+.w2-jw:hover{border-color:var(--royal2);color:#fff}
