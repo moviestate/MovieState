@@ -574,7 +574,7 @@ def page_person(p):
            "image": poster(p.get("profile"), "w500"), "description": trim(lead, 300), "jobTitle": role, **({"birthDate": p["birthday"]} if p.get("birthday") else {}), **({"birthPlace": p["place"]} if p.get("place") else {}), "sameAs": ([f"https://www.themoviedb.org/person/{p['id']}"])},
           {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
               {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in gfaq]}]
-    rich = len(films_rows) >= 2 and len(bio) >= 500
+    rich = (len(films_rows) >= 2) or (len(bio) >= 700 and len(films_rows) >= 1)
     h = head(f"{p['name']}: Movies, Credits & Biography", desc, path, og_image=poster(p.get("profile"), "w500"), jsonld=ld, og_type="profile", noindex=not rich)
     body = (h + header("/people/") + '<main id="main"><div class="wrap">'
       + crumbs([("Home", "/"), ("People", "/people/"), (p["name"], None)]) + '</div>'
