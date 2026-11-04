@@ -37,12 +37,13 @@ def head(title, desc, path, og_image=None, jsonld=None, extra_css="", preload_im
     clean = "" if path in ("", "index.html") else re.sub(r"index\.html$", "", path)
     url = f"{BASE}/{clean}" if clean else f"{BASE}/"
     og = og_image or f"{BASE}/assets/og-default.jpg"
-    parts = [f"""<!doctype html><html lang="en"><head>
+    parts = [f"""<!doctype html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{{var t=localStorage.getItem("ms-theme");if(t==="dark"||t==="light"){{document.documentElement.dataset.theme=t}}}}catch(e){{}}</script>
 <title>{e(title)}</title><meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{url}">{f'<link rel="preload" as="image" href="{preload_img}" fetchpriority="high">' if preload_img else ""}
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
-<meta name="theme-color" content="#05060A">
+<meta name="theme-color" content="#FFFFFF">
 <meta property="og:type" content="website"><meta property="og:site_name" content="{BRAND}">
 <meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{url}"><meta property="og:image" content="{e(og)}">
@@ -84,6 +85,10 @@ def header(active=""):
 <header class="header"><div class="header__inner">
 <a class="logo" href="{BASE}/" aria-label="MovieState home">{logo_svg("a")}<span class="logo__word"><span class="logo__name">MovieState</span><span class="logo__tag">Premium Cinema Guide</span></span></a>
 <nav class="nav" aria-label="Main">{links}</nav>
+<button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Switch theme">
+<span class="theme-toggle__sun" aria-hidden="true"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4L17 7M7 17l-1.6 1.6"/></svg></span>
+<span class="theme-toggle__moon" aria-hidden="true"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.4A8.6 8.6 0 1 1 9.6 3.5a7 7 0 0 0 10.9 10.9z"/></svg></span>
+</button>
 <a class="btn btn--primary btn--sm header__cta" href="{MAIN}/" target="_blank" rel="noopener">Watch Movies</a>
 </div></header>"""
 
@@ -631,7 +636,7 @@ def write_raw(path, content):
 def page_404():
     body = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Page not found | {BRAND}</title><meta name="robots" content="noindex,follow">
-<link rel="stylesheet" href="{BASE}/assets/style.css"><meta name="theme-color" content="#05060A"></head>
+<link rel="stylesheet" href="{BASE}/assets/style.css"><meta name="theme-color" content="#FFFFFF"></head>
 <body>{header()}<main id="main" class="section section--narrow"><div class="panel">
 <p class="kicker">404</p><h1 class="page-title">This page slipped out of the frame</h1>
 <p>The page you wanted is not here. It may have moved, or it may not be published yet.</p>
