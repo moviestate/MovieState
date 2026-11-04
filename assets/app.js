@@ -50,7 +50,7 @@
 // Cinematic hero carousel
 (function () {
   var hero = document.getElementById('hero'); if (!hero) return;
-  var slides = hero.querySelectorAll('.slide'), thumbs = hero.querySelectorAll('.thumb');
+  var slides = hero.querySelectorAll('.slide'), thumbs = hero.querySelectorAll('.hdot');
   var bar = hero.querySelector('.hero__progress span'), i = 0, timer = null, D = 7000;
   function load(s) {
     Array.prototype.forEach.call(s.querySelectorAll('img[data-src]'), function (im) {
@@ -98,23 +98,57 @@
   Array.prototype.forEach.call(els, function (el) { io.observe(el); });
 })();
 
-// Instant search over the inline index
+// Search: suggestions + real results
 (function () {
-  var input = document.getElementById('q'), box = document.getElementById('qres'), raw = document.getElementById('siteIndex');
-  if (!input || !box || !raw) return;
+  var input = document.getElementById('q'), box = document.getElementById('qres'),
+      raw = document.getElementById('siteIndex'), grid = document.getElementById('qgrid'),
+      form = document.getElementById('sf');
+  if (!input || !raw) return;
   var data = []; try { data = JSON.parse(raw.textContent); } catch (e) { return; }
-  function render(list) {
-    if (!list.length) { box.classList.remove('is-open'); box.innerHTML = ''; return; }
+
+  function match(q) {
+    q = q.toLowerCase().trim();
+    if (!q) return [];
+    var starts = [], has = [];
+    data.forEach(function (m) {
+      var hay = (m.t + ' ' + m.y + ' ' + (m.g || '')).toLowerCase();
+      if (m.t.toLowerCase().indexOf(q) === 0) starts.push(m);
+      else if (hay.indexOf(q) > -1) has.push(m);
+    });
+    return starts.concat(has);
+  }
+  function close() { if (box) { box.classList.remove('is-open'); box.innerHTML = ''; } }
+  function suggest(list) {
+    if (!box) return;
+    if (!list.length) { close(); return; }
     box.innerHTML = list.slice(0, 6).map(function (m) {
-      return '<a href="' + m.u + '"><img src="' + m.p + '" alt="" width="28" height="42" loading="lazy">' + m.t + ' <span style="opacity:.6">(' + m.y + ')</span></a>';
+      return '<a href="' + m.u + '"><img src="' + m.p + '" alt="" width="28" height="42" loading="lazy"><span>' + m.t + ' <em>(' + m.y + ')</em></span></a>';
     }).join('');
     box.classList.add('is-open');
   }
-  input.addEventListener('input', function () {
-    var q = input.value.trim().toLowerCase();
-    if (q.length < 2) { render([]); return; }
-    render(data.filter(function (m) { return (m.t + ' ' + m.y).toLowerCase().indexOf(q) > -1; }));
+  if (input) input.addEventListener('input', function () {
+    var q = input.value.trim();
+    if (q.length < 2) { close(); return; }
+    suggest(match(q));
   });
-  input.addEventListener('keydown', function (e) { if (e.key === 'Escape') render([]); });
-  document.addEventListener('click', function (e) { if (!box.contains(e.target) && e.target !== input) render([]); });
+  input.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Escape') close();
+    if (ev.key === 'Enter') { ev.preventDefault(); if (form) run(); }
+  });
+  function run() {
+    var q = input.value.trim();
+    var list = match(q);
+    close();
+    if (!grid) return;
+    if (!list.length) {
+      grid.innerHTML = '<p class="qres__empty">No guide matches “' + q.replace(/[<>&]/g, '') + '”. <a href="https://moviestate.github.io/MovieState/movies/">Browse all films &#8594;</a></p>';
+    } else {
+      grid.innerHTML = list.slice(0, 12).map(function (m) {
+        return '<a class="qhit" href="' + m.u + '"><img src="' + m.p + '" alt="' + m.t + ' poster" width="92" height="138" loading="lazy"><span>' + m.t + '</span></a>';
+      }).join('');
+    }
+    grid.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  if (form) form.addEventListener('submit', function (ev) { ev.preventDefault(); run(); });
+  document.addEventListener('click', function (ev) { if (box && !box.contains(ev.target) && ev.target !== input) close(); });
 })();

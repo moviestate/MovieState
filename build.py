@@ -61,15 +61,18 @@ def head(title, desc, path, og_image=None, jsonld=None, extra_css="", preload_im
 ORG = {"@type": "Organization", "name": BRAND, "url": BASE + "/", "logo": {"@type": "ImageObject", "url": BASE + "/assets/favicon.svg"}}
 
 def logo_svg(uid="a"):
-    return ('<svg viewBox="0 0 44 44" role="img" aria-label="MovieState logo">'
-      '<defs><linearGradient id="ms' + uid + '" x1="0" y1="0" x2="1" y2="1">'
-      '<stop offset="0" stop-color="#8FA2FF"/><stop offset=".55" stop-color="#3B5BFF"/>'
-      '<stop offset="1" stop-color="#101B6B"/></linearGradient></defs>'
-      '<rect x="1" y="1" width="42" height="42" rx="12" fill="url(#ms' + uid + ')"/>'
-      '<rect x="1.6" y="1.6" width="40.8" height="40.8" rx="11.4" fill="none" stroke="rgba(255,255,255,.22)"/>'
-      '<path d="M12 30.5V14.5l6.6 8.4L25.2 14.5v16" fill="none" stroke="#fff" stroke-width="3.1" '
-      'stroke-linecap="round" stroke-linejoin="round"/>'
-      '<circle cx="32.4" cy="15.6" r="2.5" fill="#fff" opacity=".92"/></svg>')
+    return ('<svg viewBox="0 0 44 44" role="img" aria-label="MovieState logo" xmlns="http://www.w3.org/2000/svg">'
+      '<defs><linearGradient id="mb' + uid + '" x1="0" y1="0" x2="1" y2="1">'
+      '<stop offset="0" stop-color="#7E97FF"/><stop offset=".5" stop-color="#2B4CFF"/><stop offset="1" stop-color="#0A1150"/></linearGradient>'
+      '<linearGradient id="mf' + uid + '" x1="0" y1="1" x2="1" y2="0">'
+      '<stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#BFD0FF"/></linearGradient></defs>'
+      '<rect x=".8" y=".8" width="42.4" height="42.4" rx="13" fill="url(#mb' + uid + ')"/>'
+      '<rect x="1.4" y="1.4" width="41.2" height="41.2" rx="12.4" fill="none" stroke="rgba(255,255,255,.26)" stroke-width="1"/>'
+      '<g fill="#fff" opacity=".34">'
+      '<rect x="5.4" y="9.4" width="3.1" height="3.5" rx="1.1"/><rect x="5.4" y="20.2" width="3.1" height="3.5" rx="1.1"/><rect x="5.4" y="31" width="3.1" height="3.5" rx="1.1"/>'
+      '<rect x="35.5" y="9.4" width="3.1" height="3.5" rx="1.1"/><rect x="35.5" y="20.2" width="3.1" height="3.5" rx="1.1"/><rect x="35.5" y="31" width="3.1" height="3.5" rx="1.1"/></g>'
+      '<path d="M14.6 31V13.4l7.4 9.6 7.4-9.6V31" fill="none" stroke="url(#mf' + uid + ')" stroke-width="3.2" '
+      'stroke-linecap="round" stroke-linejoin="round"/></svg>')
 
 def header(active=""):
     nav = [("Movies", "/movies/"), ("Categories", "/categories/"), ("People", "/people/"), ("FAQ", "/faq/"), ("About", "/about/")]
@@ -81,7 +84,7 @@ def header(active=""):
 <header class="header"><div class="header__inner">
 <a class="logo" href="{BASE}/" aria-label="MovieState home">{logo_svg("a")}<span class="logo__word"><span class="logo__name">MovieState</span><span class="logo__tag">Premium Cinema Guide</span></span></a>
 <nav class="nav" aria-label="Main">{links}</nav>
-<a class="btn btn--ghost btn--sm" href="{MAIN}/" target="_blank" rel="noopener">Watch Movies</a>
+<a class="btn btn--primary btn--sm header__cta" href="{MAIN}/" target="_blank" rel="noopener">Watch Movies</a>
 </div></header>"""
 
 def footer():
@@ -979,7 +982,7 @@ def home3():
     top10 = sorted([m for m in allm if (m.get("votes") or 0) > 200], key=lambda m: -(m.get("rating") or 0))[:10]
     upc = sorted([m for m in allm if (m.get("release_date") or "") >= "2026-11-04"], key=lambda m: m.get("release_date") or "")[:6]
     trend = [MOV[i] for i in [1423191,1156593,1311031,1083381,1368166,1315985,1232493,1368316,1300118,1339713,1316311,1368337] if i in MOV]
-    idx = [{"t": m["title"], "y": m["year"], "u": BASE + movie_path(m), "p": poster(m.get("poster"), "w92")} for m in allm]
+    idx = [{"t": m["title"], "y": m["year"], "u": BASE + movie_path(m), "p": poster(m.get("poster"), "w92"), "g": " ".join(m.get("genres", []))} for m in allm]
     H = [head("MovieState — Watch Movies Online in HD & Find Where to Watch",
               "Independent movie guide: what to watch now, full cast and crew, ratings, box office and where each film streams, rents or sells in HD.",
               "index.html", og_image=backdrop(slides[0].get("backdrop"), "w1280"), preload_img=backdrop(slides[0].get("backdrop"), "w780"),
@@ -1007,14 +1010,14 @@ def home3():
 </div>
 <a class="slide__poster" href="{BASE}{movie_path(m)}" aria-label="View {e(m["title"])} guide"><img {'src="' + poster(m.get("poster"),"w500") + '" fetchpriority="high"' if i==0 else 'data-src="' + poster(m.get("poster"),"w500") + '"'} alt="{e(m["title"])} poster" width="500" height="750" decoding="async"><span class="score-ring" style="--pct:{int((m.get('rating') or 0)*10)}"><b>{m.get('rating')}</b><i>/10</i></span></a>
 </div></article>'''
-    thumbs = "".join(f'''<button class="thumb{' is-on' if i==0 else ''}" type="button" data-goto="{i}" aria-label="Show {e(m["title"])}"><span class="thumb__art"><img src="{poster(m.get("poster"),"w185")}" alt="" width="185" height="278" loading="lazy" decoding="async"></span><span class="thumb__t">{e(m["title"])}</span></button>''' for i, m in enumerate(slides))
+    dots = "".join(f'<button class="hdot{" is-on" if i==0 else ""}" type="button" data-goto="{i}" aria-label="Show {e(m["title"])}"></button>' for i, m in enumerate(slides))
     H.append(f'''<section class="hero" id="hero" aria-roledescription="carousel" aria-label="Popular movies">
 <div class="hero__stage">{sl}</div>
-<div class="hero__bar wrap"><div class="thumbs">{thumbs}</div><div class="hero__arrows"><button class="arrow" type="button" data-prev aria-label="Previous movie">&#8249;</button><button class="arrow" type="button" data-next aria-label="Next movie">&#8250;</button></div></div>
+<div class="hero__bar wrap"><div class="hdots">{dots}</div><div class="hero__arrows"><button class="arrow" type="button" data-prev aria-label="Previous movie">&#8249;</button><button class="arrow" type="button" data-next aria-label="Next movie">&#8250;</button></div></div>
 <div class="hero__progress" aria-hidden="true"><span></span></div>
 </section>''')
     H.append(f'''<div class="quickbar wrap"><div><span>Films</span><strong data-count="{cnt}">{cnt}</strong></div><div><span>Genres</span><strong data-count="{gcnt}">{gcnt}</strong></div><div><span>Profiles</span><strong data-count="{ppl}">{ppl}</strong></div><div><span>Avg rating</span><strong>{avg}</strong></div></div>''')
-    H.append(f'''<section class="searchbar wrap"><form class="search" role="search" action="{BASE}/movies/" method="get" autocomplete="off"><label class="sr-only" for="q">Search movies</label><input id="q" name="q" type="search" placeholder="Search {cnt} films — title, year or genre" aria-describedby="qhelp"><button class="btn btn--primary" type="submit">Search</button><div class="search__res" id="qres" role="listbox" aria-label="Suggestions"></div><p id="qhelp" class="sr-only">Type at least two characters to see suggestions.</p></form></section>''')
+    H.append(f'''<section class="searchbar wrap"><form class="search" role="search" autocomplete="off" id="sf"><label class="sr-only" for="q">Search movies</label><input id="q" name="q" type="search" placeholder="Search movies, actors, genres or years…" aria-describedby="qhelp"><button class="btn btn--primary" type="submit">Search</button><div class="search__res" id="qres" role="listbox" aria-label="Suggestions"></div><p id="qhelp" class="sr-only">Type at least two characters to see suggestions, then press Enter.</p></form><div class="qres" id="qgrid" aria-live="polite"></div></section>''')
     t10 = "".join(f'''<a class="t10__item" href="{BASE}{movie_path(m)}"><span class="t10__num">{i+1}</span><img src="{poster(m.get("poster"),"w342")}" alt="{e(m["title"])} poster" width="342" height="513" loading="{'eager' if i<3 else 'lazy'}" decoding="async"><span class="t10__cap"><strong>{e(m["title"])}</strong><span>{m["year"]} · {m.get('rating')}/10</span></span></a>''' for i,m in enumerate(top10[:5]))
     t10b = "".join(f'''<a class="t10__item" href="{BASE}{movie_path(m)}"><span class="t10__num">{i+6}</span><img src="{poster(m.get("poster"),"w342")}" alt="{e(m["title"])} poster" width="342" height="513" loading="lazy" decoding="async"><span class="t10__cap"><strong>{e(m["title"])}</strong><span>{m["year"]} · {m.get('rating')}/10</span></span></a>''' for i,m in enumerate(top10[5:10]))
     H.append(f'''<section class="section"><div class="section__head"><div><p class="kicker">Top 10 this week</p><h2 class="section__title">The highest rated films in our library</h2></div><a class="section__link" href="{BASE}/movies/">See all {cnt}</a></div><div class="t10">{t10}</div><div class="t10 t10--b">{t10b}</div></section>''')
