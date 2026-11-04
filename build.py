@@ -1249,6 +1249,10 @@ def main():
     for p in PPL: page_person(p)
     page_about(); page_privacy(); page_terms(); page_faq()
     page_404(); write_sitemap()
+    if os.path.isdir("static_extra"):
+        for _f in sorted(os.listdir("static_extra")):
+            _s = os.path.join("static_extra", _f)
+            if os.path.isfile(_s): shutil.copyfile(_s, os.path.join("site", _f))
     for src in ["assets/og-default.jpg", "assets/style.css", "assets/app.js", "assets/favicon.svg", "assets/fonts/instrument-serif.woff2", "assets/fonts/inter-var.woff2"]:
         dst = os.path.join("site", src); os.makedirs(os.path.dirname(dst), exist_ok=True)
         shutil.copy(src, dst)
