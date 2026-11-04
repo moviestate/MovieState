@@ -41,3 +41,8 @@ html[data-theme="light"] .card{background:#fff;border-color:rgba(20,40,110,.12)}
 a.cast-card:hover{transform:translateY(-3px)}
 .person-photo{float:left;width:132px;height:auto;border-radius:12px;margin:0 18px 10px 0;border:1px solid var(--line)}
 @media (max-width:600px){.card__score{font-size:.66rem!important;padding:3px 7px!important}.card__title{font-size:.86rem!important}.person-photo{width:104px}}
+
+/* best-of ranking */
+.bo-item{position:relative}
+.bo-rank{position:absolute;left:8px;top:8px;z-index:4;min-width:26px;height:26px;padding:0 6px;display:grid;place-items:center;border-radius:8px;font-size:.72rem;font-weight:800;font-variant-numeric:tabular-nums;color:#fff;background:linear-gradient(140deg,#2B4CFF,#5B78FF);box-shadow:0 6px 16px -8px rgba(43,76,255,.9)}
+html[data-theme="light"] .bo-rank{color:#fff}
