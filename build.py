@@ -32,14 +32,19 @@ def main_url(m): return f"{MAIN}/movie/{m['tmdb_id']}/{slug(m['title'])}"
 def esc_js(s): return json.dumps(s, ensure_ascii=False)
 
 def trim(s, n=155):
-    """Cut at a sentence/word boundary, never mid-word."""
+    """Cut at a sentence boundary, else a clause, else a clean word boundary. Never ends mid-phrase."""
     s = re.sub(r"\s+", " ", str(s or "")).strip()
     if len(s) <= n: return s
     cut = s[:n]
     k = max(cut.rfind(". "), cut.rfind("! "), cut.rfind("? "))
-    if k >= 80: return cut[:k+1]
+    if k >= 70: return cut[:k+1]
+    k = max(cut.rfind(", "), cut.rfind("; "), cut.rfind(": "), cut.rfind(" – "), cut.rfind(" - "))
+    if k >= 70: return cut[:k].rstrip(",;:- ") + "."
     cut = cut[:cut.rfind(" ")] if " " in cut else cut
-    return cut.rstrip(",;:- ") + "."
+    stop = {"a","an","the","and","or","of","in","on","for","to","with","by","his","her","their","its","as","at","from","is","are","was","best","known"}
+    words = cut.split()
+    while words and words[-1].lower().strip(",.;:") in stop: words.pop()
+    return " ".join(words).rstrip(",;:- ") + "."
 
 def article(word):
     return "an" if str(word or "")[:1].lower() in "aeiou" else "a"
@@ -357,6 +362,11 @@ def page_movie(m):
 </main>{footer()}"""
     write(path + "index.html", body)
 
+import sys as _sys
+_sys.path.insert(0, "data")
+from genre_editorial import EDIT as GENRE_EDIT
+from editor_note import note as editor_note
+
 GENRE_NOTES = {
  "Action": "Action films are built on movement: chase construction, fight choreography and set pieces that escalate. The genre covers everything from grounded thrillers to superhero spectacle, and the best entries balance practical stunts with a story worth caring about.",
  "Adventure": "Adventure movies sell a sense of scale — new worlds, long journeys, and stakes that grow with the map. They work best when the location feels like a character and the crew has a reason to keep moving.",
@@ -397,14 +407,15 @@ def _cat_extra(g, limit=12):
 
 def _cat_intro(g, mine):
     n = g["name"]; low = n.lower()
+    ed = GENRE_EDIT.get(n, {})
     top = sorted(mine, key=lambda m: -(m.get("rating") or 0))
-    yrs = sorted({m["year"] for m in mine if m.get("year")})
-    span = f"{yrs[0]} to {yrs[-1]}" if len(yrs) > 1 else (str(yrs[0]) if yrs else "")
-    if not mine:
-        return f"We do not have a full {low} guide published yet. This page will list {low} films with cast, runtime and watch options as soon as the first guides go live."
-    lead = f"{join_and([m['title'] for m in top[:3]])} lead our {low} guides" + (f", spanning releases from {span}" if span else "") + "."
-    avg = round(sum((m.get("rating") or 0) for m in mine) / len(mine), 1)
-    return f"{lead} The {len(mine)} {low} {'film' if len(mine)==1 else 'films'} covered here average {avg}/10 from TMDB users. Each guide lists the cast, runtime, release dates and where to stream, rent or buy it by region."
+    if mine:
+        t3 = join_and([m["title"] for m in top[:3]])
+        avg = round(sum((m.get("rating") or 0) for m in mine) / len(mine), 1)
+        topline = f"Our {len(mine)} {low} {'guide' if len(mine)==1 else 'guides'} average {avg}/10, led by {t3}"
+    else:
+        topline = ""
+    return ed.get("intro", "").replace("{top}", topline).replace(". .", ".").strip() or f"{n} guides will appear here once they are researched."
 
 def page_category(g):
     path = f"category/{g['slug']}/index.html"
@@ -420,11 +431,10 @@ def page_category(g):
     note = GENRE_NOTES.get(g["name"], "")
     best = mine[:3]
     best_line = (join_and([x["title"] for x in best]) + " are the highest rated " + g["name"].lower() + " guides here.") if best else "No guide is published for this genre yet."
-    gfaq = [
-      (f"What are the best {g['name'].lower()} movies here?", best_line + (f" Ratings are TMDB user scores and change over time." if best else "")),
-      (f"How many {g['name'].lower()} guides does MovieState have?", (f"There {'is' if n_ == 1 else 'are'} {n_} published {g['name'].lower()} guide{'s' if n_ != 1 else ''} right now." if n_ else f"None yet. {g['name']} guides will appear here once they are published.")),
-      (f"Where can I watch {g['name'].lower()} movies online?", "Open a film guide and see Where to watch. Streaming, rental and purchase options are listed for the US, UK, Canada, Australia, India and Bangladesh."),
-    ]
+    ed = GENRE_EDIT.get(g["name"], {})
+    gfaq = [(f"What are the best {g['name'].lower()} movies here?", best_line + (" Ratings are TMDB user scores and change over time." if best else ""))] + list(ed.get("faq", []))
+    if mine:
+        gfaq.append((f"Where can I watch {g['name'].lower()} movies online?", "Open a film guide and see Where to watch. Streaming, rental and purchase options are listed by region."))
     faq_html = "".join(f'<details class="faq__item"><summary><h3>{e(q)}</h3></summary><p>{e(a)}</p></details>' for q, a in gfaq)
     ld = [
       crumb_ld([("Home", "/"), ("Categories", "/categories/"), (g["name"], f"/category/{g['slug']}/")]),
@@ -440,9 +450,9 @@ def page_category(g):
              f'<h2 class="section__title">{e(g["name"])} films with full guides</h2></div></div>'
              f'<div class="grid">{mine_cards}</div></section>') if mine else ""
     more = (f'<section class="section"><div class="section__head"><div><p class="kicker">Also popular</p><h2 class="section__title">More {e(g["name"].lower())} titles on TMDB</h2></div></div><div class="grid">{other_cards}</div></section>') if extra else ""
-    prose = (f'<section class="section section--narrow"><div class="section__head"><div><p class="kicker">About the genre</p><h2 class="section__title">What defines {e(g["name"].lower())} films</h2></div></div>'
-             f'<div class="prose"><p>{e(note)}</p></div>'
-             if note else '<section class="section section--narrow">')
+    lens_ = ed.get("lens", ""); starter_ = ed.get("starter", "")
+    prose = (f'<section class="section section--narrow"><div class="section__head"><div><p class="kicker">How to choose</p><h2 class="section__title">What to look for in {e(g["name"].lower())} films</h2></div></div>'
+             f'<div class="prose"><p>{e(note)}</p>' + (f'<p>{e(lens_)}</p>' if lens_ else '') + (f'<p><strong>Where to start:</strong> {e(starter_)}</p>' if starter_ else '') + '</div>')
     body = (h + header("/categories/") + '<main id="main"><div class="wrap">'
       + crumbs([("Home", "/"), ("Categories", "/categories/"), (g["name"], None)]) + '</div>'
       + f'<section class="page-head"><div class="wrap"><p class="kicker">Category</p><h1 class="page-title">{e(g["name"])} movies</h1><p class="page-lede">{e(intro)}</p></div></section>'
@@ -544,7 +554,9 @@ def page_person(p):
       (f"Where can I watch {p['name']}'s films?", "Open any film on MovieState to see streaming, rental and purchase options reported for your region."),
     ]
     faq_html = "".join(f'<details class="faq__item"><summary><h3>{e(q)}</h3></summary><p>{e(a)}</p></details>' for q, a in gfaq)
-    desc = trim(f"{p['name']}: {lead}", 152)
+    first = lead if lead.lower().startswith(p["name"].split()[0].lower()) else f"{p['name']}. {lead}"
+    tail = f" Credits, films and where to watch them." if len(first) < 110 else ""
+    desc = trim(first + tail, 156)
     ld = [crumb_ld([("Home", "/"), ("People", "/people/"), (p["name"], person_path(p))]),
           {"@context": "https://schema.org", "@type": "Person", "name": p["name"], "url": f"{BASE}/{path}",
            "image": poster(p.get("profile"), "w500"), "description": trim(lead, 300), "jobTitle": role, **({"birthDate": p["birthday"]} if p.get("birthday") else {}), **({"birthPlace": p["place"]} if p.get("place") else {}), "sameAs": ([f"https://www.themoviedb.org/person/{p['id']}"])},
@@ -862,7 +874,8 @@ def page_movie_v2(m):
     rels = m.get("releases") or []
     title = f"{t} ({y}): Cast, Ratings & Where to Watch"
     if len(title) > 66: title = f"{t} ({y}): Cast & Where to Watch"
-    desc = trim(f"{t} ({y}): story, cast and crew, ratings, release dates and where to stream, rent or buy it in the US, UK, Canada, Australia, India and Bangladesh.", 158)
+    desc = f"{t} ({y}): story, cast, crew, ratings and release dates, plus where to stream, rent or buy it in the US, UK, India and Bangladesh."
+    if len(desc) > 158: desc = f"{t} ({y}): cast, crew, ratings, release dates and where to stream, rent or buy it by region."
     cert_map = {r["country"]: r["cert"] for r in rels if r.get("cert")}
     cert_line = ", ".join(f"{c} in {k}" for k, c in list(cert_map.items())[:3]) or "check your local rating"
 
@@ -933,7 +946,7 @@ def page_movie_v2(m):
 
     rel_movies = [MOV[i] for i in (m.get("similar_ids") or []) if i in MOV][:10]
     if not rel_movies:
-        rel_movies = [x for x in D["movies"] if x["tmdb_id"] != m["tmdb_id"] and set(x.get("genres", [])) & set(m.get("genres", []))][:10]
+        rel_movies = sorted([x for x in D["movies"] if x["tmdb_id"] != m["tmdb_id"] and set(x.get("genres", [])) & set(m.get("genres", []))], key=lambda x: -len(set(x.get("genres", [])) & set(m.get("genres", []))))[:10]
 
     ld_list = [{"@context":"https://schema.org","@type":"Movie","name":t,"url":BASE+movie_path(m),
       "description":m.get("overview",""),"image":poster(m.get("poster"),"w500"),
@@ -958,7 +971,7 @@ def page_movie_v2(m):
 <ul class="chips">{chips}</ul>
 <div class="hero__cta"><a class="btn btn--primary" href="#watch">Where to watch</a><a class="btn btn--ghost" href="#cast">Cast &amp; crew</a></div></div></div>
 <div class="quickbar wrap"><div><span>Release</span><strong>{e(m.get("release_date") or "—")}</strong></div><div><span>Director</span><strong>{e(dn)}</strong></div><div><span>Rating</span><strong>{m.get("rating") or "—"}/10 · {m.get("votes") or 0} votes</strong></div><div><span>Worldwide gross</span><strong>{e(money(m.get("revenue")) or "Not reported")}</strong></div></div></section>''')
-    H.append('''<nav class="subnav" aria-label="Sections"><div class="wrap"><a href="#overview">Overview</a><a href="#watch">Where to watch</a><a href="#cast">Cast</a><a href="#crew">Crew</a><a href="#reception">Reception</a><a href="#details">Details</a><a href="#releases">Release dates</a><a href="#faq">FAQ</a></div></nav>''')
+    H.append('''<nav class="subnav" aria-label="Sections"><div class="wrap"><a href="#overview">Overview</a><a href="#editor-note">Should you watch</a><a href="#watch">Where to watch</a><a href="#cast">Cast</a><a href="#crew">Crew</a><a href="#reception">Reception</a><a href="#details">Details</a><a href="#releases">Release dates</a><a href="#faq">FAQ</a></div></nav>''')
 
     kws = "".join(f"<li>{e(k)}</li>" for k in (m.get("keywords") or [])[:10])
     tags_html = ('<ul class="tags">' + kws + "</ul>") if kws else ""
@@ -969,6 +982,12 @@ def page_movie_v2(m):
 <p>The main cast is led by {e(", ".join(c["name"] for c in (m.get("cast") or [])[:4]))}{(". The screenplay was written by " + e(", ".join(m["writer_list"][:2])) + ".") if m.get("writer_list") else "."} Reported worldwide gross stands at {e(money(m.get("revenue")) or "an amount that has not been disclosed")}.</p></div>
 {tags_html}
 <div class="callout"><strong>Why it matters:</strong> {e(t)} currently holds {m.get('rating') or '—'}/10 from {m.get('votes') or 0} TMDB user ratings and has taken {e(money(m.get('revenue')) or 'no reported gross')} worldwide against a {e(money(m.get('budget')) or 'undisclosed')} budget. Figures move as more ratings and box-office updates arrive.</div></section>''')
+    _mg = set(m.get("genres", []))
+    _sim = [x for x in D["movies"] if x["tmdb_id"] != m["tmdb_id"] and len(_mg & set(x.get("genres", []))) >= 2]
+    _sim = sorted(_sim, key=lambda x: (-len(_mg & set(x.get("genres", []))), -(x.get("votes") or 0)))[:3]
+    en = editor_note(m, cert_map.get("US", ""), [x["title"] for x in _sim])
+    note_items = "".join(f"<p>{e(en[k])}</p>" for k in ("who","audience","themes","parental","similar") if en.get(k))
+    H.append(f'''<section id="editor-note" class="section section--narrow"><div class="section__head"><div><p class="kicker">Editor&#8217;s note</p><h2 class="section__title">Should you watch {e(t)}?</h2></div></div><div class="panel prose">{note_items}<p class="note">Reviewed {TODAY}. Based on TMDB data for runtime, cast, ratings, keywords and certification.</p></div></section>''')
     H.append(f'''<section id="watch" class="section"><div class="section__head"><div><p class="kicker">Availability</p><h2 class="section__title">Where to watch {e(t)}</h2></div></div>
 <div class="cols"><div class="panel"><h3 class="panel__title">Streaming, rent or buy by region</h3><div class="watch">{watch_html}</div>
 <p class="note">Listings come from TMDB provider data and change without notice. No price or quality is guaranteed here — confirm on the provider page before paying.</p></div>
