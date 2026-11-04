@@ -103,42 +103,45 @@ html[data-theme="light"] .chip{color:#0B1226;border-color:rgba(20,40,110,.18)}
 html[data-theme="light"] .chip.is-on{color:#fff}
 @media(max-width:560px){.search-box{padding:12px;gap:8px}.sr-item{padding:8px;gap:10px}.sr-thumb{width:42px;height:63px}.nav-search{width:36px;height:36px}}
 
-/* ===== mobile header: premium 3-dot menu (added 2026-11-04) ===== */
+/* ===== mobile header: hamburger menu (rev2) ===== */
 .nav-more,.nav-sheet,.nav-scrim{display:none}
-.nav-more{align-items:center;justify-content:center;flex:0 0 auto;width:40px;height:40px;padding:0;border-radius:12px;border:1px solid var(--line);background:var(--surface2);color:var(--text);cursor:pointer;transition:background .2s,border-color .2s,transform .12s,box-shadow .2s}
+.nav-more{align-items:center;justify-content:center;flex:0 0 auto;width:44px;height:44px;padding:0;border-radius:13px;border:1px solid var(--line);background:var(--surface2);color:var(--text);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .2s,border-color .2s,box-shadow .2s}
 .nav-more:hover{border-color:rgba(91,120,255,.55);box-shadow:0 0 0 3px rgba(43,76,255,.12)}
-.nav-more:active{transform:scale(.95)}
-.nav-more svg{width:18px;height:18px}
-body.nav-open .nav-more{background:rgba(43,76,255,.18);border-color:rgba(91,120,255,.7);box-shadow:0 0 0 3px rgba(43,76,255,.16)}
-.nav-scrim{position:fixed;inset:0;z-index:55;background:rgba(8,12,28,.5);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);opacity:0;transition:opacity .22s ease}
-body.nav-open .nav-scrim{opacity:1}
-.nav-sheet{position:fixed;z-index:60;top:calc(env(safe-area-inset-top,0px) + 68px);right:12px;width:min(92vw,340px);max-height:calc(100dvh - 96px);overflow:auto;padding:12px;border-radius:18px;border:1px solid var(--line);background:var(--surface);color:var(--text);box-shadow:0 34px 80px -34px rgba(4,8,26,.75);opacity:0;transform:translateY(-12px) scale(.97);transform-origin:top right;transition:opacity .2s ease,transform .2s cubic-bezier(.2,.7,.2,1);-webkit-overflow-scrolling:touch}
-body.nav-open .nav-sheet{opacity:1;transform:none}
+.nav-more__bars{display:flex;flex-direction:column;justify-content:center;gap:4px;width:19px;height:14px}
+.nav-more__bars i{display:block;height:2px;width:100%;border-radius:2px;background:currentColor;transition:transform .25s cubic-bezier(.2,.7,.2,1),opacity .2s,width .25s}
+body.nav-open .nav-more{background:rgba(43,76,255,.18);border-color:rgba(91,120,255,.7)}
+body.nav-open .nav-more__bars i:nth-child(1){transform:translateY(6px) rotate(45deg)}
+body.nav-open .nav-more__bars i:nth-child(2){opacity:0;width:0}
+body.nav-open .nav-more__bars i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.nav-scrim{position:fixed;inset:0;z-index:38;background:rgba(8,12,28,.5);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .22s ease}
+body.nav-open .nav-scrim{opacity:1;pointer-events:auto}
+.nav-scrim[hidden]{display:none!important}
+.nav-sheet{position:fixed;z-index:60;top:calc(env(safe-area-inset-top,0px) + 70px);right:10px;width:min(92vw,330px);max-height:calc(100dvh - 100px);overflow:auto;padding:12px;border-radius:18px;border:1px solid var(--line);background:var(--surface);color:var(--text);box-shadow:0 30px 70px -30px rgba(4,8,26,.7);opacity:0;pointer-events:none;transform:translateY(-10px) scale(.97);transform-origin:top right;transition:opacity .2s ease,transform .2s cubic-bezier(.2,.7,.2,1);-webkit-overflow-scrolling:touch}
+body.nav-open .nav-sheet{opacity:1;transform:none;pointer-events:auto}
 body.nav-open{overflow:hidden}
 .nav-sheet__group+.nav-sheet__group{margin-top:10px;padding-top:10px;border-top:1px solid var(--line-soft)}
 .nav-sheet__label{margin:0 0 6px;padding:0 10px;font-size:.66rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.nav-sheet__group a{display:flex;align-items:center;justify-content:space-between;min-height:46px;padding:0 14px;border-radius:12px;font-size:.95rem;font-weight:500;color:var(--text);transition:background .18s,color .18s}
+.nav-sheet__group a{display:flex;align-items:center;justify-content:space-between;min-height:48px;padding:0 14px;border-radius:12px;font-size:.97rem;font-weight:500;color:var(--text);transition:background .18s,color .18s}
 .nav-sheet__group a+a{margin-top:2px}
 .nav-sheet__group a:hover,.nav-sheet__group a:focus-visible{background:rgba(43,76,255,.12)}
 .nav-sheet__group a[aria-current="page"]{background:rgba(43,76,255,.16);font-weight:600}
 .nav-sheet__group>a::after{content:"";width:7px;height:7px;margin-left:10px;border-right:1.6px solid currentColor;border-top:1.6px solid currentColor;transform:rotate(45deg);opacity:.4;flex:0 0 auto}
-.nav-sheet__chips{display:flex;flex-wrap:wrap;gap:8px;padding:4px 4px 6px}
-.nav-sheet__chips a{min-height:38px;display:inline-flex;align-items:center;padding:0 14px;border-radius:100px;border:1px solid var(--line);background:var(--surface2);font-size:.82rem;font-weight:600;color:var(--text)}
-.nav-sheet__chips a:hover{border-color:rgba(91,120,255,.5);background:rgba(43,76,255,.12)}
-.nav-sheet__cta{display:flex;width:100%;margin-top:12px;min-height:46px}
+.nav-sheet__cta{display:flex;width:100%;margin-top:12px;min-height:48px;font-size:.92rem}
 @media (max-width:900px){
   .nav{display:none!important}
-  .nav-more{display:inline-flex;order:4}
+  .nav-more{display:inline-flex}
   .nav-scrim{display:block}
   .nav-sheet{display:block}
   .header__inner{flex-wrap:nowrap;height:auto;min-height:60px;gap:8px;padding-top:8px;padding-bottom:8px}
-  .header__inner .btn--sm{margin-left:auto}
-  .nav-search{width:38px;height:38px}
-  .theme-toggle{width:38px;height:38px}
+  .header__cta{display:none}
+  .header__inner .nav-search{margin-left:auto}
+  .nav-search{width:42px;height:42px;display:inline-flex;align-items:center;justify-content:center}
+  .theme-toggle{width:42px;height:42px}
 }
 @media (max-width:420px){
-  .header__cta{padding:0 12px;font-size:.72rem;height:36px}
-  .nav-more{width:38px;height:38px}
+  .nav-search{width:40px;height:40px}
+  .theme-toggle{width:40px;height:40px}
+  .nav-more{width:42px;height:42px}
   .header__inner{gap:6px}
 }
 @media (min-width:901px){.nav-sheet,.nav-scrim,.nav-more{display:none!important}}
