@@ -1,0 +1,7 @@
+Contact: https://github.com/moviestate/moviestate.github.io/issues
+Contact: https://www.facebook.com/profile.php?id=1357870217416273
+Expires: 2027-11-04T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://moviestate.github.io/.well-known/security.txt
+Policy: https://moviestate.github.io/corrections/
+# MovieState is a static informational site. It has no login, no user accounts and no database.
