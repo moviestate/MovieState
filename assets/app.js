@@ -152,3 +152,36 @@
   if (form) form.addEventListener('submit', function (ev) { ev.preventDefault(); run(); });
   document.addEventListener('click', function (ev) { if (box && !box.contains(ev.target) && ev.target !== input) close(); });
 })();
+
+// Theme switch with premium wipe
+(function () {
+  var root = document.documentElement;
+  var btn = document.querySelector('.theme-toggle');
+  if (!btn) return;
+  function label() {
+    var dark = root.dataset.theme === 'dark';
+    btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+    btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+  }
+  label();
+  btn.addEventListener('click', function () {
+    var next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', next === 'dark' ? '#05060A' : '#FFFFFF');
+    var r = btn.getBoundingClientRect();
+    root.style.setProperty('--tx', (r.left + r.width / 2) + 'px');
+    root.style.setProperty('--ty', (r.top + r.height / 2) + 'px');
+    function apply() {
+      root.dataset.theme = next;
+      try { localStorage.setItem('ms-theme', next); } catch (e) {}
+      label();
+    }
+    if (document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.startViewTransition(apply);
+    } else {
+      root.classList.add('ms-theme-fade');
+      apply();
+      setTimeout(function () { root.classList.remove('ms-theme-fade'); }, 500);
+    }
+  });
+})();
