@@ -1,12 +1,21 @@
 #!/usr/bin/env python3
 """MovieState static site generator - v3 (black & royal blue)."""
 import json, html, os, re, shutil, hashlib
+from urllib.parse import quote_plus
 from datetime import date
 
 BASE = "https://moviestate.github.io/MovieState"
-MAIN = "https://moviestate.is-best.net"
 BRAND = "MovieState"
 TODAY = "2026-11-04"
+
+# Optional analytics: set "ga4_id": "G-XXXXXXXXXX" in data/site.json to enable.
+try:
+    _SITE_CFG = json.load(open("data/site.json"))
+except Exception:
+    _SITE_CFG = {}
+GA4_ID = str(_SITE_CFG.get("ga4_id") or "").strip()
+GA_TAG = (f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>'
+          f'<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag("js",new Date());gtag("config","{GA4_ID}");</script>') if GA4_ID else '' 
 
 D = json.load(open("data/movies.json"))
 MOV = {m["tmdb_id"]: m for m in D["movies"]}
@@ -66,7 +75,9 @@ def release_label(m):
     return {"date": fmt_date(iso), "phase": "released", "note": "", "status": st or "Released"}
 UPCOMING = lambda: sorted([m for m in D["movies"] if (days_until(m.get("release_date") or "") or -1) > 0], key=lambda m: m.get("release_date") or "")
 
-def main_url(m): return f"{MAIN}/movie/{m['tmdb_id']}/{slug(m['title'])}"
+def watch_url(m):
+    """Official availability index (JustWatch). We never link to unlicensed streamers."""
+    return "https://www.justwatch.com/us/search?q=" + quote_plus(f"{m['title']} {m['year']}")
 def esc_js(s): return json.dumps(s, ensure_ascii=False)
 
 def trim(s, n=155):
@@ -140,7 +151,7 @@ def head(title, desc, path, og_image=None, jsonld=None, extra_css="", preload_im
     parts = [f"""<!doctype html><html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{{var t=localStorage.getItem("ms-theme");if(t==="dark"||t==="light"){{document.documentElement.dataset.theme=t}}}}catch(e){{}}</script>
-<title>{e(title)}</title><meta name="description" content="{e(desc)}">
+<title>{e(title)}</title><meta name="description" content="{e(desc)}">{GA_TAG}
 <link rel="canonical" href="{url}">{f'<link rel="prev" href="{prev_url}">' if prev_url else ""}{f'<link rel="next" href="{next_url}">' if next_url else ""}{f'<link rel="preload" as="image" href="{preload_img}" fetchpriority="high">' if preload_img else ""}
 <meta name="robots" content="{robots}">
 <meta name="theme-color" content="#FFFFFF">
@@ -176,7 +187,7 @@ def logo_svg(uid="a"):
       'stroke-linecap="round" stroke-linejoin="round"/></svg>')
 
 def header(active=""):
-    nav = [("Movies", "/movies/"), ("Categories", "/categories/"), ("People", "/people/"), ("FAQ", "/faq/"), ("About", "/about/")]
+    nav = [("Movies", "/movies/"), ("Categories", "/categories/"), ("People", "/people/"), ("Articles", "/articles/"), ("FAQ", "/faq/"), ("About", "/about/")]
     def one(t, h):
         mark = ' aria-current="page"' if h == active else ''
         return f'<a href="{BASE}{h}"{mark}>{e(t)}</a>'
@@ -189,7 +200,7 @@ def header(active=""):
 <span class="theme-toggle__sun" aria-hidden="true"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4L17 7M7 17l-1.6 1.6"/></svg></span>
 <span class="theme-toggle__moon" aria-hidden="true"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.4A8.6 8.6 0 1 1 9.6 3.5a7 7 0 0 0 10.9 10.9z"/></svg></span>
 </button>
-<a class="btn btn--primary btn--sm header__cta" href="{MAIN}/" target="_blank" rel="{OUT_REL}">MovieState Library</a>
+<a class="btn btn--primary btn--sm header__cta" href="{BASE}/movies/">Browse movies</a>
 </div></header>"""
 
 def footer():
@@ -199,7 +210,7 @@ def footer():
 <div class="footer__cols">
 <div><h3>Explore</h3><a href="{BASE}/movies/">All movies</a><a href="{BASE}/categories/">Categories</a><a href="{BASE}/people/">People</a></div>
 <div><h3>Company</h3><a href="{BASE}/about/">About</a><a href="{BASE}/faq/">FAQ</a><a href="{BASE}/privacy-policy/">Privacy Policy</a><a href="{BASE}/terms/">Terms &amp; Conditions</a></div>
-<div><h3>Watch</h3><a href="{MAIN}/" target="_blank" rel="{OUT_REL}">MovieState library</a><span class="muted">Our companion library site is a separate service. Links to it are marked as sponsored.</span></div>
+<div><h3>Guides</h3><a href="{BASE}/articles/">Articles</a><a href="{BASE}/movies/">All movie guides</a><a href="{BASE}/categories/">Categories</a><a href="{BASE}/people/">People</a></div>
 </div>
 <p class="footer__legal">© {date.today().year} {BRAND}. Movie metadata and images provided by TMDB. {BRAND} is not endorsed or certified by TMDB. This site publishes information only; we do not host or stream video files.</p>
 </div></footer></body></html>"""
@@ -318,7 +329,7 @@ def page_home():
 <h1 class="hero__title">{e(f['title'])} <span>— where to watch in HD</span></h1>
 <ul class="meta-row"><li class="meta-row__score">{score(f)}</li><li>{e(f['year'])}</li><li>{e(rtime(f.get('runtime')))}</li><li>{e(', '.join(f.get('genres', [])[:2]))}</li></ul>
 <p class="hero__lede">{e(f.get('overview', '')[:210])}</p>
-<div class="hero__cta"><a class="btn btn--primary" href="{main_url(f)}" target="_blank" rel="{OUT_REL}">Watch on MovieState</a>
+<div class="hero__cta"><a class="btn btn--primary" href="{watch_url(f)}" target="_blank" rel="noopener">Where to watch</a>
 <a class="btn btn--ghost" href="{BASE}{movie_path(f)}">Movie details</a></div>
 </div></section>
 <div class="ticker" aria-hidden="true"><div class="ticker__track">{tick}{tick}</div></div>
@@ -343,7 +354,7 @@ def page_home():
 <div class="panel"><h2 class="panel__title">What goes into every page</h2>
 <p>Titles, cast, crew, runtimes, certifications, release dates by country, provider listings, budgets and grosses come from live movie data. Each page then adds plain-language context: what the film is, who made it, how it has been received, and how to watch it in your region.</p>
 <ul class="ticks"><li>Full cast and crew, not a truncated five-name list</li><li>Release dates and age ratings split by country</li><li>Streaming, rent and buy options for six major markets</li><li>Box office and budget figures labelled as reported</li><li>No pop-ups, no forced sign-ups, no fake players</li></ul>
-<a class="btn btn--primary" href="{MAIN}/" target="_blank" rel="{OUT_REL}">Open MovieState</a></div>
+<a class="btn btn--primary" href="{BASE}/articles/">Read our viewing guides</a></div>
 <div class="panel panel--faq"><h2 class="panel__title">Common questions</h2>{faq_html}</div>
 </section>
 </main>{footer()}"""
@@ -406,7 +417,7 @@ def page_movie(m):
 <h1 class="hero__title">{e(t)}</h1>
 {f'<p class="tagline">“{e(m["tagline"])}”</p>' if m.get('tagline') else ''}
 <ul class="meta-row"><li>{e(y)}</li><li>{e(rtime(m.get('runtime')))}</li><li>{e((m.get('language') or '').upper())}</li><li>{e(m.get('status') or '')}</li></ul>
-<div class="hero__cta"><a class="btn btn--primary" href="{main_url(m)}" target="_blank" rel="{OUT_REL}">Watch on MovieState</a>
+<div class="hero__cta"><a class="btn btn--primary" href="{watch_url(m)}" target="_blank" rel="noopener">Where to watch</a>
 <a class="btn btn--ghost" href="#where">Where to watch</a></div>
 </div></div></section>
 <section class="section section--narrow">
@@ -418,7 +429,7 @@ def page_movie(m):
 <section class="section section--split" id="where">
 <div class="panel"><p class="kicker">Watch</p><h2 class="panel__title">Where to watch {e(t)}</h2>
 <p>Streaming rights move between platforms and differ by country. Open the MovieState page for {e(t)} to see the current watch options, quality and availability for your region.</p>
-<a class="btn btn--primary" href="{main_url(m)}" target="_blank" rel="{OUT_REL}">Check availability</a>
+<a class="btn btn--primary" href="{watch_url(m)}" target="_blank" rel="{OUT_REL}">Check availability</a>
 <p class="note">We publish information only. Always confirm details on the provider's own page before paying.</p></div>
 <div class="panel panel--faq"><h2 class="panel__title">Questions about {e(t)}</h2>{faq_html}</div>
 </section>
@@ -776,7 +787,7 @@ def page_terms():
 FAQ_ITEMS = [
  ("What is MovieState?", "MovieState is an independent movie guide. Each page covers the story, cast, crew, runtime, ratings and release dates, plus where the film streams, rents or sells in major regions."),
  ("Is MovieState free to use?", "Yes. Every guide on this site is free to read, with no account and no paywall."),
- ("Do you host or stream movies?", "No. We publish information only and never host video files. Our companion library site, moviestate.is-best.net, is a separate service, and every link to it is marked as sponsored."),
+ ("Do you host or stream movies?", "No. MovieState is an information guide. We never host, embed or stream video files and we do not link to unlicensed streaming services. Watch options point to official providers, or to a legitimate availability index such as JustWatch where you can compare official services."),
  ("How do I find where to watch a movie?", "Open a movie page and go to Where to watch. Availability is split into stream, rent and buy for the US, UK, Canada, Australia, India and Bangladesh. Confirm price and quality on the provider page."),
  ("Where does the movie data come from?", "Posters, backdrops, cast, crew and ratings come from TMDB. Availability comes from TMDB provider data, so it can lag behind a service's own catalogue."),
  ("Why can availability differ from what I see?", "Streaming rights are sold country by country and change over time. A film available in one region may not be licensed in another."),
@@ -816,6 +827,7 @@ def priority(path):
     if path.startswith("category/"): return "0.8", "weekly"
     if path.startswith(("movies/", "categories/", "people/")): return "0.8", "weekly"
     if path.startswith("person/"): return "0.6", "monthly"
+    if path.startswith("articles/"): return "0.7", "weekly"
     if path.startswith(("about/", "faq/")): return "0.5", "monthly"
     return "0.3", "yearly"
 
@@ -920,7 +932,7 @@ def page_movie_flagship(m):
 <h1 class="film__title">{e(t)}</h1>
 {f'<p class="film__tag">“{e(m["tagline"])}”</p>' if m.get("tagline") else ''}
 <ul class="chips">{chips}</ul>
-<div class="hero__cta"><a class="btn btn--primary" href="{main_url(m)}" target="_blank" rel="{OUT_REL}">Watch on MovieState</a>
+<div class="hero__cta"><a class="btn btn--primary" href="{watch_url(m)}" target="_blank" rel="noopener">Where to watch</a>
 <a class="btn btn--ghost" href="#watch">Where to watch</a></div>
 </div></div>
 <div class="quickbar wrap"><div><span>Release</span><strong>{e(str(m.get('release_date','')).replace('-', '.'))}</strong></div><div><span>Runtime</span><strong>{e(rtime(m.get('runtime')))}</strong></div><div><span>Director</span><strong>{e(dname)}</strong></div><div><span>Rating</span><strong>{score(m)} / 10</strong></div></div>
@@ -957,7 +969,7 @@ def page_movie_flagship(m):
 <section class="section section--split" id="watch">
 <div class="panel"><p class="kicker">Watch</p><h2 class="panel__title">Where to watch {e(t)}</h2>
 <ol class="steps"><li>Open the {e(t)} page on MovieState.</li><li>Check the watch options shown for your region.</li><li>Confirm price, quality and subtitles on the provider page before paying.</li></ol>
-<a class="btn btn--primary" href="{main_url(m)}" target="_blank" rel="{OUT_REL}">Check availability</a>
+<a class="btn btn--primary" href="{watch_url(m)}" target="_blank" rel="{OUT_REL}">Check availability</a>
 <p class="note">Availability differs by country and changes without notice. This page publishes information only and does not host or stream video.</p></div>
 <div class="panel panel--faq" id="faq"><p class="kicker">FAQ</p><h2 class="panel__title">Questions about {e(t)}</h2>{faq_html}</div>
 </section>
@@ -1138,7 +1150,6 @@ def page_movie_v2(m):
 
     kws = "".join(f"<li>{e(k)}</li>" for k in (m.get("keywords") or [])[:10])
     tags_html = ('<ul class="tags">' + kws + "</ul>") if kws else ""
-    mlink = MAIN + f"/movie/{m['tmdb_id']}/{slug(m['title'])}"
     H.append(f'''<section id="overview" class="section section--narrow"><div class="section__head"><div><p class="kicker">The story</p><h2 class="section__title">What {e(t)} is about</h2></div></div>
 <div class="prose prose--lead">{("<p>" + e(m.get("overview","")) + "</p>") if m.get("overview") else ""}
 <p>{e(t)} is {article((m.get("genres") or ["film"])[0])} {e(join_and([g_.lower() for g_ in m.get("genres",[])]))} film from {e(str(y))}, directed by {e(dn)}. It runs {e(rtime(m.get("runtime")))}{(" and is rated " + e(cert_map.get("US",""))+" in the US") if cert_map.get("US") else ""}{(". It was produced by " + e(join_and((m.get("studios") or [])[:3]))) if m.get("studios") else ""}{(", with production in " + e(m.get("country"))) if m.get("country") else ""}.</p>
@@ -1155,9 +1166,8 @@ def page_movie_v2(m):
 <div class="cols"><div class="panel"><h3 class="panel__title">Streaming, rent or buy by region</h3><div class="watch">{watch_html}</div>
 <p class="note">Listings come from TMDB provider data and change without notice. No price or quality is guaranteed here — confirm on the provider page before paying.</p></div>
 <div class="panel"><h3 class="panel__title">How to watch in a few steps</h3><ol class="steps"><li>Find your country in the table and note which services list <strong>{e(t)}</strong>.</li><li>Pick streaming if it is included in a service you already pay for, otherwise compare rent and buy.</li><li>Check the quality label (HD or 4K) and the audio/subtitle languages on the provider page.</li><li>Still unavailable? Save the title and check again in a week — new deals appear often.</li></ol>
-<a class="btn btn--ghost" href="{main_url(m)}" target="_blank" rel="{OUT_REL}">See more options for {e(t)}</a></div></div></section>''')
+<a class="btn btn--ghost" href="{watch_url(m)}" target="_blank" rel="noopener">Compare all official providers for {e(t)}</a></div></div></section>''')
 
-    H.append(f'''<section class="section section--narrow"><div class="panel cta-band"><div><p class="kicker">Also available</p><h2 class="panel__title">{e(t)} on the MovieState library</h2><p>Our companion library site lists this title too. It is a separate service, so check its terms and your local rules before using it. Use the official providers listed above first.</p><p class="note">Sponsored link. You are leaving this guide.</p></div><a class="btn btn--primary btn--lg" href="{mlink}" target="_blank" rel="{OUT_REL}">Visit MovieState library</a></div></section>''')
     H.append(f'''<section id="cast" class="section"><div class="section__head"><div><p class="kicker">Who is in it</p><h2 class="section__title">{e(t)} cast</h2></div></div><div class="rail"><div class="rail__track rail__track--cast">{cast_html}</div></div>
 <p class="note">Character names follow the film's credits. Open a name to see that person's other work on MovieState.</p></section>''')
     H.append(f'''<section id="crew" class="section section--narrow"><div class="section__head"><div><p class="kicker">Behind the camera</p><h2 class="section__title">Direction and crew</h2></div></div><div class="crew">{crew_html}</div></section>''')
@@ -1225,7 +1235,7 @@ def page_home_v2():
 <div class="cols"><div class="panel"><ol class="steps"><li><strong>Open the film's guide.</strong> Every page lists streaming, rental and purchase options reported for the US, UK, Canada, Australia, India and Bangladesh.</li>
 <li><strong>Check your region.</strong> Rights change per country, so the same film can be included with one service and pay-per-view on another.</li>
 <li><strong>Confirm quality and price on the provider.</strong> We link out to the service; the final price, HD/4K availability and subtitle tracks are set there.</li></ol>
-<a class="btn btn--primary" href="{MAIN}/" target="_blank" rel="{OUT_REL}">Open MovieState library</a></div>
+<a class="btn btn--primary" href="{BASE}/articles/">How we verify watch options</a></div>
 <div class="panel"><h3 class="panel__title">Services we track</h3><ul class="chips">{scores}</ul><p class="note">Provider names are pulled from live availability data and change as licensing deals move. If a service is missing, the film is not listed there for the regions we check.</p></div></div></section>''')
     H.append(f'''<section class="section">{section_head("Cast & crew","The people behind the films",("All people",BASE+"/people/"))}<div class="rail"><div class="rail__track rail__track--people">{"".join(person_card(p, person_path(p)) for p in PPL[:14])}</div></div></section>''')
     faq_html = "".join(f'<details class="faq__item"><summary><h3>{e(q)}</h3></summary><p>{e(a)}</p></details>' for q,a in HOME_FAQ)
@@ -1320,7 +1330,7 @@ def home3():
     prov = sorted({n for m in allm for cc in (m.get("providers") or {}).values() for k in ("flatrate","rent","buy") for n in (cc.get(k) or [])})
     pc = "".join(f'<li class="chip chip--prov">{e(s)}</li>' for s in prov[:12])
     H.append(f'''<section class="section"><div class="section__head"><div><p class="kicker">Where to watch</p><h2 class="section__title">Find the right stream in under a minute</h2></div></div>
-<div class="cols"><div class="panel"><ol class="steps"><li><strong>Open the film guide.</strong> Streaming, rental and purchase options are listed for the US, UK, Canada, Australia, India and Bangladesh.</li><li><strong>Check your region.</strong> Rights change per country, so a title can be included with one service and pay-per-view on another.</li><li><strong>Confirm quality on the provider.</strong> We link out; price, HD/4K and subtitles are set there.</li></ol><a class="btn btn--primary" href="{MAIN}/" target="_blank" rel="{OUT_REL}">Open MovieState library</a></div>
+<div class="cols"><div class="panel"><ol class="steps"><li><strong>Open the film guide.</strong> Streaming, rental and purchase options are listed for the US, UK, Canada, Australia, India and Bangladesh.</li><li><strong>Check your region.</strong> Rights change per country, so a title can be included with one service and pay-per-view on another.</li><li><strong>Confirm quality on the provider.</strong> We link out; price, HD/4K and subtitles are set there.</li></ol><a class="btn btn--primary" href="{BASE}/articles/">How we verify watch options</a></div>
 <div class="panel"><h3 class="panel__title">Services we track</h3><ul class="chips">{pc}</ul><p class="note">Provider names come from live availability data. If a service is missing, the film is not listed there for the regions we check.</p></div></div></section>''')
     H.append(f'''<section class="section">{section_head("Cast & crew","The people behind the films",("All people",BASE+"/people/"))}<div class="rail"><div class="rail__track rail__track--people">{"".join(person_card(p, person_path(p)) for p in PPL[:14])}</div></div></section>''')
     faq_html = "".join(f'<details class="faq__item"><summary><h3>{e(q)}</h3></summary><p>{e(a)}</p></details>' for q,a in HOME_FAQ)
@@ -1342,6 +1352,7 @@ def main():
     for g in GEN: page_category(g)
     for p in PPL: page_person(p)
     page_about(); page_privacy(); page_terms(); page_faq()
+    import articles_build; articles_build.build_articles()
     apply_noindex(); page_404(); write_sitemap()
     if os.path.isdir("static_extra"):
         for _f in sorted(os.listdir("static_extra")):
