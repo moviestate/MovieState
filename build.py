@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """MovieState static site generator - v3 (black & royal blue)."""
-import json, html, os, re, shutil
+import json, html, os, re, shutil, hashlib
 from datetime import date
 
 BASE = "https://moviestate.github.io/MovieState"
@@ -33,6 +33,15 @@ def esc_js(s): return json.dumps(s, ensure_ascii=False)
 
 PAGES = []
 
+def _ver(path):
+    try:
+        return hashlib.md5(open(path, "rb").read()).hexdigest()[:8]
+    except Exception:
+        return "1"
+
+CSSVER = _ver("assets/style.css")
+JSVER = _ver("assets/app.js")
+
 def head(title, desc, path, og_image=None, jsonld=None, extra_css="", preload_img=None):
     clean = "" if path in ("", "index.html") else re.sub(r"index\.html$", "", path)
     url = f"{BASE}/{clean}" if clean else f"{BASE}/"
@@ -52,8 +61,8 @@ def head(title, desc, path, og_image=None, jsonld=None, extra_css="", preload_im
 <link rel="preconnect" href="https://image.tmdb.org" crossorigin>
 <link rel="preload" href="{BASE}/assets/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="{BASE}/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="{BASE}/assets/style.css">
-<script src="{BASE}/assets/app.js" defer></script>"""]
+<link rel="stylesheet" href="{BASE}/assets/style.css?v={CSSVER}">
+<script src="{BASE}/assets/app.js?v={JSVER}" defer></script>"""]
     for block in (jsonld or []):
         parts.append(f'<script type="application/ld+json">{json.dumps(block, ensure_ascii=False)}</script>')
     parts.append("</head><body>")
@@ -636,7 +645,7 @@ def write_raw(path, content):
 def page_404():
     body = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Page not found | {BRAND}</title><meta name="robots" content="noindex,follow">
-<link rel="stylesheet" href="{BASE}/assets/style.css"><meta name="theme-color" content="#FFFFFF"></head>
+<link rel="stylesheet" href="{BASE}/assets/style.css?v={CSSVER}"><meta name="theme-color" content="#FFFFFF"></head>
 <body>{header()}<main id="main" class="section section--narrow"><div class="panel">
 <p class="kicker">404</p><h1 class="page-title">This page slipped out of the frame</h1>
 <p>The page you wanted is not here. It may have moved, or it may not be published yet.</p>
