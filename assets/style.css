@@ -274,3 +274,29 @@ html:not([data-theme="light"]) .theme-toggle__sun{display:grid!important}
   summary{min-height:44px;display:flex;align-items:center}
   .chips{gap:10px}
 }
+
+/* ===== person profile + article depth blocks (rev 2026-11-06c) ===== */
+.pfacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px 22px;margin:26px 0 0;padding:22px 0 0;border-top:1px solid var(--line-soft)}
+.pfact dt{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.pfact dd{margin:0;font-size:.95rem;font-weight:600;color:var(--text)}
+.pcreds{list-style:none;margin:0;padding:0}
+.pcreds li{display:grid;grid-template-columns:1fr auto auto;gap:14px;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--line-soft);font-size:.92rem}
+.pcreds li:last-child{border-bottom:0}
+.pcred__t{font-weight:600}
+.pcred__y{color:var(--muted);font-variant-numeric:tabular-nums}
+.pcred__r{color:var(--muted);font-size:.82rem;max-width:38%;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.art-toc{margin-top:22px}
+.art-toc__label{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.art-toc ol{margin:0;padding-left:20px;display:grid;gap:7px;font-size:.92rem}
+.art-toc a{color:var(--text);border-bottom:1px solid transparent}
+.art-toc a:hover{border-bottom-color:var(--royal2);color:var(--royal2)}
+.art-key{margin-top:16px;border-left:2px solid var(--royal2);background:rgba(43,76,255,.06)}
+.art-key__title{font-family:var(--serif);font-size:1.15rem;margin:0 0 10px}
+.art-key ul{margin:0;padding-left:18px;display:grid;gap:8px;font-size:.93rem;color:var(--text)}
+.art-byline{display:flex;gap:14px;align-items:flex-start;margin-top:18px}
+.art-byline__logo{border-radius:12px;flex:0 0 auto}
+.art-byline__name{margin:0 0 3px;font-weight:600;font-size:.92rem}
+.art-byline__meta{margin:0 0 8px;font-size:.78rem;color:var(--muted)}
+.art-byline__meta a{color:var(--royal2);text-decoration:underline;text-underline-offset:2px}
+[data-theme="light"] .art-key{background:#F2F6FF}
+@media (max-width:720px){.pcreds li{grid-template-columns:1fr auto;gap:6px 12px}.pcred__r{grid-column:1/-1;text-align:left;max-width:none}.art-byline{flex-direction:column}}
