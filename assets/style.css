@@ -254,3 +254,15 @@ html:not([data-theme="light"]) .theme-toggle__sun{display:grid!important}
 .trailer--video .note a{color:var(--royal2);text-decoration:underline;text-underline-offset:2px}
 [data-theme="light"] .vwrap{background:#EDF2FB;border-color:rgba(20,40,110,.14)}
 @media (max-width:720px){.vwrap{margin-top:12px;border-radius:12px}}
+
+/* ===== year hub rebuild (rev 2026-11-06) ===== */
+.yr-stats{display:flex;flex-wrap:wrap;gap:12px 30px;margin:20px 0 0;padding:0;list-style:none}
+.yr-stats li{display:flex;flex-direction:column;gap:3px;min-width:74px}
+.yr-stats b{font-family:var(--serif);font-size:1.4rem;line-height:1;font-weight:400}
+.yr-stats span{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chips .chip{display:inline-flex;align-items:center;gap:6px;min-height:38px;padding:0 14px;border-radius:100px;border:1px solid var(--line);background:var(--surface2);font-size:.85rem;font-weight:600;color:var(--text)}
+.chips .chip small{font-size:.68rem;font-weight:500;opacity:.65}
+.chips .chip:hover{border-color:rgba(91,120,255,.55);background:rgba(43,76,255,.12)}
+.chips .chip.is-active{background:rgba(43,76,255,.2);border-color:rgba(91,120,255,.65);font-weight:700}
+@media (max-width:520px){.yr-stats{gap:10px 20px}.yr-stats b{font-size:1.2rem}}
