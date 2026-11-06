@@ -266,3 +266,11 @@ html:not([data-theme="light"]) .theme-toggle__sun{display:grid!important}
 .chips .chip:hover{border-color:rgba(91,120,255,.55);background:rgba(43,76,255,.12)}
 .chips .chip.is-active{background:rgba(43,76,255,.2);border-color:rgba(91,120,255,.65);font-weight:700}
 @media (max-width:520px){.yr-stats{gap:10px 20px}.yr-stats b{font-size:1.2rem}}
+
+/* ===== mobile tap targets: 44px minimum (rev 2026-11-06b) ===== */
+@media (max-width:720px){
+  .chips .chip,.chips a,.btn--sm,.panel .btn,.tag{min-height:44px}
+  .decade-tab,.nav-sheet__group a,.tab,.seg a{min-height:44px}
+  summary{min-height:44px;display:flex;align-items:center}
+  .chips{gap:10px}
+}
